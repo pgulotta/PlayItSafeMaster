@@ -38,7 +38,7 @@ ApplicationWindow {
     readonly property string darkTextColor: "#4C4A3A"
     readonly property string categoryHighlightColor: "#D6D4C7"
     readonly property string appBackColor: "#FFF9C4"
-    readonly property string appToolbarColor: "#999575"
+    readonly property string appToolbarColor: "#7A775D"
     readonly property string categoryAssetColor: "#66BB6A"
     readonly property string categoryLiabilityColor: "#EF9A9A"
     readonly property string categoryWebColor: "#74bee1"
