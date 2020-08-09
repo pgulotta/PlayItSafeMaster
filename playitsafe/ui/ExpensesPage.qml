@@ -254,7 +254,7 @@ Page {
     }
 
     function formattedCurrentAmount() {
-        return currentExpense.amount.toFixed(2)
+        return currentExpense.amount.toFixed(3)
     }
 
     function getItemIndex(uniqueId) {

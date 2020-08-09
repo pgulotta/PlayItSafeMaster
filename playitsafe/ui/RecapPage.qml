@@ -14,10 +14,10 @@ Page {
     id: recapPageId
     objectName: "RecapPage"
 
-    property real field1Width:  parent.width * .4
-    property real field2Width:  parent.width * .3
-    property real amountWidth:  parent.width * .15
-    property real checkboxWidth:  parent.width * .1
+    property real field1Width: parent.width * .4
+    property real field2Width: parent.width * .3
+    property real amountWidth: parent.width * .15
+    property real checkboxWidth: parent.width * .1
     property real sectionTextHeight: toolbarHeight * .8
     readonly property int animationDeltaX: 3
     property alias recapList: modelListViewId.listViewModel
@@ -66,7 +66,7 @@ Page {
             anchors.fill: parent
             anchors.margins: isSmallScreenDevice ? itemMargin : itemIndent
             listViewDelegate: listViewDelegateId
-            headerPositioning: ListView.OverlayHeader
+            headerPositioning: ListView.InlineHeader
             header: Rectangle {
                 id: summaryRectId
                 radius: rectRadius
@@ -88,7 +88,7 @@ Page {
                     width: summaryRectId.height * 0.8
                     height: width
                     anchors {
-                        rightMargin:  itemIndent
+                        rightMargin: itemIndent
                         right: parent.right
                         topMargin: summaryRectId.height * 0.1
                         top: parent.top
@@ -207,7 +207,7 @@ Page {
                     onPressAndHold: displayDetails(model.sectionUrl, index)
                     onDoubleClicked: displayDetails(model.sectionUrl, index)
                 }
-                RowLayout {               
+                RowLayout {
                     anchors {
                         leftMargin: itemMargin
                         left: parent.left
@@ -232,7 +232,7 @@ Page {
                         id: fieldId3
                         text: Functions.formatCurrencyString(model.amount)
                         clip: true
-                        width:  amountWidth
+                        width: amountWidth
                         Layout.alignment: Qt.AlignRight
                         color: model.amount < 0 ? negativeNumberColor : darkTextColor
                     }
@@ -283,10 +283,10 @@ Page {
 
     function displayDetails(sectionUrl, listIndex) {
         stackViewId.push({
-                             item: sectionUrl,
-                             properties: {
-                                 initialUniqueId: recapList.get(
-                                                      listIndex).uniqueId
+                             "item": sectionUrl,
+                             "properties": {
+                                 "initialUniqueId": recapList.get(
+                                                        listIndex).uniqueId
                              }
                          })
     }

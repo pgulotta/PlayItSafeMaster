@@ -22,7 +22,7 @@ Rectangle {
         highlighted: true
         hoverEnabled: true
         opacity: 1.0
-        width:fabWidth
+        width: fabWidth
         height: width
         onClicked: {
             famToggleOpenClose()
@@ -34,8 +34,8 @@ Rectangle {
             id: famImageId
             anchors.centerIn: parent
             source: famImage
-            height: 32
-            width: 32
+            height: 40
+            width: 40
             AnimationCircularRotation {
                 id: famDownRotationId
                 target: famImageId

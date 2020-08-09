@@ -7,7 +7,7 @@ Column {
     readonly property string famCloseState: "close"
     readonly property string famOpenState: "open"
 
-    property int famWidth: isSmallScreenDevice ? toolbarHeight * 1.7 : toolbarHeight * 1.6
+    property int famWidth: 76
     property int famMargin: famWidth * .2
     property int fabWidth: famWidth * .7
     property int fabMargin: fabWidth * .2

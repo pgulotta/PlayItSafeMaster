@@ -114,8 +114,7 @@ Page {
                     inputHints: Qt.ImhFormattedNumbersOnly
                     fieldLabel: qsTr("Valuation")
                     fieldText: formattedCurrentValuation()
-                    inputValidator: DoubleValidator {
-                    }
+                    inputValidator: DoubleValidator {}
                     onEditableTextChanged: onFieldChanged(
                                                valuationId.fieldText,
                                                formattedCurrentValuation())
@@ -232,7 +231,8 @@ Page {
         if (allRealAssets === undefined || allRealAssets.isEmpty())
             return invalidIndex
         var index = invalidIndex
-        for (var i =0; index === invalidIndex && i < allRealAssets.size(); i++) {
+        for (var i = 0; index === invalidIndex
+             && i < allRealAssets.size(); i++) {
             var item = allRealAssets.get(i)
             if (item.uniqueId === uniqueId)
                 index = i
@@ -241,7 +241,7 @@ Page {
     }
 
     function formattedCurrentValuation() {
-        return currentRealAsset.valuation.toFixed(2)
+        return currentRealAsset.valuation.toFixed(3)
     }
 
     function setcurrentRealAsset(listViewIndex) {
@@ -335,7 +335,7 @@ Page {
         if (allRealAssets === undefined || allRealAssets.isEmpty())
             return categoryTitle
         var total = 0.00
-        for (var i=0; i < allRealAssets.size(); i++) {
+        for (var i = 0; i < allRealAssets.size(); i++) {
             var item = allRealAssets.get(i)
             total += item.valuation
         }
