@@ -27,83 +27,91 @@ class Website;
 class Recap;
 
 
-class DataStoreManager : public QObject {
+class DataStoreManager : public QObject
+{
   Q_OBJECT
-  Q_PROPERTY(QString downloadsPath READ downloadsPath WRITE setDownloadsPath )
+  Q_PROPERTY( QString downloadsPath READ downloadsPath WRITE setDownloadsPath )
 
- public slots:
-  void onFileChooserResultReceived(const QString& path);
+public slots:
+  void onFileChooserResultReceived( const QString& path );
   void onInvestmentNetworkErrorOccurred();
   void onInvestmentResultsReceived();
-  static void setDownloadsPath(const QString& downloadsPath) {
-    DownloadsPathController::setDownloadsPath(downloadsPath);
+  static void setDownloadsPath( const QString& downloadsPath )
+  {
+    DownloadsPathController::setDownloadsPath( downloadsPath );
   }
 
 
- signals:
+signals:
 
- public:
-  Q_INVOKABLE bool importDataStore(const QString& password);
+public:
+  Q_INVOKABLE bool importDataStore( const QString& password );
   Q_INVOKABLE QString exportDataStore();
   Q_INVOKABLE void selectDataStore();
-  Q_INVOKABLE void saveToPdf(bool diplayWebsitePassword);
+  Q_INVOKABLE void saveToPdf( bool diplayWebsitePassword );
   Q_INVOKABLE void clearAll();
-  Q_INVOKABLE void toggleRecapSectionEnabled(const QString& section);
-  Q_INVOKABLE void toggleRecapRowEnabled(const QString& uniqueId);
-  Q_INVOKABLE QObject* newItem(int moniker);
-  Q_INVOKABLE void removeItem(int moniker, const QString& uniqueId);
-  Q_INVOKABLE void saveItem(int moniker, bool isAddNew, QObject* objPtr);
+  Q_INVOKABLE void toggleRecapSectionEnabled( const QString& section );
+  Q_INVOKABLE void toggleRecapRowEnabled( const QString& uniqueId );
+  Q_INVOKABLE QObject* newItem( int moniker );
+  Q_INVOKABLE void removeItem( int moniker, const QString& uniqueId );
+  Q_INVOKABLE void saveItem( int moniker, bool isAddNew, QObject* objPtr );
   Q_INVOKABLE bool isPasswordNew() const;
-  Q_INVOKABLE bool setDataStorePassword(const QString& password) ;
+  Q_INVOKABLE bool setDataStorePassword( const QString& password ) ;
 
-  explicit DataStoreManager(QObject* parent = nullptr);
+  explicit DataStoreManager( QObject* parent = nullptr );
   virtual ~DataStoreManager();
-  const Website* getWebsite(const QString& uniqueId);
-  static QString convertToTimeText(const QDate& date);
-  static int convertToTimeNumeric(const QDate& date);
+  const Website* getWebsite( const QString& uniqueId );
+  static QString convertToTimeText( const QDate& date );
+  static int convertToTimeNumeric( const QDate& date );
   Version* version();
   bool openPseudoDB();
   bool tryOpenDB();
-  void cleanAppDataFolder(bool shouldResetConnection);
-  QQmlObjectListModel<BankAccount>* bankAccounts(bool reload = false);
-  QQmlObjectListModel<Investment>* investments(bool reload = false);
-  QQmlObjectListModel<RealAsset>* realAssets(bool reload = false);
-  QQmlObjectListModel<Expense>* expenses(bool reload = false);
-  QQmlObjectListModel<Website>* websites(bool reload = false);
+  void cleanAppDataFolder( bool shouldResetConnection );
+  QQmlObjectListModel<BankAccount>* bankAccounts( bool reload = false );
+  QQmlObjectListModel<Investment>* investments( bool reload = false );
+  QQmlObjectListModel<RealAsset>* realAssets( bool reload = false );
+  QQmlObjectListModel<Expense>* expenses( bool reload = false );
+  QQmlObjectListModel<Website>* websites( bool reload = false );
   QQmlObjectListModel<Website>* websitesWithoutNone();
-  QQmlObjectListModel<Recap>* recap(bool reload = true);
+  QQmlObjectListModel<Recap>* recap( bool reload = true );
 
 
-  ImportFileNotification* importedFile() {
+  ImportFileNotification* importedFile()
+  {
     return &mImportedFile;
   }
 
-  PdfCreatedNotification* savedPdfFile() {
+  PdfCreatedNotification* savedPdfFile()
+  {
     return &mSavedPdfFile;
   }
 
-  InvestmentPriceNotification* investmentPriceUpdate() {
+  InvestmentPriceNotification* investmentPriceUpdate()
+  {
     return &mInvestmentPriceNotification;
   }
 
-  SwitchboardManager& switchboardManager() {
+  SwitchboardManager& switchboardManager()
+  {
     return mSwitchboardManager;
   }
 
-  DataAccessAdapter& dataAccessAdapter()  {
+  DataAccessAdapter& dataAccessAdapter()
+  {
     return mDataAccessAdapter;
   }
 
-  QString downloadsPath() const {
+  QString downloadsPath() const
+  {
     return DownloadsPathController::downloadsPath();
   }
 
- private:
-  bool createDB(const QString& dbFileName);
+private:
+  bool createDB( const QString& dbFileName );
   void reloadAllTables();
-  bool fileCopy(const QString& sourceFilePath, const  QString& destinationFilePath);
-  bool exportDataStore(QString& exportFilePath);
-  void clearConnection(bool shouldResetConnection);
+  bool fileCopy( const QString& sourceFilePath, const  QString& destinationFilePath );
+  bool exportDataStore( QString& exportFilePath );
+  void clearConnection( bool shouldResetConnection );
   void storeDB();
 
   DataAccessAdapter mDataAccessAdapter;
@@ -125,7 +133,7 @@ class DataStoreManager : public QObject {
   QQmlObjectListModel<Website> mWebsiteListModel;
   QQmlObjectListModel<Website> mWithoutNoneWebsiteListModel;
 
-  template <typename T> QQmlObjectListModel<T>& getListModel(QQmlObjectListModel<T>& listModel, bool reload = false);
+  template <typename T> QQmlObjectListModel<T>& getListModel( QQmlObjectListModel<T>& listModel, bool reload = false );
 
 
 

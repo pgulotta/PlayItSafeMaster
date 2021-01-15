@@ -7,7 +7,6 @@
 
 int main( int argc, char* argv[] )
 {
-  QCoreApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
   QApplication app( argc, argv );
   QObject::connect( &app, &QGuiApplication::lastWindowClosed, &app, &QGuiApplication::quit );
 

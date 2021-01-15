@@ -282,7 +282,7 @@ bool DataStoreManager::setDataStorePassword( const QString& password )
 
 int DataStoreManager::convertToTimeNumeric( const QDate& date )
 {
-  return static_cast<int>( QDateTime( date ).toTime_t() );
+  return date.startOfDay().toSecsSinceEpoch( );
 }
 
 QString DataStoreManager::convertToTimeText( const QDate& date )

@@ -3,8 +3,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QStringList>
-#include <QStringRef>
 #include <QSettings>
+#include <QStringView>
 
 //const QString gInvestmentPriceAPI {"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&outputsize=compact&interval=60min&apikey=RD8W7TPV2G2TQRAU&symbol="};
 //const QString gInvestmentPriceAPI {"https://api.iextrading.com/1.0/stock/%1/quote"};
@@ -99,7 +99,7 @@ void InvestmentPriceQuery::onNetworkReply( QNetworkReply* networkReply )
     return;
   }
 
-  bool hasNetworkError {false};
+
 
   try {
     --mInvestmentQueriesCount;
@@ -110,15 +110,20 @@ void InvestmentPriceQuery::onNetworkReply( QNetworkReply* networkReply )
     }
 
     const QString uniqueId { attributes[0]};
+    const static QString lastPrice{"latestPrice"};
+    const static QString comma{","};
+    bool hasNetworkError {false};
 
     if ( networkReply->error() ) {
       hasNetworkError = true;
       qWarning() << "InvestmentPriceQuery::onNetworkReply: Unable to identify the price for " << uniqueId;
     } else {
-      const QString source { networkReply->readAll()};
-      int begIndex = source.indexOf( "latestPrice" ) + 13;
-      int size = source.indexOf( ",", begIndex ) - begIndex;
-      QStringRef extractedText( &source, begIndex, size );
+      QString reply { networkReply->readAll()};
+      QStringView source { reply};
+      auto begIndex = source.indexOf( lastPrice ) + 13;
+      auto size = source.indexOf( comma, begIndex ) - begIndex;
+      QStringView extractedText{ source.mid( begIndex, size )};
+
       bool success;
       auto formattedPrice = extractedText.toString().toDouble( &success );
 
