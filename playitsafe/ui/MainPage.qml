@@ -1,8 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
-import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4 as Stack
+import QtQuick.Controls
 import SwitchboardCategory 1.0
 
 ApplicationWindow {
@@ -94,53 +93,9 @@ ApplicationWindow {
         id: appToolbarId
     }
 
-    Stack.StackView {
+    StackView {
         id: stackViewId
         anchors.fill: parent
-
-        delegate: Stack.StackViewDelegate {
-            function transitionFinished(properties) {
-                properties.exitItem.opacity = 1
-            }
-
-            pushTransition: Stack.StackViewTransition {
-                PropertyAnimation {
-                    target: enterItem
-                    property: "x"
-                    from: target.width
-                    to: 0
-                    duration: animationDuration
-                    easing.type: Easing.OutCubic
-                }
-                PropertyAnimation {
-                    target: exitItem
-                    property: "x"
-                    from: 0
-                    to: -target.width
-                    duration: animationDuration
-                    easing.type: Easing.OutCubic
-                }
-            }
-
-            popTransition: Stack.StackViewTransition {
-                PropertyAnimation {
-                    target: enterItem
-                    property: "x"
-                    from: -target.width
-                    to: 0
-                    duration: animationDuration
-                    easing.type: Easing.OutCubic
-                }
-                PropertyAnimation {
-                    target: exitItem
-                    property: "x"
-                    from: 0
-                    to: target.width
-                    duration: animationDuration
-                    easing.type: Easing.OutCubic
-                }
-            }
-        }
     }
 
     Rectangle {

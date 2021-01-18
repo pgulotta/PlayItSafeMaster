@@ -32,7 +32,7 @@ GridView {
 
     delegate: Component {
         Rectangle {
-            id: switchboardDelegateId
+            id: gridViewDelegateId
             width: categoryWidth
             height: switchboardHeight
             visible: true
@@ -74,7 +74,7 @@ GridView {
                 onHoveredChanged: {
                     if (containsMouse)
                         hoverAnimationId.running = true
-                    switchboardDelegateId.color
+                    gridViewDelegateId.color
                             = containsMouse ? categoryHighlightColor : getCategoryColor(
                                                   model.group)
                 }
