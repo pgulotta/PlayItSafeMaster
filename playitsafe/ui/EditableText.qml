@@ -1,6 +1,6 @@
-import QtQuick 2.9
+import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts 1.3
+import QtQuick.Layouts
 
 Rectangle {
     id: editableTextId
@@ -47,14 +47,6 @@ Rectangle {
             rightMargin: itemMargin
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
-        }
-        style: TextFieldStyle {
-            background: Rectangle {
-                radius: rectRadius
-                border.width: rectBorder
-                border.color: darkTextColor
-                height: textId.height
-            }
         }
 
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()

@@ -20,6 +20,7 @@ Initializer::Initializer( QObject* parent ) :
   mDataStoreManager{parent}
 {
   qDebug() << "Initializer::Initializer called";
+  mDataStoreManager.openPseudoDB();
 
   auto rootContext = mQmlApplicationEngine.rootContext();
   qmlRegisterType<InvestmentPriceNotification>( "InvestmentPriceNotification", 1, 0, "InvestmentPriceNotification" );
@@ -32,8 +33,6 @@ Initializer::Initializer( QObject* parent ) :
   qmlRegisterType<Website>( "Recap", 1, 0, "Recap" );
   qmlRegisterType<ImportFileNotification>( "ImportFileNotification", 1, 0, "ImportFileNotification" );
   qmlRegisterType<PdfCreatedNotification>( "PdfCreatedNotification", 1, 0, "PdfCreatedNotification" );
-
-  mDataStoreManager.openPseudoDB();
 
   rootContext->setContextProperty( "SwitchboardManager", &mDataStoreManager.switchboardManager() );
   rootContext->setContextProperty( "DataStoreManager", &mDataStoreManager );
