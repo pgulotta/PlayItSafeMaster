@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
-import QtQuick.Controls 2.2
+import QtQuick.Controls
 
 ScrollablePage {
     id: aboutPageId
@@ -87,7 +87,8 @@ ScrollablePage {
         }
         HtmlText {
             websiteLink: "https://iextrading.com/api-exhibit-a/"
-            text: qsTr("Investment data provided for free by <a href=\"" + websiteLink + "\"> IEX.</a>")
+            text: qsTr("Investment data provided for free by <a href=\""
+                       + websiteLink + "\"> IEX.</a>")
             isTitle: false
         }
         Text {

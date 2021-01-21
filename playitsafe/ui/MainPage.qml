@@ -155,13 +155,14 @@ ApplicationWindow {
     }
 
     function getCategoryColor(categoryGroup) {
-        if (categoryGroup === SwitchboardCategory.Asset)
-            return categoryAssetColor
-        else if (categoryGroup === SwitchboardCategory.Liability)
-            return categoryLiabilityColor
-        else if (categoryGroup === SwitchboardCategory.Web)
-            return categoryWebColor
-        else if (categoryGroup === SwitchboardCategory.Reporting)
-            return categoryRecapColor
+        return "red"
+        //        if (categoryGroup === SwitchboardCategory.Asset)
+        //            return categoryAssetColor
+        //        else if (categoryGroup === SwitchboardCategory.Liability)
+        //            return categoryLiabilityColor
+        //        else if (categoryGroup === SwitchboardCategory.Web)
+        //            return categoryWebColor
+        //        else if (categoryGroup === SwitchboardCategory.Reporting)
+        //            return categoryRecapColor
     }
 }

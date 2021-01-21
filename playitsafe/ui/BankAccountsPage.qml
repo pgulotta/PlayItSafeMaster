@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
@@ -122,7 +122,7 @@ Page {
                     inputHints: Qt.ImhDigitsOnly
                     fieldLabel: qsTr("Routing Number")
                     fieldText: currentBankAccount.routingNumber
-                    inputValidator: RegExpValidator {
+                    inputValidator: RegularExpressionValidator {
                         regExp: new RegExp(routingNumberRegExp)
                     }
                     onEditableTextChanged: {
@@ -135,8 +135,7 @@ Page {
                     inputHints: Qt.ImhFormattedNumbersOnly
                     fieldLabel: qsTr("Amount")
                     fieldText: formattedCurrentAmount()
-                    inputValidator: DoubleValidator {
-                    }
+                    inputValidator: DoubleValidator {}
                     onEditableTextChanged: {
                         onFieldChanged(amountId.fieldText,
                                        formattedCurrentAmount())
@@ -263,7 +262,8 @@ Page {
         if (allBankAccounts === undefined || allBankAccounts.isEmpty())
             return invalidIndex
         var index = invalidIndex
-        for (var i =0; index === invalidIndex && i < allBankAccounts.size(); i++) {
+        for (var i = 0; index === invalidIndex
+             && i < allBankAccounts.size(); i++) {
             var item = allBankAccounts.get(i)
             if (item.uniqueId === uniqueId)
                 index = i
@@ -373,7 +373,7 @@ Page {
         if (allBankAccounts === undefined || allBankAccounts.isEmpty())
             return categoryTitle
         var total = 0.00
-        for (var i =0; i < allBankAccounts.size(); i++) {
+        for (var i = 0; i < allBankAccounts.size(); i++) {
             var item = allBankAccounts.get(i)
             total += item.amount
         }

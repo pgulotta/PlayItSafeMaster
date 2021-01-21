@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
@@ -185,7 +185,7 @@ Page {
                     fieldLabel: qsTr("Routing Number")
                     fieldText: currentInvestment.routingNumber
                     inputHints: Qt.ImhDigitsOnly
-                    inputValidator: RegExpValidator {
+                    inputValidator: RegularExpressionValidator {
                         regExp: new RegExp(routingNumberRegExp)
                     }
                     onEditableTextChanged: onFieldChanged(
