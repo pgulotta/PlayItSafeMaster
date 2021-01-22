@@ -1,6 +1,6 @@
-import QtQuick 2.9
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Window
 import QtQuick.Controls
 import SwitchboardCategory 1.0
 
@@ -155,7 +155,7 @@ ApplicationWindow {
     }
 
     function getCategoryColor(categoryGroup) {
-        return "red"
+        return "green"
         //        if (categoryGroup === SwitchboardCategory.Asset)
         //            return categoryAssetColor
         //        else if (categoryGroup === SwitchboardCategory.Liability)

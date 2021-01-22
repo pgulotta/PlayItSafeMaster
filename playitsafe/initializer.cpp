@@ -21,6 +21,10 @@ Initializer::Initializer( QObject* parent ) :
 {
   qDebug() << "Initializer::Initializer called";
   mDataStoreManager.openPseudoDB();
+<<<<<<< HEAD
+=======
+
+>>>>>>> d7e63419bbc3b69eaa5822495cbac82e0aedc1ca
   auto rootContext = mQmlApplicationEngine.rootContext();
   qmlRegisterType<InvestmentPriceNotification>( "InvestmentPriceNotification", 1, 0, "InvestmentPriceNotification" );
   qmlRegisterType<SwitchboardCategory>( "SwitchboardCategory", 1, 0, "SwitchboardCategory" );
