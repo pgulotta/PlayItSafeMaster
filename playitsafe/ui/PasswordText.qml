@@ -47,10 +47,6 @@ Rectangle {
         }
         icon.source: "qrc:/images/copy.png"
 
-        background: Rectangle {
-            color: copyButtonId.hovered ? (copyButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-        }
-
         onClicked: {
             if (fieldText === "")
                 return
@@ -71,11 +67,6 @@ Rectangle {
             right: parent.right
         }
         icon.source: "qrc:/images/eye.png"
-
-        background: Rectangle {
-            color: imageButtonId.hovered ? (imageButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-        }
-
         onClicked: {
             if (fieldText !== "")
                 echoMode = (echoMode === TextInput.Password ? TextInput.Normal : TextInput.Password)

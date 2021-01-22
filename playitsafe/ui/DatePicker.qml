@@ -1,8 +1,6 @@
 import QtQuick 2.9
-import QtQuick.Dialogs 1.2
-import QtQuick.Controls 1.4
+import QtQuick.Controls
 import QtQuick.Layouts 1.3
-import QtQuick.Controls.Styles 1.4
 import QtQuick.Window 2.3
 
 Rectangle {
@@ -10,12 +8,12 @@ Rectangle {
 
     signal dateChanged(date dateSelected)
 
-    property alias fieldLabel: labelId.text
-    property alias fieldText: textId.text
-    property alias dateSelected: calendarPickerId.selectedDate
+    property string fieldLabel
+    property string fieldText
     property bool isTextRequired: false
     property string previousText: ""
-    property alias maximumDate: calendarPickerId.maximumDate
+    property var dateSelected
+    property var maximumDate
 
     width: fieldColumnWidth
     height: textWithTitleHeight
@@ -29,53 +27,12 @@ Rectangle {
 
     Dialog {
         id: datePickerDialogId
-        modality: Qt.NonModal
         title: fieldLabel
         onAccepted: {
             dateChanged(dateSelected)
             datePickerDialogId.close()
         }
         onRejected: setSelectedDate()
-
-        contentItem: Calendar {
-            id: calendarPickerId
-            width: isPortraitMode ? windowWidth * 0.8 : windowWidth * 0.5
-            maximumDate: new Date(Date.now())
-            Keys.onEnterPressed: datePickerDialogId.accept()
-            Keys.onEscapePressed: datePickerDialogId.reject()
-            Keys.onBackPressed: datePickerDialogId.reject()
-            onDoubleClicked: datePickerDialogId.click(StandardButton.Ok)
-            onClicked: datePickerDialogId.click(StandardButton.Ok)
-
-            style: CalendarStyle {
-                gridVisible: false
-                dayDelegate: Rectangle {
-                    gradient: gradientFieldColor
-
-                    Label {
-                        text: styleData.date.getDate()
-                        anchors.centerIn: parent
-                        font.pointSize: styleData.valid ? ((styleData.selected) ? 4 + smallFontPointSize : smallFontPointSize) : smallFontPointSize
-                        font.bold: styleData.valid ? ((styleData.selected) ? true : false) : false
-                        color: styleData.valid ? ((styleData.selected) ? actionMenuColor : darkTextColor) : categoryHighlightColor
-                    }
-
-                    Rectangle {
-                        width: parent.width
-                        height: 1
-                        color: darkTextColor
-                        anchors.bottom: parent.bottom
-                    }
-
-                    Rectangle {
-                        width: 1
-                        height: parent.height
-                        color: darkTextColor
-                        anchors.right: parent.right
-                    }
-                }
-            }
-        }
     }
 
     TitleTextLight {
@@ -84,23 +41,16 @@ Rectangle {
         visible: true
         topPadding: itemMargin
     }
-    Button {
+    ToolButton {
         id: imageButtonId
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
-            topMargin: isSmallScreenDevice ? rectBorder: itemMargin
+            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
             top: parent.top
         }
-        style: ButtonStyle {
-            label: Image {
-                source: "qrc:/images/date.png"
-                fillMode: Image.PreserveAspectFit
-            }
-            background: Rectangle {
-                color: imageButtonId.hovered ? (imageButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-            }
-        }
+        icon.source: "qrc:/images/date.png"
+
         onClicked: {
             setSelectedDate()
             datePickerDialogId.open()
@@ -114,7 +64,7 @@ Rectangle {
         enabled: true
         readOnly: true
         font.pointSize: smallFontPointSize
-        textColor: darkTextColor
+        color: darkTextColor
         placeholderText: fieldLabel
         anchors {
             left: parent.left
@@ -123,13 +73,6 @@ Rectangle {
             rightMargin: itemMargin
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
-        }
-        style: TextFieldStyle {
-            background: Rectangle {
-                radius: rectRadius
-                border.width: rectBorder
-                border.color: darkTextColor
-            }
         }
 
         MouseArea {

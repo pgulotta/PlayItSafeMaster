@@ -1,8 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4
-import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls
 import "Functions.js" as Functions
 
 Rectangle {
@@ -33,7 +31,7 @@ Rectangle {
         width: categoryWidth * 1.25
         topPadding: itemMargin
     }
-    Button {
+    ToolButton {
         id: imageButtonId
         anchors {
             topMargin: isSmallScreenDevice ? rectBorder : itemMargin
@@ -41,15 +39,7 @@ Rectangle {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
         }
-        style: ButtonStyle {
-            label: Image {
-                source: "qrc:/images/www.png"
-                fillMode: Image.PreserveAspectFit
-            }
-            background: Rectangle {
-                color: imageButtonId.hovered ? (imageButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-            }
-        }
+        icon.source: "qrc:/images/www.png"
         onClicked: {
             if (fieldText !== "")
                 Qt.openUrlExternally(Functions.formatUrlink(fieldText))
@@ -59,7 +49,7 @@ Rectangle {
     TextField {
         id: textId
         font.pointSize: isSmallScreenDevice ? verySmallFontPointSize : smallFontPointSize
-        textColor: darkTextColor
+        color: darkTextColor
         placeholderText: fieldLabel
         anchors {
             left: parent.left
@@ -69,13 +59,7 @@ Rectangle {
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
         }
-        style: TextFieldStyle {
-            background: Rectangle {
-                radius: rectRadius
-                border.width: rectBorder
-                border.color: darkTextColor
-            }
-        }
+
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
         onTextChanged: {
             if (previousText !== text) {

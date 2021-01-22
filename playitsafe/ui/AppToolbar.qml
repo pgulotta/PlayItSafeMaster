@@ -42,19 +42,8 @@ ToolBar {
                 bottom: parent.bottom
                 bottomMargin: 1
             }
-            contentItem: Image {
-                id: iconImageId
-                fillMode: Image.Pad
-                horizontalAlignment: Image.AlignHCenter
-                verticalAlignment: Image.AlignVCenter
-                source: toolbarIcon
-                onSourceChanged: {
-                    if (toolbarIcon === "qrc:/images/menu.png")
-                        fadeInMoveRightId.start()
-                    else
-                        fadeInMoveLeftId.start()
-                }
-            }
+
+            icon.source: toolbarIcon
 
             onClicked: {
                 if (stackViewId.currentItem.objectName === "SwitchboardPage") {

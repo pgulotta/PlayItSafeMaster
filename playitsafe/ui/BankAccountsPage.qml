@@ -122,9 +122,6 @@ Page {
                     inputHints: Qt.ImhDigitsOnly
                     fieldLabel: qsTr("Routing Number")
                     fieldText: currentBankAccount.routingNumber
-                    inputValidator: RegularExpressionValidator {
-                        regExp: new RegExp(routingNumberRegExp)
-                    }
                     onEditableTextChanged: {
                         onFieldChanged(routingNumberId.fieldText,
                                        currentBankAccount.routingNumber)

@@ -2,8 +2,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4
-import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls
 import Recap 1.0
 import InvestmentPriceNotification 1.0
 import SwitchboardCategory 1.0
@@ -82,7 +81,7 @@ Page {
                     text: Functions.formatCurrencyString(summaryTotal)
                     color: summaryTotal < 0 ? negativeNumberColor : darkTextColor
                 }
-                Button {
+                ToolButton {
                     id: imageButtonId
                     visible: summaryTotal !== 0
                     width: summaryRectId.height * 0.8
@@ -93,15 +92,8 @@ Page {
                         topMargin: summaryRectId.height * 0.1
                         top: parent.top
                     }
-                    style: ButtonStyle {
-                        label: Image {
-                            source: "qrc:/images/piechart.png"
-                            fillMode: Image.PreserveAspectFit
-                        }
-                        background: Rectangle {
-                            color: imageButtonId.hovered ? (imageButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-                        }
-                    }
+                    icon.source: "qrc:/images/piechart.png"
+
                     onClicked: stackViewId.push("qrc:/ui/ChartPage.qml")
                 }
             }

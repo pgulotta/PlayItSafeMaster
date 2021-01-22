@@ -1,8 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4 as ButtonControl
-import QtQuick.Controls.Styles 1.4
+import QtQuick.Controls
 import Website 1.0
 import "Functions.js" as Functions
 
@@ -33,23 +31,16 @@ Rectangle {
         width: categoryWidth * 1.25
         topPadding: itemMargin
     }
-    ButtonControl.Button {
+    ToolButton {
         id: wwwButtonId
         anchors {
             rightMargin: itemIndent
             right: forwardButtonId.left
-            topMargin: isSmallScreenDevice ? rectBorder: itemMargin
+            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
             top: parent.top
         }
-        style: ButtonStyle {
-            label: Image {
-                source: "qrc:/images/www.png"
-                fillMode: Image.PreserveAspectFit
-            }
-            background: Rectangle {
-                color: wwwButtonId.hovered ? (wwwButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-            }
-        }
+        icon.source: "qrc:/images/www.png"
+
         onClicked: {
             if (!allWebsites.isEmpty()) {
                 var websiteItem = allWebsites.get(currentWebsiteIndex)
@@ -59,23 +50,16 @@ Rectangle {
             }
         }
     }
-    ButtonControl.Button {
+    ToolButton {
         id: forwardButtonId
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
-            topMargin: isSmallScreenDevice ? rectBorder: itemMargin
+            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
             top: parent.top
         }
-        style: ButtonStyle {
-            label: Image {
-                source: "qrc:/images/forward.png"
-                fillMode: Image.PreserveAspectFit
-            }
-            background: Rectangle {
-                color: forwardButtonId.hovered ? (forwardButtonId.pressed ? appToolbarColor : categoryHighlightColor) : "transparent"
-            }
-        }
+        icon.source: "qrc:/images/forward.png"
+
         onClicked: {
             websitePageId.initialWebsiteListIndex = currentWebsiteIndex
             stackViewId.push(websitePageId)
@@ -87,7 +71,7 @@ Rectangle {
         model: AllWebsites
         spacing: isSmallScreenDevice ? smalltemMargin : itemIndent
         anchors.fill: parent
-        anchors.margins: isSmallScreenDevice ? smalltemMargin :itemMargin
+        anchors.margins: isSmallScreenDevice ? smalltemMargin : itemMargin
         anchors.topMargin: isSmallScreenDevice ? mediumMargin : largeMargin
 
         contentItem: Text {
@@ -142,7 +126,7 @@ Rectangle {
         var title = ""
         if (allWebsites === undefined || allWebsites.isEmpty())
             return title
-        for (var i=0; i < allWebsites.size(); i++) {
+        for (var i = 0; i < allWebsites.size(); i++) {
             var website = allWebsites.get(i)
             if (website.uniqueId === currentWebsiteUniqueId) {
                 title = website.title

@@ -146,8 +146,7 @@ Page {
                     fieldText: Functions.formattedNumeric(
                                    currentInvestment.shares,
                                    currentInvestment.sharesDecimals)
-                    inputValidator: DoubleValidator {
-                    }
+                    inputValidator: DoubleValidator {}
                     onEditableTextChanged: onFieldChanged(
                                                sharesId.fieldText,
                                                Functions.formattedNumeric(
@@ -163,8 +162,7 @@ Page {
                     fieldText: Functions.formattedNumeric(
                                    currentInvestment.lastPrice,
                                    currentInvestment.lastPriceDecimals)
-                    inputValidator: DoubleValidator {
-                    }
+                    inputValidator: DoubleValidator {}
                     onEditableTextChanged: onFieldChanged(
                                                lastPriceId.fieldText,
                                                Functions.formattedNumeric(
@@ -185,9 +183,6 @@ Page {
                     fieldLabel: qsTr("Routing Number")
                     fieldText: currentInvestment.routingNumber
                     inputHints: Qt.ImhDigitsOnly
-                    inputValidator: RegularExpressionValidator {
-                        regExp: new RegExp(routingNumberRegExp)
-                    }
                     onEditableTextChanged: onFieldChanged(
                                                routingNumberId.fieldText,
                                                currentInvestment.routingNumber)
@@ -306,7 +301,8 @@ Page {
         if (allInvestments === undefined || allInvestments.isEmpty())
             return invalidIndex
         var index = invalidIndex
-        for (var i =0; index === invalidIndex && i < allInvestments.size(); i++) {
+        for (var i = 0; index === invalidIndex
+             && i < allInvestments.size(); i++) {
             var item = allInvestments.get(i)
             if (item.uniqueId === uniqueId)
                 index = i
@@ -429,7 +425,7 @@ Page {
         if (allInvestments === undefined || allInvestments.isEmpty())
             return categoryTitle
         var total = 0.00
-        for (var i=0; i < allInvestments.size(); i++) {
+        for (var i = 0; i < allInvestments.size(); i++) {
             var item = allInvestments.get(i)
             total += (item.shares * item.lastPrice)
         }

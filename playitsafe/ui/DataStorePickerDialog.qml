@@ -2,8 +2,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.2
-import QtQuick.Controls 1.4
-import QtQuick.Dialogs 1.2
+import QtQuick.Controls
 
 FileDialog {
     id: dataStorePickerDialogId
@@ -13,7 +12,7 @@ FileDialog {
     property string titleText: qsTr("Import Data Store")
 
     visible: true
-   // width: isPortraitMode ? rootId.width * .85 : rootId.width * .4
+    // width: isPortraitMode ? rootId.width * .85 : rootId.width * .4
     folder: urlFilePrefix + downloadsPath
     selectFolder: false
     title: titleText

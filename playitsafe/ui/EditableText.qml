@@ -38,7 +38,7 @@ Rectangle {
         id: textId
         Layout.fillWidth: true
         font.pointSize: smallFontPointSize
-        textColor: darkTextColor
+        color: darkTextColor
         placeholderText: fieldLabel
         anchors {
             left: parent.left
@@ -47,14 +47,6 @@ Rectangle {
             rightMargin: itemMargin
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
-        }
-        style: TextFieldStyle {
-            background: Rectangle {
-                radius: rectRadius
-                border.width: rectBorder
-                border.color: darkTextColor
-                height: textId.height
-            }
         }
 
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
