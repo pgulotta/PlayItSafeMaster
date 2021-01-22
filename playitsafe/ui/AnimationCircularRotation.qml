@@ -1,4 +1,4 @@
-import QtQuick 2.9
+import QtQuick
 
 RotationAnimator {
     property bool partialRotation: false

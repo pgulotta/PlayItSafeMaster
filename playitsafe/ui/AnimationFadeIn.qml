@@ -1,4 +1,4 @@
-import QtQuick 2.9
+import QtQuick
 
 NumberAnimation {
     property bool longAnimation: true

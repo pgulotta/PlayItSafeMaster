@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Window
 import QtQuick.Controls
-import SwitchboardCategory 1.0
+import SwitchboardCategory
 
 ApplicationWindow {
     id: rootId

@@ -1,7 +1,7 @@
-import QtQuick 2.9
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Layouts
 import QtQuick.Controls
-import Website 1.0
+import Website
 import "Functions.js" as Functions
 
 Rectangle {

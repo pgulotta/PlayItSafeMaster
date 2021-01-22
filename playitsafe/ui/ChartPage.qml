@@ -1,9 +1,8 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.2
+import QtQuick
 import QtQuick.Controls
-import QtCharts 2.0
-import Recap 1.0
-import SwitchboardCategory 1.0
+import QtCharts
+import Recap
+import SwitchboardCategory
 import "Functions.js" as Functions
 
 Page {

@@ -1,10 +1,10 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
-import QtQuick.Controls 2.2
-import Investment 1.0
-import SwitchboardCategory 1.0
-import InvestmentPriceNotification 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Window
+import QtQuick.Controls
+import Investment
+import SwitchboardCategory
+import InvestmentPriceNotification
 import "Functions.js" as Functions
 
 Page {

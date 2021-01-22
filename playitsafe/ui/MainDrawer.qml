@@ -1,10 +1,10 @@
-import QtQuick 2.9
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.2
-import QtQuick.Controls 2.1
-import QtQuick.Particles 2.0
-import ImportFileNotification 1.0
-import PdfCreatedNotification 1.0
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Window
+import QtQuick.Controls
+import QtQuick.Particles
+import ImportFileNotification
+import PdfCreatedNotification
 
 Drawer {
     id: appDrawerId
