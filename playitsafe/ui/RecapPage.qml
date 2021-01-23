@@ -12,10 +12,10 @@ Page {
     id: recapPageId
     objectName: "RecapPage"
 
-    property real field1Width: parent.width * .4
-    property real field2Width: parent.width * .3
-    property real amountWidth: parent.width * .15
-    property real checkboxWidth: parent.width * .1
+    property real field1Width: width * .4
+    property real field2Width: width * .3
+    property real amountWidth: width * .15
+    property real checkboxWidth: width * .1
     property real sectionTextHeight: toolbarHeight * .8
     readonly property int animationDeltaX: 3
     property alias recapList: modelListViewId.listViewModel
@@ -24,8 +24,6 @@ Page {
     readonly property SwitchboardCategory category: AllCategories.get(
                                                         SwitchboardCategory.Recap)
 
-    height: parent.height
-    width: parent.width
     visible: true
 
     onVisibleChanged: {
@@ -78,21 +76,6 @@ Page {
                     font.pointSize: fontPointSize + 8
                     text: Functions.formatCurrencyString(summaryTotal)
                     color: summaryTotal < 0 ? negativeNumberColor : darkTextColor
-                }
-                ToolButton {
-                    id: imageButtonId
-                    visible: summaryTotal !== 0
-                    width: summaryRectId.height * 0.8
-                    height: width
-                    anchors {
-                        rightMargin: itemIndent
-                        right: parent.right
-                        topMargin: summaryRectId.height * 0.1
-                        top: parent.top
-                    }
-                    icon.source: "qrc:/images/piechart.png"
-
-                    onClicked: stackViewId.push("qrc:/ui/ChartPage.qml")
                 }
             }
 

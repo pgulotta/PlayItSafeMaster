@@ -164,5 +164,7 @@ ApplicationWindow {
             return categoryWebColor
         else if (categoryGroup === SwitchboardCategory.Reporting)
             return categoryRecapColor
+        return Qt.darker(appBackColor)
+        // return "gold"
     }
 }

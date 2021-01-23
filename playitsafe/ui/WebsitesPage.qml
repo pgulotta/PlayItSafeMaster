@@ -14,14 +14,13 @@ Page {
     property Website currentWebsite
     property string fieldBackColor
     property int initialWebsiteListIndex: 0
-    property real field1Width: parent.width * .5
-    property real field2Width: parent.width * .5
+    property real field1Width: width * .5
+    property real field2Width: width * .5
     readonly property SwitchboardCategory category: AllCategories.get(
                                                         SwitchboardCategory.Website)
     readonly property var noneUniqueId: DataStoreManager.websiteNoneUniqueId
 
     state: ""
-    width: parent.width
 
     Component.onCompleted: {
         setcurrentWebsite(0)
@@ -208,7 +207,7 @@ Page {
         if (allWebsites === undefined || allWebsites.isEmpty())
             return invalidIndex
         var index = invalidIndex
-        for (var i =0; index === invalidIndex && i < allWebsites.size(); i++) {
+        for (var i = 0; index === invalidIndex && i < allWebsites.size(); i++) {
             var item = allWebsites.get(i)
             if (item.uniqueId === uniqueId)
                 index = i
@@ -277,7 +276,7 @@ Page {
         }
     }
 
-    function onFieldChanged(fieldValue,currentValue) {
+    function onFieldChanged(fieldValue, currentValue) {
         if (isToolbarEnabled()) {
             if (fieldValue < currentValue || fieldValue > currentValue) {
                 setIsDirty(true)

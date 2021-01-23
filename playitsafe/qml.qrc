@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
         <file>images/date.png</file>
-        <file>images/copy.png</file>		
+        <file>images/copy.png</file>
         <file>images/forward.png</file>
         <file>images/remove.png</file>
         <file>images/done.png</file>
@@ -22,7 +22,7 @@
         <file>images/www.png</file>
         <file>images/cancel.png</file>
         <file>images/eye.png</file>
-        <file>images/piechart.png</file>		
+        <file>images/piechart.png</file>
         <file>images/realasset.png</file>
         <file>images/recap.png</file>
         <file>ui/Functions.js</file>
@@ -64,6 +64,5 @@
         <file>ui/HtmlText.qml</file>
         <file>ui/SelectDownloadsFolderDialog.qml</file>
         <file>ui/SettingsUpdatePricesDialog.qml</file>
-        <file>ui/ChartPage.qml</file>
     </qresource>
 </RCC>

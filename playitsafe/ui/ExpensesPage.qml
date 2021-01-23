@@ -14,9 +14,9 @@ Page {
                                                         SwitchboardCategory.Expense)
     property alias allExpenses: modelListViewId.listViewModel
     property alias allExpensesIndex: modelListViewId.listViewCurrentIndex
-    property real field1Width: parent.width * .45
-    property real field2Width: parent.width * .25
-    property real amountWidth: parent.width * .15
+    property real field1Width: width * .45
+    property real field2Width: width * .25
+    property real amountWidth: width * .15
     property string initialUniqueId: ""
     property int initialIndex: 0
     property int smallFieldColumnWidth: isPortraitMode ? fieldColumnWidth : fieldColumnWidth * .49
@@ -24,7 +24,6 @@ Page {
     property Expense currentExpense
 
     state: ""
-    width: parent.width
 
     Component.onCompleted: {
         setCurrentExpense(initialIndex)

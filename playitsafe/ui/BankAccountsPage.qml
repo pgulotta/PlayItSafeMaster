@@ -18,12 +18,11 @@ Page {
     property BankAccount currentBankAccount
     property string initialUniqueId: ""
     property int initialIndex: 0
-    property real field1Width: parent.width * .3
-    property real field2Width: parent.width * .4
-    property real amountWidth: parent.width * .15
+    property real field1Width: width * .3
+    property real field2Width: width * .4
+    property real amountWidth: width * .15
 
     state: ""
-    width: parent.width
 
     Component.onCompleted: {
         setCurrentBankAccount(initialIndex)

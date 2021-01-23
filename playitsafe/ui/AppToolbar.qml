@@ -65,46 +65,4 @@ ToolBar {
             font.pointSize: smallFontPointSize
         }
     }
-
-    ParallelAnimation {
-        id: fadeInMoveRightId
-        PropertyAnimation {
-            target: iconImageId
-            property: "x"
-            from: -2 * target.width
-            to: 0
-            duration: animationDuration
-            easing.type: Easing.OutCubic
-        }
-        NumberAnimation {
-            running: false
-            loops: 1
-            target: iconImageId
-            property: "opacity"
-            from: 0.0
-            to: 1.0
-            duration: animationDuration
-        }
-    }
-
-    ParallelAnimation {
-        id: fadeInMoveLeftId
-        PropertyAnimation {
-            target: iconImageId
-            property: "x"
-            from: 2 * target.width
-            to: 0
-            duration: animationDuration
-            easing.type: Easing.OutCubic
-        }
-        NumberAnimation {
-            running: false
-            loops: 1
-            target: iconImageId
-            property: "opacity"
-            from: 0.0
-            to: 1.0
-            duration: animationDuration
-        }
-    }
 }

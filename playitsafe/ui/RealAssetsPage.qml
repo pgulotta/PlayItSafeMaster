@@ -10,9 +10,9 @@ Page {
     id: realAssetsPageId
     objectName: "RealAssetsPage"
 
-    property real field1Width: parent.width * .5
-    property real field2Width: parent.width * .2
-    property real amountWidth: parent.width * .15
+    property real field1Width: width * .5
+    property real field2Width: width * .2
+    property real amountWidth: width * .15
     property alias allRealAssets: modelListViewId.listViewModel
     property alias allRealAssetsIndex: modelListViewId.listViewCurrentIndex
     property string initialUniqueId: ""
@@ -23,7 +23,6 @@ Page {
     property RealAsset currentRealAsset
 
     state: ""
-    width: parent.width
 
     Component.onCompleted: {
         setcurrentRealAsset(initialIndex)

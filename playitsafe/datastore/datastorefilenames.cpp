@@ -48,8 +48,8 @@ void DataStoreFileNames::assignDefaultFileNames()
   mPseudoAppFileName = appDir + mPseudoAppDbName;
   mTempFileName = appDir + "t_" + mDefaultAppDbName;
 
-  qDebug() << "FileEncryptor::assignDefaultFileNames: mUnencryptedFileName=" << qPrintable( mUnencryptedFileName );
-  qDebug() <<  "FileEncryptor::assignDefaultFileNames: mEncryptedFileName=" << qPrintable( mEncryptedFileName );
-  qDebug() <<  "FileEncryptor::assignDefaultFileNames: mPseudoAppFileName=" << qPrintable( mPseudoAppFileName );
-  qDebug() <<  "FileEncryptor::assignDefaultFileNames: mTempFileName=" << qPrintable( mTempFileName );
+//  qDebug() << "FileEncryptor::assignDefaultFileNames: mUnencryptedFileName=" << qPrintable( mUnencryptedFileName );
+//  qDebug() <<  "FileEncryptor::assignDefaultFileNames: mEncryptedFileName=" << qPrintable( mEncryptedFileName );
+//  qDebug() <<  "FileEncryptor::assignDefaultFileNames: mPseudoAppFileName=" << qPrintable( mPseudoAppFileName );
+//  qDebug() <<  "FileEncryptor::assignDefaultFileNames: mTempFileName=" << qPrintable( mTempFileName );
 }
