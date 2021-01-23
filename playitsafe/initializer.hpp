@@ -4,18 +4,19 @@
 #include <QQmlApplicationEngine>
 
 
-class Initializer final {
- public:
-  explicit Initializer(const Initializer& ) = delete;
-  Initializer& operator= (const Initializer& rhs) = delete;
+class Initializer final
+{
+public:
+  explicit Initializer( const Initializer& ) = delete;
+  Initializer& operator= ( const Initializer& rhs ) = delete;
 
-  explicit Initializer(QObject* parent = nullptr);
+  explicit Initializer( DataStoreManager& dataStoreManager );
 
   ~Initializer();
 
- private:
+private:
   QQmlApplicationEngine mQmlApplicationEngine;
-  DataStoreManager mDataStoreManager;
+  DataStoreManager& mDataStoreManager;
 
 };
 

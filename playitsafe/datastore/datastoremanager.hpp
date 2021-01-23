@@ -114,10 +114,10 @@ private:
   void clearConnection( bool shouldResetConnection );
   void storeDB();
 
+  DataStoreFileNames mDataStoreFileNames;
   DataAccessAdapter mDataAccessAdapter;
   SwitchboardManager mSwitchboardManager;
   InvestmentPriceQuery mInvestmentPriceQuery;
-  DataStoreFileNames mDataStoreFileNames;
   FileEncryptor mFileEncryptor;
   FileChooserResult mFileChooserResult;
   FileChooserResultNotification mFileChooserResultNotification;

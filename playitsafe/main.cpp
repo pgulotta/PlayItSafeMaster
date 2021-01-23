@@ -8,16 +8,18 @@
 int main( int argc, char* argv[] )
 {
   QApplication app( argc, argv );
-  QObject::connect( &app, &QGuiApplication::lastWindowClosed, &app, &QGuiApplication::quit );
 
   QCoreApplication::setApplicationName( QObject::tr( "Play It Safe" ) );
   QCoreApplication::setOrganizationDomain( "twentysixapps.com" );
   QCoreApplication::setOrganizationName( QLatin1String( "26Apps" ) );
   QCoreApplication::setApplicationVersion( "2.00" );
 
-  FileEncryptor::initialize();
+  QObject::connect( &app, &QGuiApplication::lastWindowClosed, &app, &QGuiApplication::quit );
+
+  DataStoreManager mDataStoreManager;
+  FileEncryptor::initialize( );
   DownloadsPathController::initAppDownloadFolder();
-  Initializer initializer( &app );
+  Initializer initializer( mDataStoreManager );
   Permissions permissions;
   permissions.requestExternalStoragePermission();
 

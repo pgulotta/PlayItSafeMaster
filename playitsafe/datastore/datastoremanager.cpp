@@ -187,7 +187,7 @@ QString DataStoreManager::exportDataStore()
 
   try {
     mFileEncryptor.encrypt();
-    destinationFilePath =  DownloadsPathController::downloadsPath() + "/" + Common::createUniqueId() + ".db";
+    destinationFilePath =  DownloadsPathController::downloadsPath() + QDir::separator() + Common::createUniqueId() + ".db";
     QFile::copy( mDataStoreFileNames.encryptedFileName(), destinationFilePath );
     qInfo() << "DataStoreManager::exportDataStore destinationFilePath: " << destinationFilePath << " file size = " <<
             QFileInfo( destinationFilePath ).size();

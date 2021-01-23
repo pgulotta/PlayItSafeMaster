@@ -36,7 +36,7 @@ PdfBuilder::PdfBuilder( bool displayWebsitePassword,  DataStoreManager& dataStor
 void PdfBuilder::run()
 {
   try {
-    QString fileName =  DownloadsPathController::downloadsPath() + "/" + Common::createUniqueId() + ".pdf";
+    QString fileName =  DownloadsPathController::downloadsPath() + QDir::separator() + Common::createUniqueId() + ".pdf";
     qInfo() << "PdfBuilder::run: fileName=" << fileName;
     QPrinter printer( QPrinter::PrinterResolution );
     printer.setOutputFormat( QPrinter::PdfFormat );

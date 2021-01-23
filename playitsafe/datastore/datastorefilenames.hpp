@@ -2,33 +2,38 @@
 
 #include <QString>
 
-class DataStoreFileNames {
- public:
+class DataStoreFileNames
+{
+public:
   DataStoreFileNames();
 
-  DataStoreFileNames(const QString& unencryptedFileName, const QString& encryptedFileName);
+  DataStoreFileNames( const QString& unencryptedFileName, const QString& encryptedFileName );
 
   static QString AppDataFolder;
 
-  const QString& pseudoAppFileName() const {
+  const QString& pseudoAppFileName() const
+  {
     return mPseudoAppFileName;
   }
 
-  const QString& tempFileName() const {
+  const QString& tempFileName() const
+  {
     return mTempFileName;
   }
 
-  const QString& unencryptedFileName() const {
+  const QString& unencryptedFileName() const
+  {
     return mUnencryptedFileName;
   }
 
-  const QString& encryptedFileName() const {
+  const QString& encryptedFileName() const
+  {
     return mEncryptedFileName;
   }
 
- private:
+private:
   void assignDefaultFileNames();
-  void rename( const QString& unencryptedFileName, const QString& encryptedFileName);
+  void rename( const QString& unencryptedFileName, const QString& encryptedFileName );
 
   QString mPseudoAppFileName;
   QString mUnencryptedFileName;

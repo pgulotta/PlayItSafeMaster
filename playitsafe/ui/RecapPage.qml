@@ -57,7 +57,6 @@ Page {
     }
     ScrollView {
         anchors.fill: parent
-        verticalScrollBarPolicy: isAndroid ? Qt.ScrollBarAlwaysOff : Qt.ScrollBarAsNeeded
         ModelListView {
             id: modelListViewId
             listViewModel: RecapList
@@ -242,25 +241,6 @@ Page {
                         id: rowSelectedId
                         width: checkboxWidth
                         Layout.alignment: Qt.AlignRight
-                        style: CheckBoxStyle {
-                            indicator: Rectangle {
-                                implicitWidth: checkboxBoxSize
-                                implicitHeight: checkboxBoxSize
-                                radius: rectRadius
-                                border.color: control.activeFocus ? darkTextColor : lightTextColor
-                                border.width: rectBorder
-                                Rectangle {
-                                    visible: control.checked
-                                    color: darkTextColor
-                                    radius: rectRadius
-                                    border.color: lightTextColor
-                                    border.width: rectBorder
-                                    anchors.margins: verticalMargin
-                                    anchors.fill: parent
-                                }
-                            }
-                        }
-
                         onClicked: {
                             DataStoreManager.toggleRecapRowEnabled(
                                         uniqueId.text)

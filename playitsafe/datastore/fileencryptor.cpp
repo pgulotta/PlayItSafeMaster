@@ -27,7 +27,6 @@ void FileEncryptor::initialize()
 {
   try {
     srand( uint( QDateTime::currentMSecsSinceEpoch() & 0xFFFF ) );
-    DataStoreFileNames::AppDataFolder = QStandardPaths::writableLocation( QStandardPaths::AppDataLocation );
     QDir dir = QDir::root();
     dir.mkpath( DataStoreFileNames::AppDataFolder );
     qInfo() <<  "DataStoreFileNames::AppDataFolder=" << qPrintable( DataStoreFileNames::AppDataFolder );

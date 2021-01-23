@@ -16,8 +16,8 @@
 #include <QQmlContext>
 
 
-Initializer::Initializer( QObject* parent ) :
-  mDataStoreManager{parent}
+Initializer::Initializer( DataStoreManager& dataStoreManager ) :
+  mDataStoreManager{dataStoreManager}
 {
   qDebug() << "Initializer::Initializer called";
   mDataStoreManager.openPseudoDB();
