@@ -154,8 +154,8 @@ ApplicationWindow {
         appToolbarId.enabled = shouldEnable
     }
 
-    function getCategoryColor(categoryGroup) {
-
+    function getCategoryColor(category) {
+        var categoryGroup = Number(category)
         if (categoryGroup === SwitchboardCategory.Asset)
             return categoryAssetColor
         else if (categoryGroup === SwitchboardCategory.Liability)
@@ -165,6 +165,5 @@ ApplicationWindow {
         else if (categoryGroup === SwitchboardCategory.Reporting)
             return categoryRecapColor
         return Qt.darker(appBackColor)
-        // return "gold"
     }
 }
