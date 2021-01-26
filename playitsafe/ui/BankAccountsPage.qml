@@ -105,7 +105,7 @@ Page {
                                                accountNumberId.fieldText,
                                                currentBankAccount.accountNumber)
                 }
-                DatePicker {
+                DatePickerDialog {
                     id: openDatePickerId
                     isTextRequired: true
                     fieldLabel: qsTr("Last Updated")

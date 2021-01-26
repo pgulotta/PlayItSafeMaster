@@ -93,7 +93,7 @@ Page {
                     onEditableTextChanged: onFieldChanged(payeeId.fieldText,
                                                           currentExpense.payee)
                 }
-                DatePicker {
+                DatePickerDialog {
                     id: nextPaymentDatePickerId
                     isTextRequired: true
                     fieldLabel: qsTr("Payment Date")

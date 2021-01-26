@@ -1,117 +1,98 @@
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
-import QtQuick.Window
 
-Rectangle {
-    id: datePickerId
+ListView {
+    id: root
 
-    signal dateChanged(date dateSelected)
-
-    property string fieldLabel
-    property string fieldText
-    property bool isTextRequired: false
-    property string previousText: ""
-    property var dateSelected
-    property var maximumDate
-
-    width: fieldColumnWidth
-    height: textWithTitleHeight
-    radius: rectRadius
-    color: fieldBackColor
-    state: isTextRequired && textId.text.trim(
-               ).length === 0 ? "" : validDataState
-    border.color: isTextRequired ? requiredTextColor : darkTextColor
-    border.width: isTextRequired ? fieldRectBorder : rectBorder
-    Component.onCompleted: fadeInTextId.start()
-
-    Dialog {
-        id: datePickerDialogId
-        title: fieldLabel
-        onAccepted: {
-            dateChanged(dateSelected)
-            datePickerDialogId.close()
-        }
-        onRejected: setSelectedDate()
+ // public
+    function set(date) { // new Date(2019, 10 - 1, 4)
+        selectedDate = new Date(date)
+        positionViewAtIndex((selectedDate.getFullYear()) * 12 + selectedDate.getMonth(), ListView.Center) // index from month year
     }
 
-    TitleTextLight {
-        id: labelId
-        width: categoryWidth * 1.25
-        visible: true
-        topPadding: itemMargin
-    }
-    ToolButton {
-        id: imageButtonId
-        anchors {
-            rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
-            right: parent.right
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
-            top: parent.top
-        }
-        icon.source: "qrc:/images/date.png"
+    signal clicked(date date);  // onClicked: print('onClicked', date.toDateString())
 
-        onClicked: {
-            setSelectedDate()
-            datePickerDialogId.open()
-            fadeInCalendartId.start()
-        }
-    }
+ // private
+    property date selectedDate: new Date()
 
-    TextField {
-        id: textId
-        Layout.fillWidth: true
-        enabled: true
-        readOnly: true
-        font.pointSize: smallFontPointSize
-        color: darkTextColor
-        placeholderText: fieldLabel
-        anchors {
-            left: parent.left
-            leftMargin: itemMargin
-            right: parent.right
-            rightMargin: itemMargin
-            verticalCenter: parent.verticalCenter
-            verticalCenterOffset: itemMargin * 2
-        }
+    width: 200;  height: 150 // default size
+    snapMode:    ListView.SnapOneItem
+    orientation: Qt.Horizontal
+    clip:        true
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                setSelectedDate()
-                datePickerDialogId.open()
-                fadeInCalendartId.start()
+    model: 3000 * 12 // index == months since January of the year 0
+
+    delegate: Item {
+        property int year:      Math.floor(index / 12)
+        property int month:     index % 12 // 0 January
+        property int firstDay:  new Date(year, month, 1).getDay() // 0 Sunday to 6 Saturday
+
+        width: root.width;  height: root.height
+
+        Column {
+            Item { // month year header
+                width: root.width;  height: root.height - grid.height
+
+                Text { // month year
+                    anchors.centerIn: parent
+                    text: ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'][month] + ' ' + year
+                    font {pixelSize: 0.5 * grid.cellHeight}
+                }
+            }
+
+            Grid { // 1 month calender
+                id: grid
+
+                width: root.width;  height: 0.875 * root.height
+                property real cellWidth:  width  / columns;
+                property real cellHeight: height / rows // width and height of each cell in the grid.
+
+                columns: 7 // days
+                rows:    7
+
+                Repeater {
+                    model: grid.columns * grid.rows // 49 cells per month
+
+                    delegate: Rectangle { // index is 0 to 48
+                        property int day:  index - 7 // 0 = top left below Sunday (-7 to 41)
+                        property int date: day - firstDay + 1 // 1-31
+
+                        width: grid.cellWidth;  height: grid.cellHeight
+                        border.width: 0.3 * radius
+                        border.color: new Date(year, month, date).toDateString() == selectedDate.toDateString()  &&  text.text  &&  day >= 0?
+                                      'black': 'transparent' // selected
+                        radius: 0.02 * root.height
+                        opacity: !mouseArea.pressed? 1: 0.3  //  pressed state
+
+                        Text {
+                            id: text
+
+                            anchors.centerIn: parent
+                            font.pixelSize: 0.5 * parent.height
+                            font.bold:      new Date(year, month, date).toDateString() == new Date().toDateString() // today
+                            text: {
+                                if(day < 0)                                               ['S', 'M', 'T', 'W', 'T', 'F', 'S'][index] // Su-Sa
+                                else if(new Date(year, month, date).getMonth() == month)  date // 1-31
+                                else                                                      ''
+                            }
+                        }
+
+                        MouseArea {
+                            id: mouseArea
+
+                            anchors.fill: parent
+                            enabled:    text.text  &&  day >= 0
+
+                            onClicked: {
+                                selectedDate = new Date(year, month, date)
+                                root.clicked(selectedDate)
+                            }
+                        }
+                    }
+                }
             }
         }
-        AnimationFadeIn {
-            id: fadeInTextId
-            target: textId
-        }
-        AnimationFadeIn {
-            id: fadeInCalendartId
-            target: calendarPickerId
-            longAnimation: false
-        }
     }
 
-    property Gradient gradientFieldColor: Gradient {
-        GradientStop {
-            color: fieldBackColor
-            position: 0
-        }
-        GradientStop {
-            color: itemBackColor
-            position: 0.25
-        }
-        GradientStop {
-            color: itemBackColor
-            position: 1
-        }
-    }
-
-    function setSelectedDate() {
-        dateSelected = Date.fromLocaleString(Qt.locale(), fieldText,
-                                             "dd MMM yyyy")
-        datePickerDialogId.close()
-    }
+     // Component.onCompleted: set(new Date()) // today (otherwise Jan 0000)
 }
