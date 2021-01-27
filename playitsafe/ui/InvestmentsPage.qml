@@ -116,7 +116,6 @@ Page {
                 }
                 DatePickerDialog {
                     id: issuerDatePickerId
-                    isTextRequired: true
                     fieldLabel: qsTr("Last Updated")
                     dateSelected: currentInvestment.issueDate
                     onDateChanged: {
@@ -127,7 +126,6 @@ Page {
                 }
                 DatePickerDialog {
                     id: purchasedDatePickerId
-                    isTextRequired: true
                     fieldLabel: qsTr("Date Purchased")
                     dateSelected: currentInvestment.purchaseDate
                     onDateChanged: {

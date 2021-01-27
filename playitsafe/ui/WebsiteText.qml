@@ -40,6 +40,7 @@ Rectangle {
             right: parent.right
         }
         icon.source: "qrc:/images/www.png"
+        icon.color: lightTextColor
         onClicked: {
             if (fieldText !== "")
                 Qt.openUrlExternally(Functions.formatUrlink(fieldText))

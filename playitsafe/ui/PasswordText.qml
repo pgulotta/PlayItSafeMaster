@@ -45,6 +45,7 @@ Rectangle {
             right: imageButtonId.left
         }
         icon.source: "qrc:/images/copy.png"
+icon.color: lightTextColor
 
         onClicked: {
             if (fieldText === "")
@@ -66,6 +67,7 @@ Rectangle {
             right: parent.right
         }
         icon.source: "qrc:/images/eye.png"
+        icon.color: lightTextColor
         onClicked: {
             if (fieldText !== "")
                 echoMode = (echoMode === TextInput.Password ? TextInput.Normal : TextInput.Password)

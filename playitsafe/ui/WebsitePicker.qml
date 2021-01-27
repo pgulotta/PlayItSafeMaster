@@ -36,10 +36,11 @@ Rectangle {
         anchors {
             rightMargin: itemIndent
             right: forwardButtonId.left
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
+            topMargin: 0
             top: parent.top
         }
         icon.source: "qrc:/images/www.png"
+        icon.color: lightTextColor
 
         onClicked: {
             if (!allWebsites.isEmpty()) {
@@ -55,10 +56,11 @@ Rectangle {
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
+            topMargin: 0
             top: parent.top
         }
         icon.source: "qrc:/images/forward.png"
+        icon.color: lightTextColor
 
         onClicked: {
             websitePageId.initialWebsiteListIndex = currentWebsiteIndex

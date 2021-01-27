@@ -95,7 +95,6 @@ Page {
                 }
                 DatePickerDialog {
                     id: nextPaymentDatePickerId
-                    isTextRequired: true
                     fieldLabel: qsTr("Payment Date")
                     maximumDate: new Date(2050, 12, 1)
                     dateSelected: currentExpense.nextPaymentDate

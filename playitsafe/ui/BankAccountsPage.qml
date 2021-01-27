@@ -107,7 +107,6 @@ Page {
                 }
                 DatePickerDialog {
                     id: openDatePickerId
-                    isTextRequired: true
                     fieldLabel: qsTr("Last Updated")
                     dateSelected: currentBankAccount.openedDate
                     onDateChanged: {
@@ -362,7 +361,7 @@ Page {
         if (isNaN(dateValue))
             return
         openDatePickerId.dateSelected = dateValue
-        openDatePickerId.fieldText = Functions.formatDate(dateValue)
+        //  openDatePickerId.fieldText = Functions.formatDate(dateValue)
     }
 
     function getformattedToolbarTitle(categoryTitle) {

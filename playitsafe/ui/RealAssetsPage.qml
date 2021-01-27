@@ -98,7 +98,6 @@ Page {
                 }
                 DatePickerDialog {
                     id: lastUpdatedId
-                    isTextRequired: true
                     fieldLabel: qsTr("Last Updated")
                     dateSelected: currentRealAsset.effectiveDate
                     onDateChanged: {

@@ -44,6 +44,7 @@ ToolBar {
             }
 
             icon.source: toolbarIcon
+            icon.color: lightTextColor
 
             onClicked: {
                 if (stackViewId.currentItem.objectName === "SwitchboardPage") {

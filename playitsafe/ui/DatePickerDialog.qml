@@ -2,18 +2,17 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
+import "Functions.js" as Functions
 
 Rectangle {
-    id: datePickerId
+    id: datePickerControlId
 
-    signal dateChanged(date dateSelected)
+    signal dateChanged(date dateChanged)
 
     property string fieldLabel
-    property string fieldText
-    property bool isTextRequired: false
-    property string previousText: ""
-    property var dateSelected
+    property var dateSelected: new Date()
     property var maximumDate
+    property bool isTextRequired: true
 
     width: fieldColumnWidth
     height: textWithTitleHeight
@@ -24,19 +23,37 @@ Rectangle {
     border.color: isTextRequired ? requiredTextColor : darkTextColor
     border.width: isTextRequired ? fieldRectBorder : rectBorder
 
+    onDateSelectedChanged: {
+        if (dateSelected === undefined)
+            dateSelected = new Date()
+        else
+            textId.text = Functions.formatDate(dateSelected)
+    }
+
     Dialog {
         id: datePickerDialogId
         title: fieldLabel
+        standardButtons: Dialog.Ok | Dialog.Cancel
+        width: 250
+        height: 250
+        modal: true
         onAccepted: {
+            dateSelected = datePickerId.currentSelectedDate
             dateChanged(dateSelected)
-            datePickerDialogId.close()
         }
-        onRejected: setSelectedDate()
-        contentData: DatePicker {}
+        onRejected: datePickerId.set(dateSelected)
+        onOpened: datePickerId.set(dateSelected)
+
+        DatePicker {
+            id: datePickerId
+            property var currentSelectedDate
+            onClicked: currentSelectedDate = date
+        }
     }
 
     TitleTextLight {
         id: labelId
+        text: fieldLabel
         width: categoryWidth * 1.25
         visible: true
         topPadding: itemMargin
@@ -50,9 +67,8 @@ Rectangle {
             top: parent.top
         }
         icon.source: "qrc:/images/date.png"
-
+        icon.color: lightTextColor
         onClicked: {
-            setSelectedDate()
             datePickerDialogId.open()
         }
     }
@@ -76,10 +92,7 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: {
-                setSelectedDate()
-                datePickerDialogId.open()
-            }
+            onClicked: datePickerDialogId.open()
         }
     }
 
@@ -96,11 +109,5 @@ Rectangle {
             color: itemBackColor
             position: 1
         }
-    }
-
-    function setSelectedDate() {
-        dateSelected = Date.fromLocaleString(Qt.locale(), fieldText,
-                                             "dd MMM yyyy")
-        datePickerDialogId.close()
     }
 }
