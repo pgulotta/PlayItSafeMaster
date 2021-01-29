@@ -38,7 +38,7 @@ Rectangle {
         height: 250
         modal: true
         onAccepted: {
-            dateSelected = datePickerId.currentSelectedDate
+            dateSelected = datePickerId.get()
             dateChanged(dateSelected)
         }
         onRejected: datePickerId.set(dateSelected)
@@ -46,8 +46,6 @@ Rectangle {
 
         DatePicker {
             id: datePickerId
-            property var currentSelectedDate
-            onClicked: currentSelectedDate = date
         }
     }
 

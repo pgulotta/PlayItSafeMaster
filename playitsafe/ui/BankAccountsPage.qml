@@ -113,6 +113,7 @@ Page {
                         setOpenedDate(dateSelected)
                         onFieldChanged(dateSelected,
                                        currentBankAccount.openedDate)
+                        //setIsDirty(true)
                     }
                 }
                 EditableText {
@@ -312,8 +313,7 @@ Page {
             accountNumberId.fieldText = currentBankAccount.accountNumber
             routingNumberId.fieldText = currentBankAccount.routingNumber
             amountId.fieldText = formattedCurrentAmount()
-            openDatePickerId.dateSelected = setOpenedDate(
-                        currentBankAccount.openedDate)
+            setOpenedDate(currentBankAccount.openedDate)
             notesId.fieldText = currentBankAccount.notes
             websiteUrlId.setWebsiteTitle(currentBankAccount.websiteId)
         }
@@ -341,7 +341,7 @@ Page {
             currentBankAccount.accountNumber = accountNumberId.fieldText
             currentBankAccount.routingNumber = routingNumberId.fieldText
             currentBankAccount.amount = amountId.fieldText
-            currentBankAccount.openedDate = new Date(Date.now())
+            currentBankAccount.openedDate = openDatePickerId.dateSelected
             currentBankAccount.notes = notesId.fieldText
             currentBankAccount.websiteId = websiteUrlId.currentWebsiteUniqueId
             DataStoreManager.saveItem(
@@ -359,9 +359,8 @@ Page {
 
     function setOpenedDate(dateValue) {
         if (isNaN(dateValue))
-            return
+            dateValue = new Date()
         openDatePickerId.dateSelected = dateValue
-        //  openDatePickerId.fieldText = Functions.formatDate(dateValue)
     }
 
     function getformattedToolbarTitle(categoryTitle) {

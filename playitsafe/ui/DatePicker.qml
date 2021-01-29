@@ -11,6 +11,11 @@ ListView {
                             ListView.Center) // index from month year
     }
 
+    function get()
+    {
+        return selectedDate
+    }
+
     signal clicked(date date)
 
     // onClicked: print('onClicked', date.toDateString())
