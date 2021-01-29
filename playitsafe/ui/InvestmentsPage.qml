@@ -114,7 +114,7 @@ Page {
                                                accountNumberId.fieldText,
                                                currentInvestment.accountNumber)
                 }
-                DatePickerDialog {
+                DatePicker {
                     id: issuerDatePickerId
                     fieldLabel: qsTr("Last Updated")
                     dateSelected: currentInvestment.issueDate
@@ -124,7 +124,7 @@ Page {
                                        currentInvestment.issueDate)
                     }
                 }
-                DatePickerDialog {
+                DatePicker {
                     id: purchasedDatePickerId
                     fieldLabel: qsTr("Date Purchased")
                     dateSelected: currentInvestment.purchaseDate

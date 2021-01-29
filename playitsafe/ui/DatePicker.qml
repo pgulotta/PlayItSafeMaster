@@ -1,126 +1,111 @@
 import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
+import "Functions.js" as Functions
 
-ListView {
-    id: datePickerId
+Rectangle {
+    id: datePickerControlId
 
-    // public
-    function set(date) {
-        selectedDate = new Date(date)
-        positionViewAtIndex((selectedDate.getFullYear(
-                                 )) * 12 + selectedDate.getMonth(),
-                            ListView.Center) // index from month year
+    signal dateChanged(date dateChanged)
+
+    property string fieldLabel
+    property var dateSelected: new Date()
+    property var maximumDate
+    property bool isTextRequired: true
+
+    width: fieldColumnWidth
+    height: textWithTitleHeight
+    radius: rectRadius
+    color: fieldBackColor
+    state: isTextRequired && textId.text.trim(
+               ).length === 0 ? "" : validDataState
+    border.color: isTextRequired ? requiredTextColor : darkTextColor
+    border.width: isTextRequired ? fieldRectBorder : rectBorder
+
+    onDateSelectedChanged: {
+        if (dateSelected === undefined)
+            dateSelected = new Date()
+        else
+            textId.text = Functions.formatDate(dateSelected)
     }
 
-    function get()
-    {
-        return selectedDate
-    }
+    Dialog {
+        id: datePickerDialogId
+        title: fieldLabel
+        standardButtons: Dialog.Ok | Dialog.Cancel
+        width: 250
+        height: 250
+        modal: true
+        onAccepted: {
+            dateSelected = datePickerId.get()
+            dateChanged(dateSelected)
+        }
+        onRejected: datePickerId.set(dateSelected)
+        onOpened: datePickerId.set(dateSelected)
 
-    signal clicked(date date)
-
-    // onClicked: print('onClicked', date.toDateString())
-
-    // private
-    property var selectedDate: new Date()
-    width: 200
-    height: 150 // default size
-    snapMode: ListView.SnapOneItem
-    orientation: Qt.Horizontal
-    clip: true
-
-    model: 3000 * 12 // index == months since January of the year 0
-
-    delegate: Item {
-        property int year: Math.floor(index / 12)
-        property int month: index % 12 // 0 January
-        property int firstDay: new Date(year, month,
-                                        1).getDay() // 0 Sunday to 6 Saturday
-
-        width: datePickerId.width
-        height: datePickerId.height
-
-        Column {
-            Item {
-                // month year header
-                width: datePickerId.width
-                height: datePickerId.height - grid.height
-
-                Text {
-                    // month year
-                    anchors.centerIn: parent
-                    text: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][month] + ' ' + year
-                    font {
-                        pixelSize: 0.5 * grid.cellHeight
-                    }
-                }
-            }
-
-            Grid {
-                // 1 month calender
-                id: grid
-
-                width: datePickerId.width
-                height: 0.875 * datePickerId.height
-                property real cellWidth: width / columns
-                property real cellHeight: height
-                                          / rows // width and height of each cell in the grid.
-
-                columns: 7 // days
-                rows: 7
-
-                Repeater {
-                    model: grid.columns * grid.rows // 49 cells per month
-
-                    delegate: Rectangle {
-                        // index is 0 to 48
-                        property int day: index - 7 // 0 = top left below Sunday (-7 to 41)
-                        property int date: day - firstDay + 1 // 1-31
-
-                        width: grid.cellWidth
-                        height: grid.cellHeight
-                        border.width: 0.3 * radius
-                        border.color: new Date(year, month, date).toDateString(
-                                          ) == selectedDate.toDateString()
-                                      && text.text
-                                      && day >= 0 ? 'black' : 'transparent' // selected
-                        radius: 0.02 * datePickerId.height
-                        opacity: !mouseArea.pressed ? 1 : 0.3 //  pressed state
-
-                        Text {
-                            id: text
-
-                            anchors.centerIn: parent
-                            font.pixelSize: 0.5 * parent.height
-                            font.bold: new Date(year, month, date).toDateString(
-                                           ) == new Date().toDateString(
-                                           ) // today
-                            text: {
-                                if (day < 0)
-                                    ['S', 'M', 'T', 'W', 'T', 'F', 'S'][index] // Su-Sa
-                                else if (new Date(year, month,
-                                                  date).getMonth() == month)
-                                    date // 1-31
-                                else
-                                    ''
-                            }
-                        }
-
-                        MouseArea {
-                            id: mouseArea
-
-                            anchors.fill: parent
-                            enabled: text.text && day >= 0
-
-                            onClicked: {
-                                selectedDate = new Date(year, month, date)
-                                datePickerId.clicked(selectedDate)
-                            }
-                        }
-                    }
-                }
-            }
+        DatePickerCalendar {
+            id: datePickerId
         }
     }
 
-    // Component.onCompleted: set(new Date()) // today (otherwise Jan 0000)
+    TitleTextLight {
+        id: labelId
+        text: fieldLabel
+        width: categoryWidth * 1.25
+        visible: true
+        topPadding: itemMargin
+    }
+    ToolButton {
+        id: imageButtonId
+        anchors {
+            rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
+            right: parent.right
+            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
+            top: parent.top
+        }
+        icon.source: "qrc:/images/date.png"
+        icon.color: lightTextColor
+        onClicked: {
+            datePickerDialogId.open()
+        }
+    }
+
+    TextField {
+        id: textId
+        Layout.fillWidth: true
+        enabled: true
+        readOnly: true
+        font.pointSize: smallFontPointSize
+        color: darkTextColor
+        placeholderText: fieldLabel
+        anchors {
+            left: parent.left
+            leftMargin: itemMargin
+            right: parent.right
+            rightMargin: itemMargin
+            verticalCenter: parent.verticalCenter
+            verticalCenterOffset: itemMargin * 2
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: datePickerDialogId.open()
+        }
+    }
+
+    property Gradient gradientFieldColor: Gradient {
+        GradientStop {
+            color: fieldBackColor
+            position: 0
+        }
+        GradientStop {
+            color: itemBackColor
+            position: 0.25
+        }
+        GradientStop {
+            color: itemBackColor
+            position: 1
+        }
+    }
 }

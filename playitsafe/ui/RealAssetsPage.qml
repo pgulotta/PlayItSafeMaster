@@ -96,7 +96,7 @@ Page {
                                                descriptionId.fieldText,
                                                currentRealAsset.description)
                 }
-                DatePickerDialog {
+                DatePicker {
                     id: lastUpdatedId
                     fieldLabel: qsTr("Last Updated")
                     dateSelected: currentRealAsset.effectiveDate

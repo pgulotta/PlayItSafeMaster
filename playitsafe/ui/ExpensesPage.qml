@@ -93,7 +93,7 @@ Page {
                     onEditableTextChanged: onFieldChanged(payeeId.fieldText,
                                                           currentExpense.payee)
                 }
-                DatePickerDialog {
+                DatePicker {
                     id: nextPaymentDatePickerId
                     fieldLabel: qsTr("Payment Date")
                     maximumDate: new Date(2050, 12, 1)
