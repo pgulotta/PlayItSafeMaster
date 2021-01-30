@@ -96,7 +96,6 @@ Page {
                 DatePicker {
                     id: nextPaymentDatePickerId
                     fieldLabel: qsTr("Payment Date")
-                    maximumDate: new Date(2050, 12, 1)
                     dateSelected: currentExpense.nextPaymentDate
                     onDateChanged: {
                         setNextPaymentDate(dateSelected)
@@ -130,8 +129,7 @@ Page {
                     inputHints: Qt.ImhFormattedNumbersOnly
                     fieldLabel: qsTr("Amount")
                     fieldText: formattedCurrentAmount()
-                    inputValidator: DoubleValidator {
-                    }
+                    inputValidator: DoubleValidator {}
                     onEditableTextChanged: onFieldChanged(
                                                amountId.fieldText,
                                                formattedCurrentAmount())
@@ -259,7 +257,7 @@ Page {
         if (allExpenses === undefined || allExpenses.isEmpty())
             return invalidIndex
         var index = invalidIndex
-        for (var i =0; index === invalidIndex && i < allExpenses.size(); i++) {
+        for (var i = 0; index === invalidIndex && i < allExpenses.size(); i++) {
             var item = allExpenses.get(i)
             if (item.uniqueId === uniqueId)
                 index = i
@@ -275,8 +273,7 @@ Page {
             accountNumberId.fieldText = currentExpense.accountNumber
             autoPaymentId.fieldText = currentExpense.autoPayment
             nameOnAccountId.fieldText = currentExpense.nameOnAccount
-            nextPaymentDatePickerId.dateSelected = setNextPaymentDate(
-                        currentExpense.nextPaymentDate)
+            setNextPaymentDate(currentExpense.nextPaymentDate)
             amountId.fieldText = Functions.formattedNumeric(
                         currentExpense.amount, 2)
             notesId.fieldText = currentExpense.notes
@@ -338,9 +335,8 @@ Page {
 
     function setNextPaymentDate(dateValue) {
         if (isNaN(dateValue))
-            return
+            dateValue = new Date()
         nextPaymentDatePickerId.dateSelected = dateValue
-        nextPaymentDatePickerId.fieldText = Functions.formatDate(dateValue)
     }
 
     function setCurrentExpense(listViewIndex) {
@@ -364,7 +360,7 @@ Page {
         if (allExpenses === undefined || allExpenses.isEmpty())
             return categoryTitle
         var total = 0.00
-        for (var i=0; i < allExpenses.size(); i++) {
+        for (var i = 0; i < allExpenses.size(); i++) {
             var item = allExpenses.get(i)
             total += item.amount
         }

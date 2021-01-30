@@ -273,8 +273,7 @@ Page {
         } else {
             descriptionId.fieldText = currentRealAsset.description
             valuationId.fieldText = formattedCurrentValuation()
-            lastUpdatedId.dateSelected = setEffectiveDate(
-                        currentRealAsset.effectiveDate)
+            setEffectiveDate(currentRealAsset.effectiveDate)
             notesId.fieldText = currentRealAsset.notes
             websiteUrlId.setWebsiteTitle(currentRealAsset.websiteId)
         }
@@ -298,7 +297,7 @@ Page {
                 && valuationId.state === validDataState) {
             currentRealAsset.description = descriptionId.fieldText
             currentRealAsset.valuation = valuationId.fieldText
-            currentRealAsset.effectiveDate = new Date(Date.now())
+            currentRealAsset.effectiveDate = lastUpdatedId.dateSelected
             currentRealAsset.notes = notesId.fieldText
             currentRealAsset.websiteId = websiteUrlId.currentWebsiteUniqueId
             DataStoreManager.saveItem(
@@ -324,9 +323,8 @@ Page {
 
     function setEffectiveDate(dateValue) {
         if (isNaN(dateValue))
-            return
+            dateValue = new Date()
         lastUpdatedId.dateSelected = dateValue
-        lastUpdatedId.fieldText = Functions.formatDate(dateValue)
     }
 
     function getformattedToolbarTitle(categoryTitle) {
