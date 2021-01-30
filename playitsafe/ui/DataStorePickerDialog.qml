@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Window
 import QtQuick.Controls
+import Qt.labs.platform 1.1
 
 FileDialog {
     id: dataStorePickerDialogId
@@ -11,13 +12,11 @@ FileDialog {
     property string titleText: qsTr("Import Data Store")
 
     visible: true
-    // width: isPortraitMode ? rootId.width * .85 : rootId.width * .4
     folder: urlFilePrefix + downloadsPath
-    selectFolder: false
     title: titleText
     onAccepted: {
-        console.log("DataStorePickerDialog.onAccepted:  file = " + fileUrl)
-        DataStoreManager.onFileChooserResultReceived(fileUrl.toString().replace(
+        console.log("DataStorePickerDialog.onAccepted:  file = " + file)
+        DataStoreManager.onFileChooserResultReceived(file.toString().replace(
                                                          urlFilePrefix, ""))
     }
 }

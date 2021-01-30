@@ -2,8 +2,9 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Window
 import QtQuick.Controls
+import Qt.labs.platform 1.1
 
-FileDialog {
+FolderDialog {
     id: selectDownloadsFolderDialogId
 
     property string downloadsPath: ""
@@ -13,7 +14,6 @@ FileDialog {
     visible: true
     width: isPortraitMode ? rootId.width * .85 : rootId.width * .4
     folder: urlFilePrefix + downloadsPath
-    selectFolder: true
     title: titleText
     onAccepted: {
         console.log("SelectDownloadsFolderDialog:  folder = " + fileUrl)
