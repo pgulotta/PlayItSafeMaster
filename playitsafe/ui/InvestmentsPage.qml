@@ -315,10 +315,8 @@ Page {
             accountNumberId.fieldText = currentInvestment.accountNumber
             nameOnAccountId.fieldText = currentInvestment.nameOnAccount
             routingNumberId.fieldText = currentInvestment.routingNumber
-            issuerDatePickerId.dateSelected = setIssuerDate(
-                        currentInvestment.issueDate)
-            purchasedDatePickerId.dateSelected = setPurchasedDate(
-                        currentInvestment.purchaseDate)
+            setIssuerDate(currentInvestment.issueDate)
+            setPurchasedDate(currentInvestment.purchaseDate)
             sharesId.fieldText = Functions.formattedNumeric(
                         currentInvestment.shares,
                         currentInvestment.sharesDecimals)
@@ -369,7 +367,7 @@ Page {
             currentInvestment.lastPrice = lastPriceId.fieldText
             currentInvestment.nameOnAccount = nameOnAccountId.fieldText
             currentInvestment.routingNumber = routingNumberId.fieldText
-            currentInvestment.issueDate = new Date()
+            currentInvestment.issueDate = issuerDatePickerId.dateSelected
             currentInvestment.purchaseDate = purchasedDatePickerId.dateSelected
             currentInvestment.notes = notesId.fieldText
             currentInvestment.websiteId = websiteUrlId.currentWebsiteUniqueId
@@ -388,16 +386,14 @@ Page {
 
     function setIssuerDate(dateValue) {
         if (isNaN(dateValue))
-            return
+            dateValue = new Date()
         issuerDatePickerId.dateSelected = dateValue
-        issuerDatePickerId.fieldText = Functions.formatDate(dateValue)
     }
 
     function setPurchasedDate(dateValue) {
         if (isNaN(dateValue))
-            return
+            dateValue = new Date()
         purchasedDatePickerId.dateSelected = dateValue
-        purchasedDatePickerId.fieldText = Functions.formatDate(dateValue)
     }
 
     function setCurrentInvestment(listViewIndex) {

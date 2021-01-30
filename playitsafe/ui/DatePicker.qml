@@ -38,14 +38,14 @@ Rectangle {
         height: 250
         modal: true
         onAccepted: {
-            dateSelected = datePickerId.get()
+            dateSelected = datePickerCalendarId.get()
             dateChanged(dateSelected)
         }
-        onRejected: datePickerId.set(dateSelected)
-        onOpened: datePickerId.set(dateSelected)
+        onRejected: datePickerCalendarId.set(dateSelected)
+        onOpened: datePickerCalendarId.set(dateSelected)
 
         DatePickerCalendar {
-            id: datePickerId
+            id: datePickerCalendarId
         }
     }
 

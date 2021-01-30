@@ -3,7 +3,8 @@ import QtQuick
 ListView {
     id: datePickerId
 
-    // public
+    signal clicked(date date)
+
     function set(date) {
         selectedDate = new Date(date)
         positionViewAtIndex((selectedDate.getFullYear(
@@ -11,16 +12,10 @@ ListView {
                             ListView.Center) // index from month year
     }
 
-    function get()
-    {
+    function get() {
         return selectedDate
     }
 
-    signal clicked(date date)
-
-    // onClicked: print('onClicked', date.toDateString())
-
-    // private
     property var selectedDate: new Date()
     width: 200
     height: 150 // default size
@@ -78,13 +73,14 @@ ListView {
 
                         width: grid.cellWidth
                         height: grid.cellHeight
+                        color: Qt.lighter(appBackColor, 1.1)
                         border.width: 0.3 * radius
                         border.color: new Date(year, month, date).toDateString(
                                           ) == selectedDate.toDateString()
                                       && text.text
-                                      && day >= 0 ? 'black' : 'transparent' // selected
+                                      && day >= 0 ? darkTextColor : 'transparent' // selected
                         radius: 0.02 * datePickerId.height
-                        opacity: !mouseArea.pressed ? 1 : 0.3 //  pressed state
+                        opacity: !mouseAreaId.pressed ? 1 : 0.3 //  pressed state
 
                         Text {
                             id: text
@@ -106,7 +102,7 @@ ListView {
                         }
 
                         MouseArea {
-                            id: mouseArea
+                            id: mouseAreaId
 
                             anchors.fill: parent
                             enabled: text.text && day >= 0
@@ -121,6 +117,4 @@ ListView {
             }
         }
     }
-
-    // Component.onCompleted: set(new Date()) // today (otherwise Jan 0000)
 }

@@ -113,7 +113,6 @@ Page {
                         setOpenedDate(dateSelected)
                         onFieldChanged(dateSelected,
                                        currentBankAccount.openedDate)
-                        //setIsDirty(true)
                     }
                 }
                 EditableText {
