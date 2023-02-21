@@ -15,7 +15,7 @@ Drawer {
     ImportFileNotification {
         id: importFileId
         importFilePath: ImportedFile.importFilePath
-        onImportFilePathChanged: doImportFilePathChanged(importFilePath)
+        onImportFilePathChanged: doImportFilePathChanged(this.importFilePath)
     }
 
     PdfCreatedNotification {
@@ -162,6 +162,7 @@ Drawer {
     function onSelected(text) {
         switch (text) {
         case qsTr("Change Password"):
+            loaderId.source = ""
             loaderId.source = "qrc:/ui/DataStorePasswordDialog.qml"
             loaderId.item.state = "change"
             loaderId.item.visible = true
@@ -213,7 +214,6 @@ Drawer {
 
     DataStorePasswordDialog {
         id: importPasswordDialogId
-        state: "import"
         visible: false
     }
 

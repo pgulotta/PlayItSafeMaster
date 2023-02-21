@@ -47,6 +47,9 @@ ToolBar {
             icon.color: lightTextColor
 
             onClicked: {
+                if (stackViewId.currentItem == null
+                        || stackViewId.currentItem.objectName === "")
+                    return
                 if (stackViewId.currentItem.objectName === "SwitchboardPage") {
                     mainDrawerId.open()
                 } else {
