@@ -165,6 +165,7 @@ Drawer {
             loaderId.source = ""
             loaderId.source = "qrc:/ui/DataStorePasswordDialog.qml"
             loaderId.item.state = "change"
+            loaderId.item.contentHeight = 220
             loaderId.item.visible = true
             appDrawerId.close()
             break
