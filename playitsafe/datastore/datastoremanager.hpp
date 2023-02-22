@@ -50,6 +50,7 @@ public:
   Q_INVOKABLE void selectDataStore();
   Q_INVOKABLE void saveToPdf( bool diplayWebsitePassword );
   Q_INVOKABLE void clearAll();
+  Q_INVOKABLE void freshInvestmentPrices();
   Q_INVOKABLE void toggleRecapSectionEnabled( const QString& section );
   Q_INVOKABLE void toggleRecapRowEnabled( const QString& uniqueId );
   Q_INVOKABLE QObject* newItem( int moniker );

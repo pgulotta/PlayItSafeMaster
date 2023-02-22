@@ -11,13 +11,14 @@ FolderDialog {
 
     objectName: "SelectDownloadsFolderDialog"
     property string titleText: qsTr("Export/Import Folder")
+    options: FolderDialog.ShowDirsOnly
     visible: true
-    width: isPortraitMode ? rootId.width * .85 : rootId.width * .4
     folder: urlFilePrefix + downloadsPath
     title: titleText
     onAccepted: {
-        console.log("SelectDownloadsFolderDialog:  folder = " + fileUrl)
-        DataStoreManager.setDownloadsPath(fileUrl.toString().replace(
+        console.log("SelectDownloadsFolderDialog:  folder = " + folder.toString(
+                        ))
+        DataStoreManager.setDownloadsPath(folder.toString().replace(
                                               urlFilePrefix, ""))
     }
 }

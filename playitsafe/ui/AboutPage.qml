@@ -33,10 +33,8 @@ ScrollablePage {
             isTitle: true
         }
         HtmlText {
-            websiteLink: "https://sites.google.com/site/playitsafe26apps/"
             text: appNameVersion + qsTr(
-                      " from 26Apps is a great tool that helps to easily manage finances by organizing savings and spending. " + " You can use this app on your mobile device, and on your computer as well since there are " + appName + " versions for mobile, PC, Mac, and Linux. For more details, please visit <a href=\""
-                      + websiteLink + "\"> Play It Safe.</a>")
+                      " from 26Apps is a great tool that helps to easily manage finances by organizing savings and spending. ")
             isTitle: false
         }
         Rectangle {
@@ -48,12 +46,6 @@ ScrollablePage {
         HtmlText {
             text: qsTr("Feedback")
             isTitle: true
-        }
-        HtmlText {
-            websiteLink: "https://play.google.com/store/apps/details?id=com.twentysixapps.playitsafe"
-            text: qsTr("Leave feedback or rate " + appName + ", "
-                       + "please visit <a href=\"" + websiteLink + "\"> Google Play</a>")
-            isTitle: false
         }
         Rectangle {
             color: "transparent"
@@ -69,9 +61,7 @@ ScrollablePage {
             websiteLink: "https://sites.google.com/site/playitsafe26apps/"
             text: appName + qsTr(
                       " does not request or share any personal information with third parties. "
-                      + "It does not request or know the user's physical location. "
-                      + "To review the privacy policy, please visit <a href=\""
-                      + websiteLink + "\"> Play It Safe.</a>")
+                      + "It does not request or know the user's physical location. ")
 
             isTitle: false
         }
@@ -133,9 +123,7 @@ ScrollablePage {
         HtmlText {
             websiteLink: "https://sites.google.com/site/playitsafe26apps/"
             text: appName + qsTr(
-                      " provided by 26Apps is supplied 'AS IS' without any warranties and support. "
-                      + "For details, please visit <a href=\"" + websiteLink
-                      + "\"> Play It Safe website.</a>")
+                      " provided by 26Apps is supplied 'AS IS' without any warranties and support. ")
             isTitle: false
         }
     }

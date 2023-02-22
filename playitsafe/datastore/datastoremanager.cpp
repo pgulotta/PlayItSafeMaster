@@ -12,6 +12,7 @@
 #include "../model/expense.hpp"
 #include "../model/switchboardcategory.hpp"
 
+#include <QSettings>
 #include <QDir>
 #include <QDebug>
 #include <QFile>
@@ -325,6 +326,19 @@ void DataStoreManager::reloadAllTables()
   websites( true );
   websitesWithoutNone();
   recap();
+}
+
+void DataStoreManager::freshInvestmentPrices()
+{
+    try {
+      QSettings settings;
+      bool shouldUpdate = settings.value( Common::AutoUpdateInvestmentPricesKey, QVariant( true ) ).toBool();
+      settings.setValue( Common::AutoUpdateInvestmentPricesKey, true );
+      tryOpenDB();
+      settings.setValue( Common::AutoUpdateInvestmentPricesKey, shouldUpdate );
+    } catch ( std::exception const& e ) {
+      qWarning() << Q_FUNC_INFO << " " << e.what();
+    }
 }
 
 bool DataStoreManager::tryOpenDB()

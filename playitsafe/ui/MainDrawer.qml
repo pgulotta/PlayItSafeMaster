@@ -149,6 +149,10 @@ Drawer {
                 text: qsTr("Save as PDF")
             }
             ListElement {
+                category: qsTr("Manage Data Store")
+                text: qsTr("Refresh Investment Prices")
+            }
+            ListElement {
                 category: qsTr("Settings")
                 text: qsTr("Investment Prices")
             }
@@ -199,6 +203,9 @@ Drawer {
             break
         case qsTr("Export/Import Folder"):
             doSelectExportImportPath()
+            break
+        case qsTr("Refresh Investment Prices"):
+            DataStoreManager.freshInvestmentPrices()
             break
         case qsTr("About"):
             stackViewId.push("qrc:/ui/AboutPage.qml")
