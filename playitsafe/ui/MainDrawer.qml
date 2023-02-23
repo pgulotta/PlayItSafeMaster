@@ -21,7 +21,7 @@ Drawer {
     PdfCreatedNotification {
         id: pdfFileId
         pdfFilePath: SavedPdfFile.pdfFilePath
-        onPdfFilePathChanged: doPdfFileCreated(pdfFilePath)
+        onPdfFilePathChanged: doPdfFileCreated(SavedPdfFile.pdfFilePath)
     }
 
     Component {
@@ -142,15 +142,11 @@ Drawer {
             }
             ListElement {
                 category: qsTr("Manage Data Store")
-                text: qsTr("Export and Clear")
+                text: qsTr("Refresh Investment Prices")
             }
             ListElement {
                 category: qsTr("Manage Data Store")
                 text: qsTr("Save as PDF")
-            }
-            ListElement {
-                category: qsTr("Manage Data Store")
-                text: qsTr("Refresh Investment Prices")
             }
             ListElement {
                 category: qsTr("Settings")
@@ -174,21 +170,14 @@ Drawer {
             appDrawerId.close()
             break
         case qsTr("Investment Prices"):
+            loaderId.source = ""
             loaderId.source = "qrc:/ui/SettingsUpdatePricesDialog.qml"
             loaderId.item.visible = true
-            appDrawerId.close()
-            break
-        case qsTr("Export and Clear"):
-            loaderId.source = "qrc:/ui/DataStoreClearDialog.qml"
-            loaderId.item.doExport = true
-            loaderId.item.visible = true
-            appDrawerId.close()
             break
         case qsTr("Clear"):
             loaderId.source = "qrc:/ui/DataStoreClearDialog.qml"
             loaderId.item.doExport = false
             loaderId.item.visible = true
-            appDrawerId.close()
             break
         case qsTr("Export"):
             doExport()
@@ -199,7 +188,6 @@ Drawer {
         case qsTr("Save as PDF"):
             loaderId.source = "qrc:/ui/SaveToPdfDialog.qml"
             loaderId.item.visible = true
-            appDrawerId.close()
             break
         case qsTr("Export/Import Folder"):
             doSelectExportImportPath()

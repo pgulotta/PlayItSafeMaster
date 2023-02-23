@@ -18,15 +18,8 @@ Dialog {
     y: (parent.height - height) * .5
     contentHeight: textWithTitleHeight * 2
     standardButtons: Dialog.No | Dialog.Yes
-    onAccepted: {
-        if (doExport) {
-            if (DataStoreManager.exportDataStore()) {
-                DataStoreManager.clearAll()
-            }
-        } else {
-            DataStoreManager.clearAll()
-        }
-    }
+    onAccepted: DataStoreManager.clearAll()
+
     RowLayout {
         id: rowLayoutId
         anchors.fill: parent
