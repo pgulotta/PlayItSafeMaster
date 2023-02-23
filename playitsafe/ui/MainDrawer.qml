@@ -37,6 +37,7 @@ Drawer {
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
                 source: "qrc:/images/drawerheader.jpg"
+                opacity: .75
             }
             Column {
                 width: parent.width
@@ -49,14 +50,14 @@ Drawer {
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: largeFontPointSize
-                    color: "#fff9c4"
+                    color: "#FFF7B0"
                 }
                 TitleTextDark {
                     text: qsTr("It")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: largeFontPointSize
-                    color: "#fff8ba"
+                    color: "#FFF6A6"
                 }
                 TitleTextDark {
                     text: qsTr("Safe")
@@ -112,7 +113,6 @@ Drawer {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: smallFontPointSize
                 font.bold: true
-                // visible: !(isAndroid && text === qsTr("Settings"))
             }
         }
 
@@ -236,7 +236,6 @@ Drawer {
     function doSelectExportImportPath() {
         if (!isAndroid) {
             loaderId.source = "qrc:/ui/SelectDownloadsFolderDialog.qml"
-            loaderId.item.downloadsPath = DataStoreManager.downloadsPath
             loaderId.item.visible = true
             appDrawerId.close()
         }
