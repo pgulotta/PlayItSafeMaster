@@ -6,7 +6,7 @@ import QtQuick.Controls
 ScrollablePage {
     id: aboutPageId
     objectName: "AboutPage"
-    height: parent.height
+    content.height: parent.height
     width: parent.width
     visible: true
 
