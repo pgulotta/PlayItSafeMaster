@@ -194,6 +194,7 @@ Drawer {
             break
         case qsTr("Refresh Investment Prices"):
             DataStoreManager.freshInvestmentPrices()
+            appDrawerId.close()
             break
         case qsTr("About"):
             stackViewId.push("qrc:/ui/AboutPage.qml")

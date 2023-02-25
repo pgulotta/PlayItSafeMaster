@@ -7,7 +7,6 @@ ScrollablePage {
     id: aboutPageId
     objectName: "AboutPage"
     content.height: parent.height
-    width: parent.width
     visible: true
 
     Component.onCompleted: {
