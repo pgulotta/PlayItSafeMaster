@@ -222,7 +222,6 @@ Drawer {
     }
 
     function doImportFilePathChanged(importFilePath) {
-        console.log("doImportFilePathChanged: importFilePath=" + importFilePath)
         if (importFilePath === "")
             return
         if (importFilePath === ImportedFile.unresolvedFilePathId) {

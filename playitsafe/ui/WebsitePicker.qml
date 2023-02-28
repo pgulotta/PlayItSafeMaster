@@ -45,12 +45,17 @@ Rectangle {
         onClicked: {
             if (!allWebsites.isEmpty()) {
                 var websiteItem = allWebsites.get(currentWebsiteIndex)
-                if (websiteItem.url !== "")
-                    Qt.openUrlExternally(Functions.formatUrlink(
-                                             websiteItem.url))
+                if (websiteItem.url === "")
+                    console.log("No website defined for selected item")
+                else {
+                    var theLink = Functions.formatUrlink(websiteItem.url)
+                    console.log(theLink + " opening in browser")
+                    Qt.openUrlExternally(theLink)
+                }
             }
         }
     }
+
     ToolButton {
         id: forwardButtonId
         anchors {
@@ -63,8 +68,15 @@ Rectangle {
         icon.color: lightTextColor
 
         onClicked: {
-            websitePageId.initialWebsiteListIndex = currentWebsiteIndex
-            stackViewId.push(websitePageId)
+            if (!allWebsites.isEmpty()) {
+                var websiteItem = allWebsites.get(currentWebsiteIndex)
+                if (websiteItem.url === "")
+                    console.log("No website defined for selected item")
+                else {
+                    websitePageId.initialWebsiteListIndex = currentWebsiteIndex
+                    stackViewId.push(websitePageId)
+                }
+            }
         }
     }
 
@@ -96,7 +108,6 @@ Rectangle {
 
         delegate: ItemDelegate {
             text: model.title
-            width: parent.width
             highlighted: ListView.isCurrentItem
             font.pointSize: smallFontPointSize
             onClicked: {

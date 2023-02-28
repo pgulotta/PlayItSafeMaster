@@ -29,7 +29,7 @@ Page {
 
     Component.onCompleted: {
         setCurrentInvestment(initialIndex)
-        if (visible && category !== null) {
+        if (visible && category != null) {
             initializeToolbar(true, getformattedToolbarTitle(category.title))
         }
         hideKeyboard()
