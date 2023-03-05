@@ -14,7 +14,6 @@ Rectangle {
     property alias websiteContentItem: contentItemTextId.text
     property string fieldLabel
     property string currentWebsiteUniqueId
-    property int initialWebsiteListIndex: 0
 
     width: fieldColumnWidth
     height: textWithTitleHeight
@@ -73,7 +72,7 @@ Rectangle {
                 if (websiteItem.url === "")
                     console.log("No website defined for selected item")
                 else {
-                    websitePageId.initialWebsiteListIndex = currentWebsiteIndex
+                    websitePageId.initialWebsiteListUniqeId = websiteItem.uniqueId
                     stackViewId.push(websitePageId)
                 }
             }

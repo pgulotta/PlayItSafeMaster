@@ -13,7 +13,7 @@ Page {
     property alias allWebstesIndex: modelListViewId.listViewCurrentIndex
     property Website currentWebsite
     property string fieldBackColor
-    property int initialWebsiteListIndex: 0
+    property string initialWebsiteListUniqeId
     property real field1Width: width * .5
     property real field2Width: width * .5
     readonly property SwitchboardCategory category: AllCategories.get(
@@ -38,7 +38,10 @@ Page {
     }
     onVisibleChanged: {
         if (visible) {
-            setcurrentWebsite(initialWebsiteListIndex)
+            setcurrentWebsite(getItemIndex(initialWebsiteListUniqeId))
+            for (var i = 0; i < allWebsites.size(); i++) {
+                var item = allWebsites.get(i)
+            }
             initializeToolbar(true, category.title)
         }
     }
