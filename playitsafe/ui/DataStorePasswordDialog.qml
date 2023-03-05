@@ -69,6 +69,7 @@ Dialog {
                     visible: validatePasswordAttemptsCounter < 4
                     copyButtonVisible: false
                 }
+
                 Label {
                     id: invalidMessagedId
                     wrapMode: Label.Wrap
@@ -133,7 +134,7 @@ Dialog {
             stackViewId.push("qrc:/ui/SwitchboardPage.qml")
             dataStorePasswordDialogId.close()
         } else {
-            dataStorePasswordDialogId.open()
+            Qt.quit()
         }
     }
 
