@@ -46,6 +46,7 @@ signals:
 
 public:
     Q_INVOKABLE bool importDataStore(const QString &password);
+    Q_INVOKABLE bool importDataStore();
     Q_INVOKABLE QString exportDataStore();
     Q_INVOKABLE void selectDataStore();
     Q_INVOKABLE void saveToPdf(bool diplayWebsitePassword);

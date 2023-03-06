@@ -10,7 +10,7 @@
 class ImportFileNotification : public QObject {
   Q_OBJECT
   Q_PROPERTY(QString importFilePath READ importFilePath WRITE setImportFilePath NOTIFY importFilePathChanged)
-  Q_PROPERTY(QString unresolvedFilePathId READ unresolvedFilePathId)
+  Q_PROPERTY(QString unresolvedFilePathId READ unresolvedFilePathId CONSTANT)
 
  public slots:
   void setImportFilePath(QString importFilePath) {

@@ -142,7 +142,7 @@ Drawer {
             }
             ListElement {
                 category: qsTr("Manage Data Store")
-                text: qsTr("Refresh Investment Prices")
+                text: qsTr("Refresh Prices")
             }
             ListElement {
                 category: qsTr("Manage Data Store")
@@ -192,7 +192,7 @@ Drawer {
         case qsTr("Export/Import Folder"):
             doSelectExportImportPath()
             break
-        case qsTr("Refresh Investment Prices"):
+        case qsTr("Refresh Prices"):
             DataStoreManager.freshInvestmentPrices()
             appDrawerId.close()
             break
@@ -214,6 +214,20 @@ Drawer {
         visible: false
     }
 
+    UseSamePasswordDialog {
+        id: useSamePasswordDialogId
+        visible: false
+        onAccepted: if (DataStoreManager.importDataStore()) {
+                        showTitledMessage(qsTr("Import Data Store"),
+                                          qsTr("The import was successful"))
+                    } else {
+                        showTitledMessage(
+                                    qsTr("Import Data Store"), qsTr(
+                                        "Import failed, perhaps the selected file or password are invalid."))
+                    }
+        onRejected: importPasswordDialogId.visible = true
+    }
+
     function doPdfFileCreated(pdfFilePath) {
         if (pdfFilePath === "")
             return
@@ -229,7 +243,7 @@ Drawer {
                         qsTr("Import Data Store"), qsTr(
                             "Data Store was not imported. The selected Data Store path cannot be resolved."))
         } else {
-            importPasswordDialogId.visible = true
+            useSamePasswordDialogId.visible = true
         }
     }
 

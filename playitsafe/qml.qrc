@@ -62,6 +62,7 @@
         <file>ui/DataStoreClearDialog.qml</file>
         <file>ui/DataStorePickerDialog.qml</file>
         <file>ui/SaveToPdfDialog.qml</file>
+        <file>ui/UseSamePasswordDialog.qml</file>
         <file>ui/HtmlText.qml</file>
         <file>ui/SelectDownloadsFolderDialog.qml</file>
         <file>ui/SettingsUpdatePricesDialog.qml</file>
