@@ -236,7 +236,6 @@ bool DataStoreManager::fileCopy( const QString& sourceFilePath, const  QString& 
 
 bool DataStoreManager::importDataStore( )
 {
-  qDebug() << "********  DataStoreManager::importDataStore: password = " << mFileEncryptor.encryptedFilePassword();
   return importDataStore(mFileEncryptor.encryptedFilePassword());
 }
 

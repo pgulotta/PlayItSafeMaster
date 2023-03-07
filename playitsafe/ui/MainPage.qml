@@ -30,6 +30,9 @@ ApplicationWindow {
     readonly property bool isAndroid: Qt.platform.os === "android"
     readonly property bool isLinux: Qt.platform.os === "linux"
     readonly property string urlFilePrefix: isLinux ? "file://" : "file:///"
+    readonly property string importTitle: qsTr("Import Data Store")
+    readonly property string importSuccessfulMessage: qsTr("The import was successful")
+    readonly property string importFailedMessage: qsTr("Import failed, perhaps the selected file or password are invalid.")
     readonly property string validDataState: "valid"
     readonly property string addingNewState: "addNew"
     readonly property string routingNumberRegExp: "[0-9]{9}$"

@@ -218,12 +218,9 @@ Drawer {
         id: useSamePasswordDialogId
         visible: false
         onAccepted: if (DataStoreManager.importDataStore()) {
-                        showTitledMessage(qsTr("Import Data Store"),
-                                          qsTr("The import was successful"))
+                        showTitledMessage(importTitle, importSuccessfulMessage)
                     } else {
-                        showTitledMessage(
-                                    qsTr("Import Data Store"), qsTr(
-                                        "Import failed, perhaps the selected file or password are invalid."))
+                        showTitledMessage(importTitle, importFailedMessage)
                     }
         onRejected: importPasswordDialogId.visible = true
     }
@@ -240,7 +237,7 @@ Drawer {
             return
         if (importFilePath === ImportedFile.unresolvedFilePathId) {
             showTitledMessage(
-                        qsTr("Import Data Store"), qsTr(
+                        importTitle, qsTr(
                             "Data Store was not imported. The selected Data Store path cannot be resolved."))
         } else {
             useSamePasswordDialogId.visible = true

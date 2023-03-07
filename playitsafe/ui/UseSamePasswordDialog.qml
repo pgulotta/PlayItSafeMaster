@@ -29,7 +29,7 @@ Dialog {
         Text {
             id: useSamePasswordSwitchId
             font.pointSize: smallFontPointSize
-            text: qsTr("Open Data store using last password?")
+            text: qsTr("Open using last password?")
         }
     }
 }

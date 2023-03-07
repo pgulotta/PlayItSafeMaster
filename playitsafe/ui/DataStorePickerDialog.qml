@@ -9,7 +9,7 @@ FileDialog {
     objectName: "DataStorePickerDialog"
 
     property string downloadsPath: ""
-    property string titleText: qsTr("Import Data Store")
+    property string titleText: importTitle
 
     visible: true
     folder: urlFilePrefix + downloadsPath

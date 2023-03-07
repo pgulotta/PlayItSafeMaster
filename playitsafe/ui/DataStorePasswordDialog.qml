@@ -104,12 +104,9 @@ Dialog {
 
     function doImportPasswordChanged(password) {
         if (DataStoreManager.importDataStore(password)) {
-            showTitledMessage(qsTr("Import Data Store"),
-                              qsTr("The import was successful"))
+            showTitledMessage(importTitle, importSuccessfulMessage)
         } else {
-            showTitledMessage(
-                        qsTr("Import Data Store"), qsTr(
-                            "Import failed, perhaps the selected file or password are invalid."))
+            showTitledMessage(importTitle, importFailedMessage)
         }
         stackViewId.clear()
         stackViewId.push("qrc:/ui/SwitchboardPage.qml")
