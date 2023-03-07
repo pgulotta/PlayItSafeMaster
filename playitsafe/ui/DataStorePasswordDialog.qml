@@ -88,6 +88,17 @@ Dialog {
         }
     }
 
+    Timer {
+        id: timerId
+    }
+
+    function delay(delayTime, cb) {
+        timerId.interval = delayTime
+        timerId.repeat = false
+        timerId.triggered.connect(cb)
+        timerId.start()
+    }
+
     function getTitle() {
         validatePasswordAttemptsCounter = 0
         if (state === "validate")
@@ -131,7 +142,14 @@ Dialog {
             stackViewId.push("qrc:/ui/SwitchboardPage.qml")
             dataStorePasswordDialogId.close()
         } else {
-            Qt.quit()
+
+            showTitledMessage(
+                        qsTr("Data Store Password"),
+                        qsTr("Open Data Store failed, password is invalid."))
+            delay(2000, function () {
+
+                Qt.quit()
+            })
         }
     }
 
