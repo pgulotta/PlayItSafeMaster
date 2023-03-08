@@ -9,7 +9,6 @@ GridView {
     cellHeight: switchboardHeight + itemMargin
     width: Math.min(model.count, switchboardColumnCount) * cellWidth
     model: AllCategories
-    anchors.left: parent.left
     anchors.leftMargin: (windowWidth + itemMargin - (cellWidth * switchboardColumnCount)) / 2
     anchors.topMargin: itemMargin
     anchors.top: parent.top

@@ -222,7 +222,10 @@ Drawer {
                     } else {
                         showTitledMessage(importTitle, importFailedMessage)
                     }
-        onRejected: importPasswordDialogId.visible = true
+        onRejected: {
+            importPasswordDialogId.state = "import"
+            importPasswordDialogId.visible = true
+        }
     }
 
     function doPdfFileCreated(pdfFilePath) {

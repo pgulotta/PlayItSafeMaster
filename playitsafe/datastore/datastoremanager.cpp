@@ -242,9 +242,9 @@ bool DataStoreManager::importDataStore( )
 bool DataStoreManager::importDataStore( const QString& password )
 {
   bool success = false;
-  QString exportedEncryptedPassword = mFileEncryptor.encryptedFilePassword();
-
+    qInfo( "DataStoreManager::importDataStore: Attempting to import data store" );
   try {
+    auto currentPassword = mFileEncryptor.encryptedFilePassword();
     clearConnection( true );
     cleanAppDataFolder( true );
     QFile::rename( mDataStoreFileNames.encryptedFileName(), mDataStoreFileNames.tempFileName() );
@@ -253,25 +253,21 @@ bool DataStoreManager::importDataStore( const QString& password )
     importFileEncryptor.setEncryptedFilePassword( password );
     success = importFileEncryptor.decrypt();
 
-    if ( success ) {
-      success = fileCopy( mImportedFile.importFilePath(), mDataStoreFileNames.encryptedFileName() );
-
-      if ( success ) {
-        mFileEncryptor.setEncryptedFilePassword( password );
-        success =  tryOpenDB();
-      }
-    }
-
-    if ( success ) {
-      qInfo( "DataStoreManager::importDataStore: Successful" );
-    } else {
+    if ( !success ) {
       qWarning( "DataStoreManager::importDataStore: Failed" );
       QFile::remove( mDataStoreFileNames.encryptedFileName() );
       QFile::rename( mDataStoreFileNames.tempFileName(), mDataStoreFileNames.encryptedFileName() );
-      mFileEncryptor.setEncryptedFilePassword( exportedEncryptedPassword );
-      tryOpenDB();
+      setDataStorePassword( currentPassword );
     }
-  } catch ( const std::exception& e ) {
+else{
+    success = fileCopy( mImportedFile.importFilePath(), mDataStoreFileNames.encryptedFileName() );
+        if (success){
+          mFileEncryptor.setEncryptedFilePassword( password );
+          success =  tryOpenDB();
+          qInfo( "DataStoreManager::importDataStore: Successful" );
+        }
+    }
+  }catch ( const std::exception& e ) {
     qWarning() << Q_FUNC_INFO << " " << e.what();
   }
 
@@ -280,8 +276,6 @@ bool DataStoreManager::importDataStore( const QString& password )
 
 bool DataStoreManager::setDataStorePassword( const QString& password )
 {
-  //qDebug() << "DataStoreManager::setDataStorePassword: isPasswordNew = " << isPasswordNew();
-  //qDebug() << "DataStoreManager::setDataStorePassword: password = " << password;
   mFileEncryptor.setEncryptedFilePassword( password );
   storeDB();
   return tryOpenDB();

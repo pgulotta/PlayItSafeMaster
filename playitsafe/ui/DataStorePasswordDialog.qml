@@ -142,12 +142,10 @@ Dialog {
             stackViewId.push("qrc:/ui/SwitchboardPage.qml")
             dataStorePasswordDialogId.close()
         } else {
-
             showTitledMessage(
                         qsTr("Data Store Password"),
                         qsTr("Open Data Store failed, password is invalid."))
             delay(2000, function () {
-
                 Qt.quit()
             })
         }
