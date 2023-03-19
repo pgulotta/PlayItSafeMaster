@@ -17,14 +17,14 @@ ListView {
     focus: true
     spacing: rectBorder
     snapMode: ListView.SnapOneItem
+    highlightMoveDuration: 5
     delegate: listViewDelegateId
 
     highlight: Rectangle {
         color: darkTextColor
         radius: rectRadius
     }
-    ScrollBar.vertical: ScrollBar {
-    }
+    ScrollBar.vertical: ScrollBar {}
 
     onEnabledChanged: {
         enabled ? opacityEnabledId.start() : opacityDisabledId.start()

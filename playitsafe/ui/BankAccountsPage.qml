@@ -203,6 +203,7 @@ Page {
                 border.width: rectBorder
                 border.color: darkTextColor
                 radius: rectRadius
+                color: fieldBackColor
                 RowLayout {
                     id: rowLayoutId
                     anchors {

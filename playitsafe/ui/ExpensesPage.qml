@@ -198,6 +198,7 @@ Page {
                 border.width: rectBorder
                 border.color: darkTextColor
                 radius: rectRadius
+                color: fieldBackColor
                 RowLayout {
                     anchors {
                         leftMargin: itemMargin
