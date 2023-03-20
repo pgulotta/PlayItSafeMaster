@@ -13,7 +13,7 @@ ListView {
     width: listViewWidth
     model: listViewModel
     visible: true
-    clip: false
+    clip: true
     focus: true
     spacing: rectBorder
     snapMode: ListView.SnapOneItem
@@ -24,7 +24,9 @@ ListView {
         color: darkTextColor
         radius: rectRadius
     }
-    ScrollBar.vertical: ScrollBar {}
+    ScrollBar.vertical: ScrollBar {
+        policy: ScrollBar.AlwaysOn | ScrollBar.SnapAlways
+    }
 
     onEnabledChanged: {
         enabled ? opacityEnabledId.start() : opacityDisabledId.start()

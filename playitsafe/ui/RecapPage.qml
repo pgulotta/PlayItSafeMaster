@@ -151,7 +151,7 @@ Page {
                 when: !itemId.ListView.isCurrentItem
                 PropertyChanges {
                     target: itemId
-                    opacity: 0.9
+                    opacity: 0.8
                 }
             }
             transitions: Transition {
@@ -171,7 +171,7 @@ Page {
                 border.width: rectBorder
                 border.color: darkTextColor
                 radius: rectRadius
-                opacity: 0.8
+                opacity: 0.7
                 color: section === qsTr(
                            "Expenses") ? categoryLiabilityColor : categoryAssetColor
                 MouseArea {
