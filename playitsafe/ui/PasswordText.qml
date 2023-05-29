@@ -9,6 +9,7 @@ Rectangle {
     property alias fieldText: textId.text
     property alias echoMode: textId.echoMode
     property alias copyButtonVisible: copyButtonId.visible
+
     property string previousText: ""
     property bool isTextRequired: false
     property bool forceActiveFocus: false
@@ -32,21 +33,19 @@ Rectangle {
         id: labelId
         text: qsTr("Password")
         width: categoryWidth * 1.25
-        topPadding: itemMargin
-        focus: false
     }
     ToolButton {
         id: copyButtonId
-        focus: false
         anchors {
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
+            topMargin: 0
             top: parent.top
-            rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
-            right: imageButtonId.left
+            rightMargin: copyButtonId.width
+            right: eyeButtonId.right
         }
         icon.source: "qrc:/images/copy.png"
-icon.color: lightTextColor
-
+        icon.color: lightTextColor
+        width: buttonImageSize
+        height: buttonImageSize
         onClicked: {
             if (fieldText === "")
                 return
@@ -58,38 +57,38 @@ icon.color: lightTextColor
         }
     }
     ToolButton {
-        id: imageButtonId
-        focus: false
+        id: eyeButtonId
         anchors {
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
+            topMargin: 0
             top: parent.top
-            rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
         }
         icon.source: "qrc:/images/eye.png"
         icon.color: lightTextColor
+        width: buttonImageSize
+        height: buttonImageSize
         onClicked: {
             if (fieldText !== "")
                 echoMode = (echoMode === TextInput.Password ? TextInput.Normal : TextInput.Password)
         }
     }
 
-    TextField {
+    TextInput {
         id: textId
+
         focus: true
         echoMode: TextInput.Password
-        font.pointSize: isSmallScreenDevice ? verySmallFontPointSize : smallFontPointSize
         color: darkTextColor
-        placeholderText: labelId.text
+
+        height: listViewDelegateHeight
         anchors {
             left: parent.left
-            leftMargin: itemMargin
+            leftMargin: itemIndent
             right: parent.right
-            rightMargin: itemMargin
+            rightMargin: itemIndent
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
         }
-
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
 
         onTextChanged: {

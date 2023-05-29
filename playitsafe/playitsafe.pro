@@ -78,7 +78,6 @@ QML_DESIGNER_IMPORT_PATH =
 ICON = Resources/icon.png
 
 android {
-    QT += androidextras
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 include(<../../../../android_openssl/openssl.pri)

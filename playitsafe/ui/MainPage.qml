@@ -15,6 +15,7 @@ ApplicationWindow {
     readonly property int animationDuration: 500
     readonly property int shortAnimationDuration: 250
     readonly property int longAnimationDuration: 1000
+    readonly property int buttonImageSize: 32
     readonly property int rectBorder: 1
     readonly property int fieldRectBorder: 4
     readonly property int verticalMargin: 4
