@@ -15,7 +15,7 @@ class QNetworkReply;
 
 class InvestmentPriceQuery : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 
 signals:
     void queryResultsRecieved();
@@ -23,9 +23,9 @@ signals:
 
 public:
     explicit InvestmentPriceQuery(QObject *parent = 0);
-    void query(const QQmlObjectListModel<Investment>&investments);
+    void query(const QQmlObjectListModel<Investment> &investments);
 
-    QList< QSharedPointer<PriceResult> >&  priceResultList()
+    QList< QSharedPointer<PriceResult> >  &priceResultList()
     {
         return mPriceResultList;
     }
@@ -35,13 +35,22 @@ public slots:
     void onNetworkReply(QNetworkReply *networkReply);
 
 private:
-    void runQuery(const QSharedPointer<PriceQuery>& investments);
+    void runQuery(const QSharedPointer<PriceQuery> &investments);
     bool shouldAutoUpdate();
     QNetworkAccessManager mNetworkAccessManager;
     QTimer mNetworkQueryTimer;
     QQueue< QSharedPointer<PriceQuery> > mPriceQueryQueue;
     QList< QSharedPointer<PriceResult> > mPriceResultList;
     int mInvestmentQueriesCount {0};
+    const QString gInvestmentPriceAPI {"https://cloud.iexapis.com/stable/stock/%1/quote?token=pk_3532d8dd6756498b9c69949b8c97b528"};
+    const QString mInvestmentPriceAPI_n {"https://apistocks.p.rapidapi.com/intraday?symbol=AMZN&interval=5min&maxreturn=1"};
+    const QString mHeaderKey{"9040eee56cmshaca32ac7f166cf6p10fe92jsn524640cd3d59"};
+    const QString mHeaderHost{"apistocks.p.rapidapi.com"};
+    //    auto request = QNetworkRequest(m_url);
+    //    request.setHeader(QNetworkRequest::KnownHeaders::ContentTypeHeader, contentTypeJson);
+    //    request.setRawHeader(authorizationToken, m_authorizationToken);
+    //   request.setRawHeader(QByteArray("Last-Modified"), QByteArray("Sun, 06 Nov 1994 08:49:37 GMT"));
+
 };
 
 struct PriceResult

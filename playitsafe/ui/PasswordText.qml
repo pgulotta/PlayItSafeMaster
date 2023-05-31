@@ -76,7 +76,6 @@ Rectangle {
     TextInput {
         id: textId
 
-        focus: true
         echoMode: TextInput.Password
         color: darkTextColor
 
