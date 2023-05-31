@@ -90,13 +90,14 @@ void InvestmentPriceQuery::runQuery(const QSharedPointer<PriceQuery> &investment
         {
             return;
         }
-
-        QString url {gInvestmentPriceAPI.arg(investmentPrice->IssuerSymbol)};
+        qInfo() << Q_FUNC_INFO << "  Symbol = " << investmentPrice->IssuerSymbol ;
+        QString url {mInvestmentPriceAPI.arg(investmentPrice->IssuerSymbol)};
         auto networkRequest = QNetworkRequest(url);
         QStringList attributes { investmentPrice->InvestmentUniqueId};
         networkRequest.setAttribute(QNetworkRequest::Attribute::User, QVariant(attributes));
+        networkRequest.setRawHeader("X-RapidAPI-Key", "9040eee56cmshaca32ac7f166cf6p10fe92jsn524640cd3d59");
+        networkRequest.setRawHeader("X-RapidAPI-Host", "apistocks.p.rapidapi.com");
         mNetworkAccessManager.get(networkRequest);
-        qInfo() << Q_FUNC_INFO << "  Symbol = " << investmentPrice->IssuerSymbol ;
     }
     catch (std::exception const &e)
     {
