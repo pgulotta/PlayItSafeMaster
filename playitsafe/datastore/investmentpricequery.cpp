@@ -91,6 +91,7 @@ void InvestmentPriceQuery::runQuery(const QSharedPointer<PriceQuery> &investment
             return;
         }
         qInfo() << Q_FUNC_INFO << "  Symbol = " << investmentPrice->IssuerSymbol ;
+
         QString url {mInvestmentPriceAPI.arg(investmentPrice->IssuerSymbol)};
         auto networkRequest = QNetworkRequest(url);
         QStringList attributes { investmentPrice->InvestmentUniqueId};
@@ -108,11 +109,7 @@ void InvestmentPriceQuery::runQuery(const QSharedPointer<PriceQuery> &investment
 void InvestmentPriceQuery::onNetworkReply(QNetworkReply *networkReply)
 {
     if (networkReply == nullptr)
-    {
         return;
-    }
-
-
 
     try
     {
@@ -125,7 +122,7 @@ void InvestmentPriceQuery::onNetworkReply(QNetworkReply *networkReply)
         }
 
         const QString uniqueId { attributes[0]};
-        const static QString lastPrice{"latestPrice"};
+        const static QString lastPrice{"Close"};
         const static QString comma{","};
         bool hasNetworkError {false};
 
@@ -137,8 +134,10 @@ void InvestmentPriceQuery::onNetworkReply(QNetworkReply *networkReply)
         else
         {
             QString reply { networkReply->readAll()};
+
             QStringView source { reply};
-            auto begIndex = source.indexOf(lastPrice) + 13;
+            auto begIndex = source.indexOf(lastPrice) + 7;
+
             auto size = source.indexOf(comma, begIndex) - begIndex;
             QStringView extractedText{ source.mid(begIndex, size)};
 

@@ -42,7 +42,6 @@ private:
     QQueue< QSharedPointer<PriceQuery> > mPriceQueryQueue;
     QList< QSharedPointer<PriceResult> > mPriceResultList;
     int mInvestmentQueriesCount {0};
-    // const QString gInvestmentPriceAPI {"https://cloud.iexapis.com/stable/stock/%1/quote?token=pk_3532d8dd6756498b9c69949b8c97b528"};
     const QString mInvestmentPriceAPI{"https://apistocks.p.rapidapi.com/intraday?symbol=%1&interval=5min&maxreturn=1"};
 
     //    auto request = QNetworkRequest(m_url);
