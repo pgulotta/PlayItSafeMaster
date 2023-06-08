@@ -26,7 +26,7 @@ Page {
 
     Component.onCompleted: {
         setCurrentBankAccount(initialIndex)
-        if (visible && category !== null) {
+        if (visible && category != null) {
             initializeToolbar(true, getformattedToolbarTitle(category.title))
         }
         hideKeyboard()
@@ -36,7 +36,7 @@ Page {
                                   initialUniqueId, AllBankAccounts)
 
     onCategoryChanged: {
-        if (category !== null) {
+        if (category != null) {
             fieldBackColor = getCategoryColor(category.group)
             initializeToolbar(true, getformattedToolbarTitle(category.title))
         }

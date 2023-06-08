@@ -86,8 +86,7 @@ Page {
                 delegate: Rectangle {
                     width: modelListViewId.width
                     implicitHeight: sectionTitleId.height
-                    color: section === qsTr(
-                               "Expenses") ? categoryLiabilityColor : categoryAssetColor
+                    color: categoryRecapColor
                     radius: rectRadius
                     border.color: darkTextColor
                     border.width: rectBorder
@@ -172,8 +171,7 @@ Page {
                 border.color: darkTextColor
                 radius: rectRadius
                 opacity: 0.7
-                color: section === qsTr(
-                           "Expenses") ? categoryLiabilityColor : categoryAssetColor
+                color: categoryHighlightColor
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
