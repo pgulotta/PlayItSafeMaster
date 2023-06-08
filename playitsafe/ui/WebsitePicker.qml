@@ -35,12 +35,11 @@ Rectangle {
         anchors {
             rightMargin: itemIndent
             right: forwardButtonId.left
-            topMargin: 0
-            top: parent.top
         }
         icon.source: "qrc:/images/www.png"
         icon.color: lightTextColor
-
+        width: buttonImageSize
+        height: buttonImageSize
         onClicked: {
             if (!allWebsites.isEmpty()) {
                 var websiteItem = allWebsites.get(currentWebsiteIndex)
@@ -60,12 +59,11 @@ Rectangle {
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
-            topMargin: 0
-            top: parent.top
         }
         icon.source: "qrc:/images/forward.png"
         icon.color: lightTextColor
-
+        width: buttonImageSize
+        height: buttonImageSize
         onClicked: {
             if (!allWebsites.isEmpty()) {
                 var websiteItem = allWebsites.get(currentWebsiteIndex)

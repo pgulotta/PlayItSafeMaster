@@ -37,8 +37,6 @@ Rectangle {
     ToolButton {
         id: copyButtonId
         anchors {
-            topMargin: 0
-            top: parent.top
             rightMargin: copyButtonId.width
             right: eyeButtonId.right
         }
@@ -59,8 +57,6 @@ Rectangle {
     ToolButton {
         id: eyeButtonId
         anchors {
-            topMargin: 0
-            top: parent.top
             right: parent.right
         }
         icon.source: "qrc:/images/eye.png"

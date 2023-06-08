@@ -34,13 +34,13 @@ Rectangle {
     ToolButton {
         id: imageButtonId
         anchors {
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
-            top: parent.top
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
         }
         icon.source: "qrc:/images/www.png"
         icon.color: lightTextColor
+        width: buttonImageSize
+        height: buttonImageSize
         onClicked: {
             if (fieldText !== "")
                 Qt.openUrlExternally(Functions.formatUrlink(fieldText))

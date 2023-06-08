@@ -63,8 +63,8 @@ Rectangle {
             right: parent.right
         }
         icon.source: "qrc:/images/date.png"
-        height: 32
-        width: 32
+        width: buttonImageSize
+        height: buttonImageSize
         icon.color: lightTextColor
         onClicked: {
             datePickerDialogId.open()
