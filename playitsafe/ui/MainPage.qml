@@ -21,7 +21,7 @@ ApplicationWindow {
     readonly property int verticalMargin: 4
     readonly property int smalltemMargin: 2
     readonly property int itemMargin: 6
-    readonly property int rectRadius: 4
+    readonly property int rectRadius: 8
     readonly property int itemIndent: 12
     readonly property int mediumMargin: 16
     readonly property int largeMargin: 24

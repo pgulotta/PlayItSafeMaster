@@ -79,7 +79,7 @@ ListView {
                                           ) == selectedDate.toDateString()
                                       && text.text
                                       && day >= 0 ? darkTextColor : 'transparent' // selected
-                        radius: 0.02 * datePickerId.height
+                        radius: rectRadius
                         opacity: !mouseAreaId.pressed ? 1 : 0.3 //  pressed state
 
                         Text {

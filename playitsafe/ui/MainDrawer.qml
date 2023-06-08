@@ -50,21 +50,18 @@ Drawer {
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: largeFontPointSize
-                    color: "#FFF7B0"
                 }
                 TitleTextDark {
                     text: qsTr("It")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: largeFontPointSize
-                    color: "#FFF6A6"
                 }
                 TitleTextDark {
                     text: qsTr("Safe")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
                     font.pointSize: largeFontPointSize
-                    color: "#FFF59D"
                 }
             }
         }
