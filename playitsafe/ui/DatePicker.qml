@@ -61,10 +61,10 @@ Rectangle {
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
-            topMargin: isSmallScreenDevice ? rectBorder : itemMargin
-            top: parent.top
         }
         icon.source: "qrc:/images/date.png"
+        height: 32
+        width: 32
         icon.color: lightTextColor
         onClicked: {
             datePickerDialogId.open()
