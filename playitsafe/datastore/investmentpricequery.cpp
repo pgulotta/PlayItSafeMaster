@@ -90,7 +90,7 @@ void InvestmentPriceQuery::runQuery(const QSharedPointer<PriceQuery> &investment
         {
             return;
         }
-        qInfo() << Q_FUNC_INFO << "  Symbol = " << investmentPrice->IssuerSymbol ;
+        qInfo() << Q_FUNC_INFO << "  Unique Id = " << investmentPrice->InvestmentUniqueId  << " << Symbol = " << investmentPrice->IssuerSymbol  << "  Unique Id = " << investmentPrice->InvestmentUniqueId;
 
         QString url {mInvestmentPriceAPI.arg(investmentPrice->IssuerSymbol)};
         auto networkRequest = QNetworkRequest(url);
