@@ -39,7 +39,7 @@ Page {
                                   initialUniqueId, AllInvestments)
 
     onCategoryChanged: {
-        if (category !== null) {
+        if (category != null) {
             fieldBackColor = getCategoryColor(category.group)
             initializeToolbar(true, getformattedToolbarTitle(category.title))
         }
@@ -160,11 +160,15 @@ Page {
                                    currentInvestment.lastPrice,
                                    currentInvestment.lastPriceDecimals)
                     inputValidator: DoubleValidator {}
-                    onEditableTextChanged: onFieldChanged(
-                                               lastPriceId.fieldText,
-                                               Functions.formattedNumeric(
-                                                   currentInvestment.lastPrice,
-                                                   currentInvestment.lastPriceDecimals))
+                    onEditableTextChanged: {
+                        onFieldChanged(lastPriceId.fieldText,
+                                       Functions.formattedNumeric(
+                                           currentInvestment.lastPrice,
+                                           currentInvestment.lastPriceDecimals))
+                        initializeToolbar(modelListViewId.enabled,
+                                          getformattedToolbarTitle(
+                                              category.title))
+                    }
                 }
                 EditableText {
                     id: nameOnAccountId
@@ -309,7 +313,7 @@ Page {
     }
 
     function assignCurrentInvestment() {
-        if (currentInvestment === null) {
+        if (currentInvestment == null) {
             setCurrentInvestment(0)
         } else {
             issuerId.fieldText = currentInvestment.issuer
@@ -416,6 +420,7 @@ Page {
     }
 
     function getformattedToolbarTitle(categoryTitle) {
+
         if (allInvestments === undefined || allInvestments.isEmpty())
             return categoryTitle
         var total = 0.00
@@ -424,6 +429,7 @@ Page {
             total += (item.shares * item.lastPrice)
         }
 
+        console.log("%%%%%%%%%%%%%  " + total)
         return category.title + ": " + Functions.formatCurrencyString(total)
     }
 }
