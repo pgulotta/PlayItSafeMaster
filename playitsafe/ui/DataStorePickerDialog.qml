@@ -15,7 +15,6 @@ FileDialog {
     folder: urlFilePrefix + downloadsPath
     title: titleText
     onAccepted: {
-        console.log("DataStorePickerDialog.onAccepted:  file = " + file)
         DataStoreManager.onFileChooserResultReceived(file.toString().replace(
                                                          urlFilePrefix, ""))
     }

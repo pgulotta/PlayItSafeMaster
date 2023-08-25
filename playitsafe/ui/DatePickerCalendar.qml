@@ -94,7 +94,7 @@ ListView {
                                 if (day < 0)
                                     ['S', 'M', 'T', 'W', 'T', 'F', 'S'][index] // Su-Sa
                                 else if (new Date(year, month,
-                                                  date).getMonth() == month)
+                                                  date).getMonth() === month)
                                     date // 1-31
                                 else
                                     ''

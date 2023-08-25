@@ -429,7 +429,6 @@ Page {
             total += (item.shares * item.lastPrice)
         }
 
-        console.log("%%%%%%%%%%%%%  " + total)
         return category.title + ": " + Functions.formatCurrencyString(total)
     }
 }

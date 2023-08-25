@@ -31,7 +31,7 @@ Rectangle {
     }
 
     Dialog {
-        id: datePickerDialogId
+        id: dateEditDialogId
         title: fieldLabel
         standardButtons: Dialog.Ok | Dialog.Cancel
         width: 250
@@ -56,18 +56,19 @@ Rectangle {
         visible: true
         topPadding: itemMargin
     }
+
     ToolButton {
-        id: imageButtonId
+        id: editButtonId
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right
         }
-        icon.source: "qrc:/images/date.png"
+        icon.source: "qrc:/images/edit.png"
         width: buttonImageSize
         height: buttonImageSize
         icon.color: lightTextColor
         onClicked: {
-            datePickerDialogId.open()
+            dateEditDialogId.open()
         }
     }
 
@@ -90,7 +91,7 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: datePickerDialogId.open()
+            onClicked: dateEditDialogId.open()
         }
     }
 
