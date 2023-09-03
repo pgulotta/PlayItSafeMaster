@@ -117,20 +117,20 @@ Page {
                 DatePicker {
                     id: issuerDatePickerId
                     fieldLabel: qsTr("Last Updated")
-                    dateSelected: currentInvestment.issueDate
+                    selectedDate: currentInvestment.issueDate
                     onDateChanged: {
-                        setIssuerDate(dateSelected)
-                        onFieldChanged(dateSelected,
+                        setIssuerDate(selectedDate)
+                        onFieldChanged(selectedDate,
                                        currentInvestment.issueDate)
                     }
                 }
                 DatePicker {
                     id: purchasedDatePickerId
                     fieldLabel: qsTr("Date Purchased")
-                    dateSelected: currentInvestment.purchaseDate
+                    selectedDate: currentInvestment.purchaseDate
                     onDateChanged: {
-                        setPurchasedDate(dateSelected)
-                        onFieldChanged(dateSelected,
+                        setPurchasedDate(selectedDate)
+                        onFieldChanged(selectedDate,
                                        currentInvestment.purchaseDate)
                     }
                 }
@@ -372,8 +372,8 @@ Page {
             currentInvestment.lastPrice = lastPriceId.fieldText
             currentInvestment.nameOnAccount = nameOnAccountId.fieldText
             currentInvestment.routingNumber = routingNumberId.fieldText
-            currentInvestment.issueDate = issuerDatePickerId.dateSelected
-            currentInvestment.purchaseDate = purchasedDatePickerId.dateSelected
+            currentInvestment.issueDate = issuerDatePickerId.selectedDate
+            currentInvestment.purchaseDate = purchasedDatePickerId.selectedDate
             currentInvestment.notes = notesId.fieldText
             currentInvestment.websiteId = websiteUrlId.currentWebsiteUniqueId
             DataStoreManager.saveItem(
@@ -392,13 +392,13 @@ Page {
     function setIssuerDate(dateValue) {
         if (isNaN(dateValue))
             dateValue = new Date()
-        issuerDatePickerId.dateSelected = dateValue
+        issuerDatePickerId.selectedDate = dateValue
     }
 
     function setPurchasedDate(dateValue) {
         if (isNaN(dateValue))
             dateValue = new Date()
-        purchasedDatePickerId.dateSelected = dateValue
+        purchasedDatePickerId.selectedDate = dateValue
     }
 
     function setCurrentInvestment(listViewIndex) {

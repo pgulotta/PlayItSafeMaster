@@ -108,10 +108,10 @@ Page {
                 DatePicker {
                     id: openDatePickerId
                     fieldLabel: qsTr("Last Updated")
-                    dateSelected: currentBankAccount.openedDate
+                    selectedDate: currentBankAccount.openedDate
                     onDateChanged: {
-                        setOpenedDate(dateSelected)
-                        onFieldChanged(dateSelected,
+                        setOpenedDate(selectedDate)
+                        onFieldChanged(selectedDate,
                                        currentBankAccount.openedDate)
                     }
                 }
@@ -341,7 +341,7 @@ Page {
             currentBankAccount.accountNumber = accountNumberId.fieldText
             currentBankAccount.routingNumber = routingNumberId.fieldText
             currentBankAccount.amount = amountId.fieldText
-            currentBankAccount.openedDate = openDatePickerId.dateSelected
+            currentBankAccount.openedDate = openDatePickerId.selectedDate
             currentBankAccount.notes = notesId.fieldText
             currentBankAccount.websiteId = websiteUrlId.currentWebsiteUniqueId
             DataStoreManager.saveItem(
@@ -360,7 +360,7 @@ Page {
     function setOpenedDate(dateValue) {
         if (isNaN(dateValue))
             dateValue = new Date()
-        openDatePickerId.dateSelected = dateValue
+        openDatePickerId.selectedDate = dateValue
     }
 
     function getformattedToolbarTitle(categoryTitle) {

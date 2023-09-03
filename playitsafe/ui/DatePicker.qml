@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
@@ -10,9 +10,10 @@ Rectangle {
     signal dateChanged(date dateChanged)
 
     property string fieldLabel
-    property var dateSelected: new Date()
+    property var selectedDate: new Date()
     property var maximumDate
     property bool isTextRequired: true
+    property date previousText: new Date()
 
     width: fieldColumnWidth
     height: textWithTitleHeight
@@ -23,11 +24,11 @@ Rectangle {
     border.color: isTextRequired ? requiredTextColor : darkTextColor
     border.width: isTextRequired ? fieldRectBorder : rectBorder
 
-    onDateSelectedChanged: {
-        if (dateSelected === undefined)
-            dateSelected = new Date()
-        else
-            textId.text = Functions.formatDate(dateSelected)
+    onSelectedDateChanged: {
+        if (selectedDate === undefined)
+            selectedDate = new Date()
+
+        textId.text = Functions.formatDate(selectedDate)
     }
 
     Dialog {
@@ -38,14 +39,52 @@ Rectangle {
         height: 250
         modal: true
         onAccepted: {
-            dateSelected = datePickerCalendarId.get()
-            dateChanged(dateSelected)
+            selectedDate = dateTextInputId.get()
+            dateChanged(selectedDate)
         }
-        onRejected: datePickerCalendarId.set(dateSelected)
-        onOpened: datePickerCalendarId.set(dateSelected)
+        onRejected: dateTextInputId.set(selectedDate)
+        onOpened: dateTextInputId.set(selectedDate)
 
-        DatePickerCalendar {
-            id: datePickerCalendarId
+        TextInput {
+            id: dateTextInputId
+
+            inputMethodHints: Qt.ImhDate
+
+            color: darkTextColor
+
+            height: listViewDelegateHeight
+            anchors {
+                left: parent.left
+                leftMargin: itemIndent
+                right: parent.right
+                rightMargin: itemIndent
+                verticalCenter: parent.verticalCenter
+                verticalCenterOffset: itemMargin * 2
+            }
+            onActiveFocusChanged: activeFocus ? selectAll() : deselect()
+
+            onTextChanged: {
+                var currentDate = new Date(text)
+                if (previousText == currentDate)
+                    return
+                dateChanged(currentDate)
+                previousText = currentDate
+                //text = Functions.formatDate(currentDate)
+            }
+
+            function get() {
+                return new Date(textId.text)
+            }
+
+            function set(dateText) {
+                previousText = new Date(dateText)
+                text = dateText
+            }
+        }
+
+        AnimationFadeIn {
+            id: fadeInTextId
+            target: textId
         }
     }
 
@@ -75,7 +114,7 @@ Rectangle {
     TextField {
         id: textId
         Layout.fillWidth: true
-        enabled: true
+        enabled: false
         readOnly: true
         font.pointSize: smallFontPointSize
         color: darkTextColor
@@ -87,11 +126,6 @@ Rectangle {
             rightMargin: itemMargin
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: dateEditDialogId.open()
         }
     }
 

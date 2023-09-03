@@ -99,10 +99,10 @@ Page {
                 DatePicker {
                     id: lastUpdatedId
                     fieldLabel: qsTr("Last Updated")
-                    dateSelected: currentRealAsset.effectiveDate
+                    selectedDate: currentRealAsset.effectiveDate
                     onDateChanged: {
-                        setEffectiveDate(dateSelected)
-                        onFieldChanged(dateSelected,
+                        setEffectiveDate(selectedDate)
+                        onFieldChanged(selectedDate,
                                        currentRealAsset.effectiveDate)
                     }
                 }
@@ -298,7 +298,7 @@ Page {
                 && valuationId.state === validDataState) {
             currentRealAsset.description = descriptionId.fieldText
             currentRealAsset.valuation = valuationId.fieldText
-            currentRealAsset.effectiveDate = lastUpdatedId.dateSelected
+            currentRealAsset.effectiveDate = lastUpdatedId.selectedDate
             currentRealAsset.notes = notesId.fieldText
             currentRealAsset.websiteId = websiteUrlId.currentWebsiteUniqueId
             DataStoreManager.saveItem(
@@ -325,7 +325,7 @@ Page {
     function setEffectiveDate(dateValue) {
         if (isNaN(dateValue))
             dateValue = new Date()
-        lastUpdatedId.dateSelected = dateValue
+        lastUpdatedId.selectedDate = dateValue
     }
 
     function getformattedToolbarTitle(categoryTitle) {

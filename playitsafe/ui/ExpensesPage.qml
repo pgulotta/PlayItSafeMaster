@@ -96,10 +96,10 @@ Page {
                 DatePicker {
                     id: nextPaymentDatePickerId
                     fieldLabel: qsTr("Payment Date")
-                    dateSelected: currentExpense.nextPaymentDate
+                    selectedDate: currentExpense.nextPaymentDate
                     onDateChanged: {
-                        setNextPaymentDate(dateSelected)
-                        onFieldChanged(dateSelected,
+                        setNextPaymentDate(selectedDate)
+                        onFieldChanged(selectedDate,
                                        currentExpense.nextPaymentDate)
                     }
                 }
@@ -319,7 +319,7 @@ Page {
             currentExpense.autoPayment = autoPaymentId.fieldText
             currentExpense.amount = amountId.fieldText
             currentExpense.nameOnAccount = nameOnAccountId.fieldText
-            currentExpense.nextPaymentDate = nextPaymentDatePickerId.dateSelected
+            currentExpense.nextPaymentDate = nextPaymentDatePickerId.selectedDate
             currentExpense.notes = notesId.fieldText
             currentExpense.websiteId = websiteUrlId.currentWebsiteUniqueId
             DataStoreManager.saveItem(SwitchboardCategory.Expense,
@@ -337,7 +337,7 @@ Page {
     function setNextPaymentDate(dateValue) {
         if (isNaN(dateValue))
             dateValue = new Date()
-        nextPaymentDatePickerId.dateSelected = dateValue
+        nextPaymentDatePickerId.selectedDate = dateValue
     }
 
     function setCurrentExpense(listViewIndex) {

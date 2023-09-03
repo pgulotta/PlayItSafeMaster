@@ -40,7 +40,6 @@
         <file>ui/DataStorePasswordDialog.qml</file>
         <file>ui/RealAssetsPage.qml</file>
         <file>ui/DatePicker.qml</file>
-        <file>ui/DatePickerCalendar.qml</file>
         <file>ui/RecapPage.qml</file>
         <file>ui/EditableText.qml</file>
         <file>ui/SelectableImage.qml</file>
