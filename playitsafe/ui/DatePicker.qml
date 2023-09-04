@@ -11,7 +11,7 @@ Rectangle {
 
     property string fieldLabel
     property var selectedDate: new Date()
-    property var maximumDate
+    //property var maximumDate
     property bool isTextRequired: true
     property date previousDateText: new Date()
 
@@ -44,8 +44,8 @@ Rectangle {
             dateChanged(selectedDate)
         }
         onRejected: dateTextInputId.set(selectedDate)
-        onOpened: dateTextInputId.set(selectedDate)
 
+        //    onOpened: dateTextInputId.set(selectedDate)
         TextInput {
             id: dateTextInputId
 
@@ -66,7 +66,8 @@ Rectangle {
 
             function set(dateText) {
                 previousDateText = dateText
-                text = text
+                dateTextInputId.text = Functions.formatDateToString(
+                            new Date(dateText))
             }
         }
 
@@ -95,6 +96,7 @@ Rectangle {
         height: buttonImageSize
         icon.color: lightTextColor
         onClicked: {
+            dateTextInputId.set(selectedDate)
             dateEditDialogId.open()
         }
     }
