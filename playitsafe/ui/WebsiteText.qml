@@ -10,7 +10,7 @@ Rectangle {
 
     property alias fieldLabel: labelId.text
     property alias fieldText: textId.text
-    property string previousText: ""
+    property string previousDateText: ""
     property alias inputValidator: textId.validator
     property bool isTextRequired: false
 
@@ -63,10 +63,10 @@ Rectangle {
 
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
         onTextChanged: {
-            if (previousText !== text) {
+            if (previousDateText !== text) {
                 editableTextChanged(text)
             }
-            previousText = text
+            previousDateText = text
         }
         AnimationFadeIn {
             id: fadeInTextId

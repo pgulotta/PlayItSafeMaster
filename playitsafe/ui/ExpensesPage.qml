@@ -215,7 +215,8 @@ Page {
                     }
                     TitleTextDark {
                         id: fieldId2
-                        text: Functions.formatDate(model.nextPaymentDate)
+                        text: Functions.formatDateToString(
+                                  model.nextPaymentDate)
                         Layout.preferredWidth: field2Width
                         Layout.fillHeight: true
                         Layout.fillWidth: true

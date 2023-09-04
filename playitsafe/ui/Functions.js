@@ -10,7 +10,7 @@ function getListIndexFromUniqueId(uniqueId, list) {
     return index
 }
 
-function formatDate(dateValue) {
+function formatDateToString(dateValue) {
     if (isNaN(dateValue))
         dateValue = new Date()
     return dateValue.toLocaleDateString(Qt.locale(), "dd MMM yyyy")

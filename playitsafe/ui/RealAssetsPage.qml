@@ -192,7 +192,7 @@ Page {
                     }
                     TitleTextDark {
                         id: fieldId2
-                        text: Functions.formatDate(model.effectiveDate)
+                        text: Functions.formatDateToString(model.effectiveDate)
                         Layout.preferredWidth: field2Width
                         Layout.fillHeight: true
                         Layout.fillWidth: true

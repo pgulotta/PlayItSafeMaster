@@ -14,7 +14,7 @@ Rectangle {
     property alias echoMode: textId.echoMode
     property alias inputValidator: textId.validator
     property bool isTextRequired: false
-    property string previousText: ""
+    property string previousDateText: ""
 
     width: fieldColumnWidth
     height: textWithTitleHeight
@@ -52,10 +52,10 @@ Rectangle {
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
 
         onTextChanged: {
-            if (previousText !== text) {
+            if (previousDateText !== text) {
                 editableTextChanged(text)
             }
-            previousText = text
+            previousDateText = text
         }
         AnimationFadeIn {
             id: fadeInTextId

@@ -13,7 +13,7 @@ Rectangle {
     property var selectedDate: new Date()
     property var maximumDate
     property bool isTextRequired: true
-    property date previousText: new Date()
+    property date previousDateText: new Date()
 
     width: fieldColumnWidth
     height: textWithTitleHeight
@@ -28,7 +28,7 @@ Rectangle {
         if (selectedDate === undefined)
             selectedDate = new Date()
 
-        textId.text = Functions.formatDate(selectedDate)
+        textId.text = Functions.formatDateToString(selectedDate)
     }
 
     Dialog {
@@ -39,7 +39,8 @@ Rectangle {
         height: 250
         modal: true
         onAccepted: {
-            selectedDate = dateTextInputId.get()
+            var acceptedDate = new Date(dateTextInputId.text)
+            selectedDate = acceptedDate
             dateChanged(selectedDate)
         }
         onRejected: dateTextInputId.set(selectedDate)
@@ -63,22 +64,9 @@ Rectangle {
             }
             onActiveFocusChanged: activeFocus ? selectAll() : deselect()
 
-            onTextChanged: {
-                var currentDate = new Date(text)
-                if (previousText == currentDate)
-                    return
-                dateChanged(currentDate)
-                previousText = currentDate
-                //text = Functions.formatDate(currentDate)
-            }
-
-            function get() {
-                return new Date(textId.text)
-            }
-
             function set(dateText) {
-                previousText = new Date(dateText)
-                text = dateText
+                previousDateText = dateText
+                text = text
             }
         }
 

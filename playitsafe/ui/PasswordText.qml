@@ -10,7 +10,7 @@ Rectangle {
     property alias echoMode: textId.echoMode
     property alias copyButtonVisible: copyButtonId.visible
 
-    property string previousText: ""
+    property string previousDateText: ""
     property bool isTextRequired: false
     property bool forceActiveFocus: false
 
@@ -87,10 +87,10 @@ Rectangle {
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
 
         onTextChanged: {
-            if (previousText !== text) {
+            if (previousDateText !== text) {
                 editableTextChanged(text)
             }
-            previousText = text
+            previousDateText = text
         }
         AnimationFadeIn {
             id: fadeInTextId
