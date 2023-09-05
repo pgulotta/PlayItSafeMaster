@@ -13,7 +13,7 @@ function getListIndexFromUniqueId(uniqueId, list) {
 function formatDateToString(dateValue) {
     if (isNaN(dateValue))
         dateValue = new Date()
-    return dateValue.toLocaleDateString(Qt.locale(), "dd MMM yyyy")
+    return dateValue.toLocaleDateString(Qt.locale(), "yyyy-MM-dd")
 }
 
 function formattedNumeric(fieldToFormat, decimalPlaces) {

@@ -45,7 +45,6 @@ Rectangle {
         }
         onRejected: dateTextInputId.set(selectedDate)
 
-        //    onOpened: dateTextInputId.set(selectedDate)
         TextInput {
             id: dateTextInputId
 
