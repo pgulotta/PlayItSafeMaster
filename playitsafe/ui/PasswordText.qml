@@ -52,6 +52,8 @@ Rectangle {
             textId.selectAll()
             textId.copy()
             textId.echoMode = currentEchoMode
+            textId.forceActiveFocus()
+            textId.deselect()
         }
     }
     ToolButton {
@@ -66,6 +68,8 @@ Rectangle {
         onClicked: {
             if (fieldText !== "")
                 echoMode = (echoMode === TextInput.Password ? TextInput.Normal : TextInput.Password)
+            textId.forceActiveFocus()
+            textId.deselect()
         }
     }
 
@@ -86,12 +90,8 @@ Rectangle {
         }
         onActiveFocusChanged: activeFocus ? selectAll() : deselect()
 
-        onTextChanged: {
-            if (previousDateText !== text) {
-                editableTextChanged(text)
-            }
-            previousDateText = text
-        }
+        onAccepted: editableTextChanged(text)
+
         AnimationFadeIn {
             id: fadeInTextId
             target: textId

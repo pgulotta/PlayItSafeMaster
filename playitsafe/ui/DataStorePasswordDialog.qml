@@ -9,7 +9,7 @@ Dialog {
 
     property bool isImportDataStore: false
     property string state: "" // "new", "import" "change" "validate"
-    property int validatePasswordAttemptsCounter: 0
+    readonly property string enterPassword: qsTr("Enter Data Store Password")
 
     visible: true
     modal: true
@@ -22,16 +22,7 @@ Dialog {
 
     standardButtons: Dialog.Cancel | Dialog.Ok
     onAccepted: {
-        if (validatePasswordAttemptsCounter > 3) {
-            if (stackViewId.currentItem == null)
-                Qt.quit()
-            else {
-                stackViewId.pop()
-            }
-        } else {
-            onPasswordChanged(passwordId.fieldText)
-            passwordId.fieldText = ""
-        }
+        onPasswordChanged(passwordId.fieldText)
     }
     onRejected: {
         if (stackViewId.currentItem == null)
@@ -40,12 +31,6 @@ Dialog {
             stackViewId.pop()
         }
     }
-
-    onOpened: {
-        validatePasswordAttemptsCounter += 1
-    }
-
-    onClosed: validatePasswordAttemptsCounter = 0
 
     Row {
         clip: true
@@ -66,23 +51,8 @@ Dialog {
                     id: passwordId
                     Layout.fillWidth: true
                     forceActiveFocus: true
-                    visible: validatePasswordAttemptsCounter < 4
-                    copyButtonVisible: false
-                }
-
-                Label {
-                    id: invalidMessagedId
-                    wrapMode: Label.Wrap
-                    color: negativeNumberColor
-                    font.pixelSize: smallFontPointSize
-                    Layout.fillWidth: true
-                    text: qsTr("Password attempts exceeds maximum. Password validation has failed.")
-                    visible: validatePasswordAttemptsCounter > 3
-                    onVisibleChanged: fadeInTextId.start()
-                    AnimationFadeIn {
-                        id: fadeInTextId
-                        target: invalidMessagedId
-                    }
+                    copyButtonVisible: true
+                    onEditableTextChanged: onAccepted()
                 }
             }
         }
@@ -100,9 +70,8 @@ Dialog {
     }
 
     function getTitle() {
-        validatePasswordAttemptsCounter = 0
         if (state === "validate")
-            return qsTr("Enter Data Store Password")
+            return enterPassword
         else if (state === "import")
             return qsTr("Enter Import Data Store Password")
         else if (state === "new")
@@ -110,7 +79,7 @@ Dialog {
         else if (state === "change")
             return qsTr("Update Data Store Password")
         else
-            return qsTr("Enter Data Store Password")
+            return enterPassword
     }
 
     function doImportPasswordChanged(password) {
@@ -163,12 +132,12 @@ Dialog {
 
     function onPasswordChanged(password) {
         if (password === undefined || password === null) {
-            dataStorePasswordDialogId.open()
+            dataStorePasswordDialogId.reject()
             return
         }
         password = password.trim()
         if (password === "") {
-            dataStorePasswordDialogId.open()
+            dataStorePasswordDialogId.reject()
             return
         }
 
