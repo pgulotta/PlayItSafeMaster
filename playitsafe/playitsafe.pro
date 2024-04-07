@@ -7,7 +7,8 @@ QT += \
     printsupport
 
 
-CONFIG += c++1z
+# CONFIG += c++1z
+CONFIG += c++2a
 
 # https://stackoverflow.com/questions/29308589/does-qt-no-debug-cause-a-definition-of-ndebug
 CONFIG(release, debug|release): DEFINES += NDEBUG
