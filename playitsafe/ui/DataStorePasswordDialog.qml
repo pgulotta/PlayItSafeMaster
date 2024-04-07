@@ -52,7 +52,7 @@ Dialog {
                     Layout.fillWidth: true
                     forceActiveFocus: true
                     copyButtonVisible: true
-                    onEditableTextChanged: onAccepted()
+                    onEditableTextChanged: accept()
                 }
             }
         }
