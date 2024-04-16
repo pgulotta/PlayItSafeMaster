@@ -29,13 +29,12 @@ Drawer {
         Rectangle {
             id: headerRectId
             width: drawerWidth
-            height: isPortraitMode ? appDrawerId.height / 4 : drawerWidth / 2
+            height: isPortraitMode ? appDrawerId.height * .25 : drawerWidth * .5
+
             Image {
                 width: parent.width
                 height: parent.height
                 fillMode: Image.Stretch
-                horizontalAlignment: Image.AlignHCenter
-                verticalAlignment: Image.AlignVCenter
                 source: "qrc:/images/drawerheader.jpg"
                 opacity: .75
             }
@@ -44,7 +43,7 @@ Drawer {
                 spacing: itemMargin
                 anchors.fill: parent
                 anchors.top: headerRectId.top
-                anchors.topMargin: headerRectId.height * .15
+                anchors.topMargin: mediumMargin
                 TitleTextDark {
                     text: qsTr("Play")
                     width: parent.width
@@ -73,16 +72,16 @@ Drawer {
             id: itemId
             width: parent.width
             height: listViewDelegateHeight
+
             Text {
                 id: textDelegateId
-                width: parent.width
+                width: parent.width - 100
                 height: listViewDelegateHeight
+                anchors.leftMargin: largeIndent
+                anchors.left: parent.left
                 font.pointSize: smallFontPointSize
                 text: model.text
                 color: darkTextColor
-                visible: !(isAndroid && text === qsTr("Export/Import Folder"))
-                anchors.left: parent.left
-                anchors.leftMargin: largeIndent
                 MouseArea {
                     hoverEnabled: true
                     anchors.fill: parent
@@ -97,7 +96,7 @@ Drawer {
         currentIndex: -1
         anchors.fill: parent
         header: drawerHeaderId
-        headerPositioning: ListView.PullBackHeader
+        clip: true
         focus: true
         snapMode: ListView.SnapToItem
         section.property: "category"
@@ -137,21 +136,18 @@ Drawer {
                 category: qsTr("Manage Data Store")
                 text: qsTr("Clear")
             }
-            ListElement {
-                category: qsTr("Manage Data Store")
-                text: qsTr("Refresh Prices")
-            }
+
             ListElement {
                 category: qsTr("Manage Data Store")
                 text: qsTr("Save as PDF")
             }
             ListElement {
-                category: qsTr("Settings")
-                text: qsTr("Investment Prices")
+                category: qsTr("Investment Prices")
+                text: qsTr("App Startup")
             }
             ListElement {
-                category: qsTr("Settings")
-                text: qsTr("Export/Import Folder")
+                category: qsTr("Investment Prices")
+                text: qsTr("Refresh Now")
             }
         }
     }
@@ -166,7 +162,7 @@ Drawer {
             loaderId.item.visible = true
             appDrawerId.close()
             break
-        case qsTr("Investment Prices"):
+        case qsTr("App Startup"):
             loaderId.source = ""
             loaderId.source = "qrc:/ui/SettingsUpdatePricesDialog.qml"
             loaderId.item.visible = true
@@ -189,7 +185,7 @@ Drawer {
         case qsTr("Export/Import Folder"):
             doSelectExportImportPath()
             break
-        case qsTr("Refresh Prices"):
+        case qsTr("Refresh Now"):
             DataStoreManager.freshInvestmentPrices()
             appDrawerId.close()
             break
