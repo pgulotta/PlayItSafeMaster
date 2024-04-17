@@ -12,7 +12,7 @@ int main( int argc, char* argv[] )
   QCoreApplication::setApplicationName( QObject::tr( "Play It Safe" ) );
   QCoreApplication::setOrganizationDomain( "twentysixapps.com" );
   QCoreApplication::setOrganizationName( QLatin1String( "26Apps" ) );
-  QCoreApplication::setApplicationVersion( "2.00" );
+  QCoreApplication::setApplicationVersion( "3.00" );
 
   QObject::connect( &app, &QGuiApplication::lastWindowClosed, &app, &QGuiApplication::quit );
 

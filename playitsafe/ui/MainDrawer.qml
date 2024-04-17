@@ -182,9 +182,6 @@ Drawer {
             loaderId.source = "qrc:/ui/SaveToPdfDialog.qml"
             loaderId.item.visible = true
             break
-        case qsTr("Export/Import Folder"):
-            doSelectExportImportPath()
-            break
         case qsTr("Refresh Now"):
             DataStoreManager.freshInvestmentPrices()
             appDrawerId.close()
@@ -240,22 +237,10 @@ Drawer {
         }
     }
 
-    function doSelectExportImportPath() {
-        if (!isAndroid) {
-            loaderId.source = "qrc:/ui/SelectDownloadsFolderDialog.qml"
-            loaderId.item.visible = true
-            appDrawerId.close()
-        }
-    }
-
     function getImportFilePath() {
-        if (isAndroid) {
-            DataStoreManager.selectDataStore()
-        } else {
-            loaderId.source = "qrc:/ui/DataStorePickerDialog.qml"
-            loaderId.item.downloadsPath = DataStoreManager.downloadsPath
-            loaderId.item.visible = true
-        }
+        loaderId.source = "qrc:/ui/DataStorePickerDialog.qml"
+        loaderId.item.downloadsPath = DataStoreManager.downloadsPath
+        loaderId.item.visible = true
     }
 
     function doExport() {

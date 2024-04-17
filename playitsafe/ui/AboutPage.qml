@@ -33,7 +33,7 @@ ScrollablePage {
         }
         HtmlText {
             text: appNameVersion + qsTr(
-                      " from 26Apps is a great tool that helps to easily manage finances by organizing savings and spending. ")
+                      " from 26Apps helps to easily manage finances by organizing savings and spending. ")
             isTitle: false
         }
         Rectangle {
@@ -73,12 +73,6 @@ ScrollablePage {
         HtmlText {
             isTitle: true
             text: qsTr("Credits")
-        }
-        HtmlText {
-            websiteLink: "https://iextrading.com/api-exhibit-a/"
-            text: qsTr("Investment data provided for free by <a href=\""
-                       + websiteLink + "\"> IEX.</a>")
-            isTitle: false
         }
         Text {
             text: " "
