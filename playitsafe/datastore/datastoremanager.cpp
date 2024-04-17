@@ -186,19 +186,6 @@ void DataStoreManager::saveToPdf(bool displayWebsitePassword)
     }
 }
 
-void DataStoreManager::selectDataStore()
-{
-    try
-    {
-        FileChooser fileChooser {mFileChooserResult};
-        fileChooser.selectFile();
-    }
-    catch (std::exception const &e)
-    {
-        qWarning() << Q_FUNC_INFO << " " << e.what();
-    }
-}
-
 bool DataStoreManager::exportDataStore(QString &exportFilePath)
 {
     QString exportedEncryptedFileName = exportDataStore();

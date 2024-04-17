@@ -8,7 +8,7 @@
 #include <QStandardPaths>
 
 // android:   /storage/emulated/0/Download
-
+// on linux:  /home/pat/Downloads/
 
 QString DownloadsPathController::downloadsPath()
 {

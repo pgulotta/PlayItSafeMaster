@@ -6,7 +6,6 @@ QT += \
     quickcontrols2 \
     printsupport
 
-
 # CONFIG += c++1z
 CONFIG += c++2a
 
@@ -77,9 +76,9 @@ QML_DESIGNER_IMPORT_PATH =
 ICON = Resources/icon.png
 
 android {
-    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+    # ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
-include(<../../../../android_openssl/openssl.pri)
+include(/home/pat/Documents/GitHub/android_openssl/openssl.pri)
 }
 
 unix:!macx: LIBS += -ldl
