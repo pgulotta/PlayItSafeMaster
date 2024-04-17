@@ -34,8 +34,7 @@ SOURCES += \
     datastore/downloadspathcontroller.cpp \
     util/sqlite3.c \
     util/qqmlobjectlistmodel.cpp \
-    datastore/datastorefilenames.cpp \
-    util/permissions.cpp
+    datastore/datastorefilenames.cpp
 
 
 HEADERS += \
@@ -69,8 +68,7 @@ HEADERS += \
     util/sqlite3.h \
     util/handle.hpp \
     model/investmentpricenotification.hpp \
-    datastore/datastorefilenames.hpp \
-    util/permissions.hpp
+    datastore/datastorefilenames.hpp
 
 RESOURCES += qml.qrc
 QML_IMPORT_PATH =
