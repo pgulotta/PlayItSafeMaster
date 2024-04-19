@@ -16,7 +16,7 @@ Dialog {
         id: messageId
         wrapMode: Label.Wrap
         color: darkTextColor
-        font.pointSize: smallFontPointSize
+       // font.pointSize: smallFontPointSize
         clip: true
         anchors {
             left: parent.left

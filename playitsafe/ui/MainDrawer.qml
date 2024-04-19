@@ -48,19 +48,19 @@ Drawer {
                     text: qsTr("Play")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: largeFontPointSize
+                    // font.pointSize: largeFontPointSize
                 }
                 TitleTextDark {
                     text: qsTr("It")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: largeFontPointSize
+                    // font.pointSize: largeFontPointSize
                 }
                 TitleTextDark {
                     text: qsTr("Safe")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    font.pointSize: largeFontPointSize
+                    // font.pointSize: largeFontPointSize
                 }
             }
         }
@@ -79,7 +79,7 @@ Drawer {
                 height: listViewDelegateHeight
                 anchors.leftMargin: largeIndent
                 anchors.left: parent.left
-                font.pointSize: smallFontPointSize
+                //  font.pointSize: smallFontPointSize
                 text: model.text
                 color: darkTextColor
                 MouseArea {
@@ -107,7 +107,7 @@ Drawer {
                 id: sectionLabelId
                 text: section
                 horizontalAlignment: Text.AlignHCenter
-                font.pointSize: smallFontPointSize
+                //  font.pointSize: smallFontPointSize
                 font.bold: true
             }
         }

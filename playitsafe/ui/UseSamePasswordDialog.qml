@@ -28,7 +28,7 @@ Dialog {
         anchors.leftMargin: itemMargin
         Text {
             id: useSamePasswordSwitchId
-            font.pointSize: smallFontPointSize
+        //    font.pointSize: smallFontPointSize
             text: qsTr("Open using last password?")
         }
     }

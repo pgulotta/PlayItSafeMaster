@@ -5,7 +5,7 @@ Label {
     id: textTitleLabelId
 
     wrapMode: Label.NoWrap
-    font.pointSize: verySmallFontPointSize
+    //  font.pointSize: verySmallFontPointSize
     topPadding: 4
     color: lightTextColor
     clip: true

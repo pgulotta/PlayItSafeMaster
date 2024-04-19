@@ -66,7 +66,7 @@ ToolBar {
             id: titleTextLightId
             text: toolbarTitle
             anchors.centerIn: parent
-            font.pointSize: smallFontPointSize
+            //  font.pointSize: smallFontPointSize
         }
     }
 }

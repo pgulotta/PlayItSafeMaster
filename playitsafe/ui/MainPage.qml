@@ -17,11 +17,11 @@ ApplicationWindow {
     readonly property int longAnimationDuration: 1000
     readonly property int buttonImageSize: 32
     readonly property int rectBorder: 1
-    readonly property int fieldRectBorder: 4
+    readonly property int fieldRectBorder: 2
     readonly property int verticalMargin: 4
     readonly property int smalltemMargin: 2
     readonly property int itemMargin: 6
-    readonly property int rectRadius: 8
+    readonly property int rectRadius: 4
     readonly property int itemIndent: 12
     readonly property int mediumMargin: 16
     readonly property int largeMargin: 24
@@ -37,8 +37,8 @@ ApplicationWindow {
     readonly property string validDataState: "valid"
     readonly property string addingNewState: "addNew"
     readonly property string routingNumberRegExp: "[0-9]{9}$"
-    readonly property string lightTextColor: "#EAE9E3"
-    readonly property string darkTextColor: "#4C4A3A"
+    readonly property string lightTextColor: "white"
+    readonly property string darkTextColor: "black"
     readonly property string categoryHighlightColor: "#D6D4C7"
     readonly property string appBackColor: "#FFF9C4"
     readonly property string appToolbarColor: "#979376"
@@ -73,11 +73,11 @@ ApplicationWindow {
     property int listViewHeight: isSmallScreenDevice ? (isPortraitMode ? windowHeight * .24 : windowHeight * .18) : windowHeight * .5
     property int fabFontPointSize: 12
     property int checkboxBoxSize: isSmallScreenDevice ? 18 : 24
-    property int verySmallFontPointSize: 12
-    property int smallFontPointSize: 16
-    property int fontPointSize: isSmallScreenDevice ? 18 : 20
-    property int largeFontPointSize: fontPointSize + 12
-    property int switchboardFontPointSize: isSmallScreenDevice ? 18 : 22
+    property int verySmallFontPointSize: 10
+    property int smallFontPointSize: 12
+    property int fontPointSize: isSmallScreenDevice ? 18 : 16
+    property int largeFontPointSize: fontPointSize + 4
+    property int switchboardFontPointSize: isSmallScreenDevice
     property int switchboardColumnCount: isPortraitMode ? 2 : 3
     property int columnRowSpacing: isSmallScreenDevice ? (isPortraitMode ? 4 : 8) : 16
     property int categoryWidth: windowWidth / switchboardColumnCount * .94

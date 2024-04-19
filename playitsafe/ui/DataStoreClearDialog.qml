@@ -32,7 +32,7 @@ Dialog {
             width: parent.width
             wrapMode: Label.Wrap
             horizontalAlignment: Qt.AlignLeft
-            font.pointSize: smallFontPointSize
+        //    font.pointSize: smallFontPointSize
             color: darkTextColor
             text: doExport ? qsTr("Data from the current data store will be exported to a new file and then cleared from current data store.  Continue?") : qsTr(
                                  "All data from the current data store will be cleared. This action cannot be undone. Continue?")

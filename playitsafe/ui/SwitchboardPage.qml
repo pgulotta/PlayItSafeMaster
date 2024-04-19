@@ -94,7 +94,7 @@ GridView {
                 }
                 Label {
                     text: model.title
-                    font.pointSize: switchboardFontPointSize
+                 //   font.pointSize: switchboardFontPointSize
                     color: darkTextColor
                     wrapMode: Label.WordWrap
                     width: categoryWidth

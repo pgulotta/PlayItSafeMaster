@@ -88,7 +88,7 @@ Rectangle {
         contentItem: Text {
             id: contentItemTextId
             text: getWebsiteTitle()
-            font.pointSize: smallFontPointSize
+           // font.pointSize: smallFontPointSize
             color: darkTextColor
             topPadding: isSmallScreenDevice ? mediumMargin : largeMargin
             padding: itemMargin
@@ -106,7 +106,7 @@ Rectangle {
         delegate: ItemDelegate {
             text: model.title
             highlighted: ListView.isCurrentItem
-            font.pointSize: smallFontPointSize
+          //  font.pointSize: smallFontPointSize
             onClicked: {
                 websiteChanged(allWebsites.get(model.index).uniqueId)
                 contentItemTextId.text = allWebsites.get(model.index).title

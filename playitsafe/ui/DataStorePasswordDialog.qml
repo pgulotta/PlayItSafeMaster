@@ -37,7 +37,7 @@ Dialog {
         anchors.fill: parent
         Column {
             id: column
-            spacing: largeMargin
+
             width: parent.width
             RowLayout {
                 id: rowLayoutId
@@ -73,7 +73,7 @@ Dialog {
         if (state === "validate")
             return enterPassword
         else if (state === "import")
-            return qsTr("Enter Import Data Store Password")
+            return qsTr("Data Store Import")
         else if (state === "new")
             return qsTr("Create New Data Store Password")
         else if (state === "change")

@@ -33,7 +33,7 @@ Dialog {
         anchors.leftMargin: itemMargin
         Switch {
             id: autoUpdatePricesSwitchId
-            font.pointSize: smallFontPointSize
+          //  font.pointSize: smallFontPointSize
             text: qsTr("On startup, update prices?")
             checked: settingsId.autoUpdateInvestmentPrices
         }

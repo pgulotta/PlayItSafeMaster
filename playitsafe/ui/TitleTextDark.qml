@@ -5,7 +5,7 @@ Label {
     id: textTitleLabelId
 
     wrapMode: Label.NoWrap
-    font.pointSize: smallFontPointSize
+    //    font.pointSize: smallFontPointSize
     color: darkTextColor
     clip: true
     elide: Qt.ElideRight

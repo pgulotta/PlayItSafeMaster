@@ -12,10 +12,11 @@ Page {
     id: recapPageId
     objectName: "RecapPage"
 
-    property real field1Width: width * .4
-    property real field2Width: width * .3
-    property real amountWidth: width * .15
-    property real checkboxWidth: width * .1
+    property real field1Width: width * 0.3
+    property real field2Width: width * 0.4
+    property real amountWidth: width * 0.15
+    property real checkboxWidth: width * 0.1
+
     property real sectionTextHeight: toolbarHeight * .8
     readonly property int animationDeltaX: 3
     property alias recapList: modelListViewId.listViewModel
@@ -73,7 +74,7 @@ Page {
                 TitleTextDark {
                     id: summaryTotalId
                     anchors.centerIn: parent
-                    font.pointSize: fontPointSize + 8
+                    //   font.pointSize: largeFontPointSize
                     text: Functions.formatCurrencyString(summaryTotal)
                     color: summaryTotal < 0 ? negativeNumberColor : darkTextColor
                 }
@@ -170,7 +171,7 @@ Page {
                 border.width: rectBorder
                 border.color: darkTextColor
                 radius: rectRadius
-                opacity: 0.7
+                opacity: 0.8
                 color: categoryHighlightColor
                 MouseArea {
                     anchors.fill: parent

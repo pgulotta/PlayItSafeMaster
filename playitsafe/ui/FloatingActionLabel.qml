@@ -23,6 +23,6 @@ Rectangle {
         elide: Text.ElideRight
         width: fabLabelId.width
         padding: 8
-        font.pointSize: fabFontPointSize
+      //  font.pointSize: fabFontPointSize
     }
 }

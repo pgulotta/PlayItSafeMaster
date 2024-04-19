@@ -20,7 +20,7 @@ Button {
         label: Text {
             text: "   +   "
             color: textColor
-            font.pointSize: smallFontPointSize
+            //  font.pointSize: smallFontPointSize
             font.bold: true
             anchors.top: parent.top
         }

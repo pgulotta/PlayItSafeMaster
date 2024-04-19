@@ -79,6 +79,12 @@ android {
     # ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 include(/home/pat/Documents/GitHub/android_openssl/openssl.pri)
+# DISTFILES += \
+#    android/AndroidManifest.xml \
+#    android/res/values/libs.xml \
+#    android/res/drawable-hdpi/icon.png  \
+#    android/res/drawable-ldpi/icon.png  \
+#    android/res/drawable-mdpi/icon.png  \
 }
 
 unix:!macx: LIBS += -ldl
@@ -113,4 +119,6 @@ message(TEST_SOURCE_DIR = $$TEST_SOURCE_DIR)
 message(GOOGLETEST_DIR = $$GOOGLETEST_DIR)
 message(ANDROID_EXTRA_LIBS = $$ANDROID_EXTRA_LIBS)
 message(****  PlayItSafe  ****)
+
+
 

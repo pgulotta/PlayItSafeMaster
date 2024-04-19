@@ -30,7 +30,7 @@ Dialog {
         anchors.leftMargin: itemMargin
         Switch {
             id: includePasswordsSwitchId
-            font.pointSize: smallFontPointSize
+          //  font.pointSize: smallFontPointSize
             text: qsTr("Include websites' passwords?")
             checked: false
         }

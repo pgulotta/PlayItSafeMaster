@@ -37,7 +37,7 @@ Rectangle {
     TextField {
         id: textId
         Layout.fillWidth: true
-        font.pointSize: smallFontPointSize
+      //  font.pointSize: smallFontPointSize
         color: darkTextColor
         placeholderText: fieldLabel
         anchors {
