@@ -44,23 +44,29 @@ Drawer {
                 anchors.fill: parent
                 anchors.top: headerRectId.top
                 anchors.topMargin: mediumMargin
+                Item {
+                    id: fillerId
+                    height: toolbarHeight
+                    width: parent.width
+                    visible: true
+                }
                 TitleTextDark {
                     text: qsTr("Play")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    // font.pointSize: largeFontPointSize
+                    font.pointSize: largeFontPointSize
                 }
                 TitleTextDark {
                     text: qsTr("It")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    // font.pointSize: largeFontPointSize
+                    font.pointSize: largeFontPointSize
                 }
                 TitleTextDark {
                     text: qsTr("Safe")
                     width: parent.width
                     horizontalAlignment: Text.AlignHCenter
-                    // font.pointSize: largeFontPointSize
+                    font.pointSize: largeFontPointSize
                 }
             }
         }

@@ -59,7 +59,6 @@ ApplicationWindow {
     readonly property string appName: SwitchboardManager.appName
     readonly property string appNameVersion: SwitchboardManager.appNameVersion
     readonly property date defaultDate: new Date()
-    readonly property string toolbarIcon: "qrc:/images/menu.png"
     readonly property bool isSmallScreenDevice: Screen.devicePixelRatio >= 2
     property string toolbarTitle: SwitchboardManager.appName
     property bool isPortraitMode: Screen.height > Screen.width
@@ -85,7 +84,7 @@ ApplicationWindow {
     property int drawerImageHeight: categoryHeight * 0.5
     property int fieldColumnWidth: isPortraitMode ? windowWidth * 0.475 : windowWidth * .315
     property int listViewWidth: isPortraitMode ? rootId.width * .96 : rootId.width
-                                                 - (4 * itemMargin)
+    property string toolbarIcon: "qrc:/images/menu.png" - (4 * itemMargin)
 
     height: windowHeight
     width: windowWidth
