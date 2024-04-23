@@ -80,9 +80,9 @@ ApplicationWindow {
     property int switchboardFontPointSize: isSmallScreenDevice
     property int switchboardColumnCount: isPortraitMode ? 2 : 3
     property int columnRowSpacing: isSmallScreenDevice ? (isPortraitMode ? 4 : 8) : 16
-    property int categoryWidth: windowWidth / switchboardColumnCount * .94
-    property int categoryHeight: isPortraitMode ? categoryWidth * 1.5 : categoryWidth * 1.6
-    property int switchboardHeight: isPortraitMode ? categoryWidth * 1.2 : categoryWidth * 1.2
+    property int categoryWidth: windowWidth / (1 + switchboardColumnCount)
+    property int categoryHeight: isPortraitMode ? categoryWidth + 1.5 :categoryWidth
+    property int switchboardHeight: categoryHeight
     property int drawerImageHeight: categoryHeight * 0.5
     property int fieldColumnWidth: isPortraitMode ? windowWidth * 0.475 : windowWidth * .315
     property int listViewWidth: isPortraitMode ? rootId.width * .96 : rootId.width

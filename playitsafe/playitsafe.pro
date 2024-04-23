@@ -1,6 +1,7 @@
 TEMPLATE = app
 
 QT += \
+    core   \
     qml \
     quick \
     quickcontrols2 \
