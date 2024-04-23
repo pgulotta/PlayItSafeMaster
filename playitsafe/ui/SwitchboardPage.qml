@@ -6,12 +6,16 @@ GridView {
     objectName: "SwitchboardPage"
 
     cellWidth: categoryWidth + itemMargin
-    cellHeight: switchboardHeight + itemMargin
+    cellHeight: categoryHeight + itemMargin
     width: Math.min(model.count, switchboardColumnCount) * cellWidth
+    contentHeight: windowHeight
     model: AllCategories
-    anchors.leftMargin: (windowWidth + itemMargin - (cellWidth * switchboardColumnCount)) / 2
-    anchors.topMargin: itemMargin
-    anchors.top: parent.top
+
+    anchors.verticalCenterOffset: toolbarHeight
+    anchors.horizontalCenterOffset: itemMargin
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+
     opacity: 0
 
     Component.onCompleted: state = "opening"
@@ -33,7 +37,7 @@ GridView {
         Rectangle {
             id: gridViewDelegateId
             width: categoryWidth
-            height: switchboardHeight
+            height: categoryHeight
             visible: true
             color: getCategoryColor(model.group)
             radius: rectRadius
@@ -81,7 +85,6 @@ GridView {
             Column {
                 id: columnDelegateId
                 width: parent.width
-                //  spacing: columnRowSpacing
                 anchors.fill: parent
                 anchors.topMargin: columnRowSpacing
                 anchors.bottomMargin: columnRowSpacing
@@ -94,7 +97,7 @@ GridView {
                 }
                 Label {
                     text: model.title
-                 //   font.pointSize: switchboardFontPointSize
+                    //   font.pointSize: switchboardFontPointSize
                     color: darkTextColor
                     wrapMode: Label.WordWrap
                     width: categoryWidth

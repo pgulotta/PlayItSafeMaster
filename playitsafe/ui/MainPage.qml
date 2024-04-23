@@ -59,10 +59,11 @@ ApplicationWindow {
     readonly property string appName: SwitchboardManager.appName
     readonly property string appNameVersion: SwitchboardManager.appNameVersion
     readonly property date defaultDate: new Date()
+    readonly property string toolbarIcon: "qrc:/images/menu.png"
     readonly property bool isSmallScreenDevice: Screen.devicePixelRatio >= 2
     property string toolbarTitle: SwitchboardManager.appName
     property bool isPortraitMode: Screen.height > Screen.width
-    property string toolbarIcon: "qrc:/images/menu.png"
+    property int switchboardColumnCount: isPortraitMode ? 2 : 3
     property int windowHeight: isAndroid ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .8
     property int windowWidth: isAndroid ? Screen.width : Screen.width * .5
     property int toolbarHeight: isSmallScreenDevice ? 36 : 50
@@ -78,11 +79,9 @@ ApplicationWindow {
     property int fontPointSize: isSmallScreenDevice ? 18 : 16
     property int largeFontPointSize: fontPointSize + 4
     property int switchboardFontPointSize: isSmallScreenDevice
-    property int switchboardColumnCount: isPortraitMode ? 2 : 3
     property int columnRowSpacing: isSmallScreenDevice ? (isPortraitMode ? 4 : 8) : 16
-    property int categoryWidth: windowWidth / (1 + switchboardColumnCount)
-    property int categoryHeight: isPortraitMode ? categoryWidth + 1.5 :categoryWidth
-    property int switchboardHeight: categoryHeight
+    property int categoryWidth: (windowWidth / switchboardColumnCount) * 0.8
+    property int categoryHeight: categoryWidth * 1.3
     property int drawerImageHeight: categoryHeight * 0.5
     property int fieldColumnWidth: isPortraitMode ? windowWidth * 0.475 : windowWidth * .315
     property int listViewWidth: isPortraitMode ? rootId.width * .96 : rootId.width
@@ -92,6 +91,8 @@ ApplicationWindow {
     width: windowWidth
     visible: true
     color: appBackColor
+
+    onWidthChanged: isPortraitMode = Screen.height > Screen.width
 
     header: AppToolbar {
         id: appToolbarId
