@@ -70,6 +70,7 @@ Page {
                 spacing: itemMargin
                 ModelListView {
                     id: modelListViewId
+                    width: parent.width
                     height: listViewHeight
                     listViewModel: WebsitesWithoutNone
                     listViewDelegate: listViewDelegateId

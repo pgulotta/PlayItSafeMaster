@@ -78,6 +78,7 @@ Page {
                     id: modelListViewId
                     listViewModel: AllExpenses
                     listViewDelegate: listViewDelegateId
+                    width: parent.width
                     onCurrentIndexChanged: setCurrentExpense(allExpensesIndex)
                 }
                 Item {
@@ -154,7 +155,7 @@ Page {
                     id: websiteUrlId
                     fieldLabel: qsTr("Website")
                     currentWebsiteUniqueId: currentExpense.websiteId
-                    width: listViewWidth
+                    width: parent.width
                     onWebsiteChanged: {
                         onFieldChanged(websiteUniqueId,
                                        currentExpense.websiteId)

@@ -76,6 +76,7 @@ Page {
 
                 ModelListView {
                     id: modelListViewId
+                    width: parent.width
                     listViewModel: AllRealAssets
                     listViewDelegate: listViewDelegateId
                     onCurrentIndexChanged: setcurrentRealAsset(
@@ -89,7 +90,7 @@ Page {
                 EditableText {
                     id: descriptionId
                     isTextRequired: true
-                    width: listViewWidth
+                    width: parent.width
                     fieldLabel: qsTr("Description")
                     fieldText: currentRealAsset.description
                     onEditableTextChanged: onFieldChanged(
@@ -121,7 +122,7 @@ Page {
                     id: notesId
                     fieldLabel: qsTr("Notes")
                     fieldText: currentRealAsset.notes
-                    width: websiteUrlId.width
+                    width: parent.width
                     onEditableTextChanged: onFieldChanged(
                                                notesId.fieldText,
                                                currentRealAsset.notes)
@@ -130,7 +131,7 @@ Page {
                     id: websiteUrlId
                     fieldLabel: qsTr("Website")
                     currentWebsiteUniqueId: currentRealAsset.websiteId
-                    width: listViewWidth
+                    width: parent.width
                     onWebsiteChanged: {
                         onFieldChanged(websiteUniqueId,
                                        currentRealAsset.websiteId)

@@ -85,6 +85,7 @@ Page {
 
                 ModelListView {
                     id: modelListViewId
+                    width: parent.width
                     listViewModel: AllInvestments
                     listViewDelegate: listViewDelegateId
                     onCurrentIndexChanged: setCurrentInvestment(
@@ -192,7 +193,7 @@ Page {
                     id: notesId
                     fieldLabel: qsTr("Notes")
                     fieldText: currentInvestment.notes
-                    width: websiteUrlId.width
+                    width: parent.width
                     onEditableTextChanged: onFieldChanged(
                                                notesId.fieldText,
                                                currentInvestment.notes)
@@ -201,7 +202,7 @@ Page {
                     id: websiteUrlId
                     fieldLabel: qsTr("Website")
                     currentWebsiteUniqueId: currentInvestment.websiteId
-                    width: listViewWidth
+                    width: notesId.width
                     onWebsiteChanged: {
                         onFieldChanged(websiteUniqueId,
                                        currentInvestment.websiteId)

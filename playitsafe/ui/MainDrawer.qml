@@ -76,7 +76,7 @@ Drawer {
         id: itemDelegateId
         Item {
             id: itemId
-            width: parent.width
+            width: drawerWidth
             height: listViewDelegateHeight
 
             Text {

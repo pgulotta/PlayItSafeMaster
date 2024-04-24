@@ -77,6 +77,7 @@ Page {
                 ModelListView {
                     id: modelListViewId
                     listViewModel: AllBankAccounts
+                    width: parent.width
                     focus: true
                     listViewDelegate: listViewDelegateId
                     onCurrentIndexChanged: setCurrentBankAccount(
@@ -149,7 +150,7 @@ Page {
                     id: notesId
                     fieldLabel: qsTr("Notes")
                     fieldText: currentBankAccount.notes
-                    width: listViewWidth
+                    width: parent.width
                     onEditableTextChanged: onFieldChanged(
                                                notesId.fieldText,
                                                currentBankAccount.notes)
