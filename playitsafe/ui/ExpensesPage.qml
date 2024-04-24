@@ -154,7 +154,7 @@ Page {
                     id: websiteUrlId
                     fieldLabel: qsTr("Website")
                     currentWebsiteUniqueId: currentExpense.websiteId
-                    width: isPortraitMode ? listViewWidth : fieldColumnWidth * 1.52
+                    width: listViewWidth
                     onWebsiteChanged: {
                         onFieldChanged(websiteUniqueId,
                                        currentExpense.websiteId)

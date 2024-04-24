@@ -64,10 +64,11 @@ ApplicationWindow {
     property bool isPortraitMode: Screen.height > Screen.width
     property int switchboardColumnCount: isPortraitMode ? 2 : 3
     property int windowHeight: isAndroid ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .8
-    property int windowWidth: isAndroid ? Screen.width : Screen.width * .5
+    property int windowWidth: isAndroid ? Screen.width : Screen.width * .4
     property int toolbarHeight: isSmallScreenDevice ? 36 : 50
     property int listViewDelegateHeight: isSmallScreenDevice ? 32 : 36
     property int drawerWidth: isPortraitMode ? rootId.width * .75 : rootId.width * .4
+    property int listViewWidth: windowWidth * .96
     property int textWithTitleHeight: isSmallScreenDevice ? toolbarHeight
                                                             * 1.6 : toolbarHeight * 1.7
     property int listViewHeight: isSmallScreenDevice ? (isPortraitMode ? windowHeight * .24 : windowHeight * .18) : windowHeight * .5
@@ -83,8 +84,7 @@ ApplicationWindow {
     property int categoryHeight: categoryWidth * 1.3
     property int drawerImageHeight: categoryHeight * 0.5
     property int fieldColumnWidth: isPortraitMode ? windowWidth * 0.475 : windowWidth * .315
-    property int listViewWidth: isPortraitMode ? rootId.width * .96 : rootId.width
-    property string toolbarIcon: "qrc:/images/menu.png" - (4 * itemMargin)
+    property string toolbarIcon: "qrc:/images/menu.png"
 
     height: windowHeight
     width: windowWidth

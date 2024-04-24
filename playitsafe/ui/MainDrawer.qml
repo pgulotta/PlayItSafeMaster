@@ -113,7 +113,6 @@ Drawer {
                 id: sectionLabelId
                 text: section
                 horizontalAlignment: Text.AlignHCenter
-                //  font.pointSize: smallFontPointSize
                 font.bold: true
             }
         }
@@ -155,6 +154,14 @@ Drawer {
                 category: qsTr("Investment Prices")
                 text: qsTr("Refresh Now")
             }
+            ListElement {
+                category: qsTr("Close")
+                text: qsTr("App Drawer")
+            }
+            ListElement {
+                category: qsTr("Close")
+                text: qsTr("App Exit")
+            }
         }
     }
 
@@ -195,6 +202,12 @@ Drawer {
         case qsTr("About"):
             stackViewId.push("qrc:/ui/AboutPage.qml")
             appDrawerId.close()
+            break
+        case qsTr("App Drawer"):
+            appDrawerId.close()
+            break
+        case qsTr("App Exit"):
+            Qt.quit()
             break
         default:
             console.assert("Invalid unsupported setting")

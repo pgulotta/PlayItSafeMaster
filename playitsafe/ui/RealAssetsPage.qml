@@ -89,7 +89,7 @@ Page {
                 EditableText {
                     id: descriptionId
                     isTextRequired: true
-                    width: isPortraitMode ? listViewWidth : fieldColumnWidth
+                    width: listViewWidth
                     fieldLabel: qsTr("Description")
                     fieldText: currentRealAsset.description
                     onEditableTextChanged: onFieldChanged(
@@ -130,7 +130,7 @@ Page {
                     id: websiteUrlId
                     fieldLabel: qsTr("Website")
                     currentWebsiteUniqueId: currentRealAsset.websiteId
-                    width: isPortraitMode ? listViewWidth : fieldColumnWidth * 1.51
+                    width: listViewWidth
                     onWebsiteChanged: {
                         onFieldChanged(websiteUniqueId,
                                        currentRealAsset.websiteId)

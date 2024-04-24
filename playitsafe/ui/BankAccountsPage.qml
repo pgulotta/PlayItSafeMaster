@@ -149,7 +149,7 @@ Page {
                     id: notesId
                     fieldLabel: qsTr("Notes")
                     fieldText: currentBankAccount.notes
-                    width: isPortraitMode ? listViewWidth : listViewWidth * 0.485
+                    width: listViewWidth
                     onEditableTextChanged: onFieldChanged(
                                                notesId.fieldText,
                                                currentBankAccount.notes)
