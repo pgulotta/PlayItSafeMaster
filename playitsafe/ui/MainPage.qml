@@ -68,10 +68,8 @@ ApplicationWindow {
     property int toolbarHeight: isSmallScreenDevice ? 36 : 50
     property int listViewDelegateHeight: isSmallScreenDevice ? 32 : 36
     property int drawerWidth: isPortraitMode ? rootId.width * .75 : rootId.width * .4
-    property int listViewWidth: windowWidth * .96
     property int textWithTitleHeight: isSmallScreenDevice ? toolbarHeight
                                                             * 1.6 : toolbarHeight * 1.7
-    property int listViewHeight: isSmallScreenDevice ? (isPortraitMode ? windowHeight * .24 : windowHeight * .18) : windowHeight * .5
     property int fabFontPointSize: 12
     property int checkboxBoxSize: isSmallScreenDevice ? 18 : 24
     property int verySmallFontPointSize: 10

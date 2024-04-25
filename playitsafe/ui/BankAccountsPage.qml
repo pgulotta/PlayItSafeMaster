@@ -78,6 +78,7 @@ Page {
                     id: modelListViewId
                     listViewModel: AllBankAccounts
                     width: parent.width
+                    height: windowHeight * 0.2
                     focus: true
                     listViewDelegate: listViewDelegateId
                     onCurrentIndexChanged: setCurrentBankAccount(

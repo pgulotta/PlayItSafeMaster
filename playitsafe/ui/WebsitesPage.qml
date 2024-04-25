@@ -71,7 +71,6 @@ Page {
                 ModelListView {
                     id: modelListViewId
                     width: parent.width
-                    height: listViewHeight
                     listViewModel: WebsitesWithoutNone
                     listViewDelegate: listViewDelegateId
                     onCurrentIndexChanged: setcurrentWebsite(allWebstesIndex)

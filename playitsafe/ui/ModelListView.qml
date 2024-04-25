@@ -9,8 +9,9 @@ ListView {
     property alias listViewCurrentIndex: listViewId.currentIndex
     property alias listViewDelegate: listViewId.delegate
 
-    height: listViewHeight
-    width: listViewWidth
+    width: windowWidth * .96
+    height: windowHeight * 0.5
+
     model: listViewModel
     visible: true
     clip: true
