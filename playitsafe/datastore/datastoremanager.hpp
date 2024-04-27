@@ -8,7 +8,6 @@
 #include "filechooserresultnotification.hpp"
 #include "filechooserresult.hpp"
 #include "fileencryptor.hpp"
-#include "downloadspathcontroller.hpp"
 #include "datastorefilenames.hpp"
 #include "../model/common.hpp"
 #include "../model/investmentpricenotification.hpp"
@@ -36,11 +35,6 @@ public slots:
     void onFileChooserResultReceived(const QString &path);
     void onInvestmentNetworkErrorOccurred();
     void onInvestmentResultsReceived();
-    static void setDownloadsPath(const QString &downloadsPath)
-    {
-        DownloadsPathController::setDownloadsPath(downloadsPath);
-    }
-
 
 signals:
 
@@ -102,10 +96,7 @@ public:
         return mDataAccessAdapter;
     }
 
-    QString downloadsPath() const
-    {
-        return DownloadsPathController::downloadsPath();
-    }
+    QString downloadsPath() const { return DataStoreFileNames::DownloadsFolder; }
 
 private:
     bool createDB(const QString &dbFileName);

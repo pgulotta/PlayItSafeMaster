@@ -9,8 +9,12 @@ import PdfCreatedNotification
 Drawer {
     id: appDrawerId
     objectName: "MainDrawer"
+
     width: drawerWidth
     height: rootId.height
+
+    readonly property string notSupportedTitle: qsTr("Not Supported")
+    readonly property string notSupportedMessage: qsTr("Feature not yet supported on Android")
 
     ImportFileNotification {
         id: importFileId
@@ -42,7 +46,6 @@ Drawer {
                 width: parent.width
                 spacing: itemMargin
                 anchors.fill: parent
-                anchors.top: headerRectId.top
                 anchors.topMargin: mediumMargin
                 Item {
                     id: fillerId
@@ -85,7 +88,6 @@ Drawer {
                 height: listViewDelegateHeight
                 anchors.leftMargin: largeIndent
                 anchors.left: parent.left
-                //  font.pointSize: smallFontPointSize
                 text: model.text
                 color: darkTextColor
                 MouseArea {
@@ -131,7 +133,7 @@ Drawer {
             }
             ListElement {
                 category: qsTr("Manage Data Store")
-                text: qsTr("Export")
+                text: qsTr("Clear")
             }
             ListElement {
                 category: qsTr("Manage Data Store")
@@ -139,9 +141,8 @@ Drawer {
             }
             ListElement {
                 category: qsTr("Manage Data Store")
-                text: qsTr("Clear")
+                text: qsTr("Export")
             }
-
             ListElement {
                 category: qsTr("Manage Data Store")
                 text: qsTr("Save as PDF")
@@ -192,8 +193,7 @@ Drawer {
             getImportFilePath()
             break
         case qsTr("Save as PDF"):
-            loaderId.source = "qrc:/ui/SaveToPdfDialog.qml"
-            loaderId.item.visible = true
+            doSaveAsPDF()
             break
         case qsTr("Refresh Now"):
             DataStoreManager.freshInvestmentPrices()
@@ -223,8 +223,8 @@ Drawer {
         visible: false
     }
 
-    UseSamePasswordDialog {
-        id: useSamePasswordDialogId
+    ImportDatastoreDialog {
+        id: importDatastoreDialogId
         visible: false
         onAccepted: if (DataStoreManager.importDataStore()) {
                         showTitledMessage(importTitle, importSuccessfulMessage)
@@ -234,6 +234,14 @@ Drawer {
         onRejected: {
             importPasswordDialogId.state = "import"
             importPasswordDialogId.visible = true
+        }
+    }
+
+    function doSaveAsPDF() {
+        if (isAndroid) {
+            showTitledMessage(notSupportedTitle, notSupportedMessage)
+        } else {
+            loaderId.source = "qrc:/ui/SaveToPdfDialog.qml"
         }
     }
 
@@ -252,24 +260,29 @@ Drawer {
                         importTitle, qsTr(
                             "Data Store was not imported. The selected Data Store path cannot be resolved."))
         } else {
-            useSamePasswordDialogId.visible = true
+            importDatastoreDialogId.visible = true
         }
     }
 
     function getImportFilePath() {
         loaderId.source = "qrc:/ui/DataStorePickerDialog.qml"
         loaderId.item.downloadsPath = DataStoreManager.downloadsPath
+        console.log("MainDrawer.getImportFilePath=" + loaderId.item.downloadsPath)
         loaderId.item.visible = true
     }
 
     function doExport() {
-        var filePath = DataStoreManager.exportDataStore()
-        if (filePath === "") {
-            showTitledMessage(qsTr("Export Unsuccessful"),
-                              qsTr("Failed to export Data Store."))
+        if (isAndroid) {
+            showTitledMessage(notSupportedTitle, notSupportedMessage)
         } else {
-            showTitledMessage(qsTr("Export Successful"),
-                              qsTr("Exported to: \n" + filePath))
+            var filePath = DataStoreManager.exportDataStore()
+            if (filePath === "") {
+                showTitledMessage(qsTr("Export Unsuccessful"),
+                                  qsTr("Failed to export Data Store."))
+            } else {
+                showTitledMessage(qsTr("Export Successful"),
+                                  qsTr("Exported to: \n" + filePath))
+            }
         }
         appDrawerId.close()
     }

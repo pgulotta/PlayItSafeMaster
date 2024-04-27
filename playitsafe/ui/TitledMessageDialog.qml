@@ -16,7 +16,6 @@ Dialog {
         id: messageId
         wrapMode: Label.Wrap
         color: darkTextColor
-       // font.pointSize: smallFontPointSize
         clip: true
         anchors {
             left: parent.left
@@ -28,7 +27,7 @@ Dialog {
 
     Timer {
         id: closeMessageDialogTimer
-        interval: 2500
+        interval: 3000
         repeat: false
         running: false
         onTriggered: messageDialogId.close()

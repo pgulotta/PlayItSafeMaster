@@ -15,7 +15,7 @@ Dialog {
     parent: ApplicationWindow.overlay
     x: (parent.width - width) * .5
     y: (parent.height - height) * .5
-    contentHeight: textWithTitleHeight
+    height: dialogHeight
     standardButtons: Dialog.Cancel | Dialog.Ok
     onAccepted: settingsId.autoUpdateInvestmentPrices = autoUpdatePricesSwitchId.checked
     onRejected: close()
@@ -33,7 +33,7 @@ Dialog {
         anchors.leftMargin: itemMargin
         Switch {
             id: autoUpdatePricesSwitchId
-          //  font.pointSize: smallFontPointSize
+            //  font.pointSize: smallFontPointSize
             text: qsTr("On startup, update prices?")
             checked: settingsId.autoUpdateInvestmentPrices
         }

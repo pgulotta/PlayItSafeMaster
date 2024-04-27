@@ -2,7 +2,6 @@
 #include <QQuickStyle>
 #include "initializer.hpp"
 #include "datastore/fileencryptor.hpp"
-#include "datastore/downloadspathcontroller.hpp"
 
 int main( int argc, char* argv[] )
 {
@@ -17,7 +16,6 @@ int main( int argc, char* argv[] )
 
   DataStoreManager mDataStoreManager;
   FileEncryptor::initialize( );
-  DownloadsPathController::initAppDownloadFolder();
-  Initializer initializer( mDataStoreManager );
+  Initializer initializer(mDataStoreManager);
   app.exec();
 }

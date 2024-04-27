@@ -16,9 +16,8 @@ Dialog {
     parent: ApplicationWindow.overlay
     x: (parent.width - width) * .5
     y: (parent.height - height) * .5
-    contentHeight: textWithTitleHeight
+    contentHeight: textWithTitleHeight + toolbarHeight
     standardButtons: Dialog.Cancel | Dialog.Ok
-
     onAccepted: DataStoreManager.saveToPdf(includePasswords)
     onRejected: close()
 
@@ -28,11 +27,12 @@ Dialog {
         anchors.right: parent.right
         anchors.left: parent.right
         anchors.leftMargin: itemMargin
+
         Switch {
             id: includePasswordsSwitchId
-          //  font.pointSize: smallFontPointSize
             text: qsTr("Include websites' passwords?")
             checked: false
+            Layout.fillWidth: true
         }
     }
 }

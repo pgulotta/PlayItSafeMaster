@@ -11,7 +11,6 @@ Rectangle {
 
     property string fieldLabel
     property var selectedDate: new Date()
-    //property var maximumDate
     property bool isTextRequired: true
     property date previousDateText: new Date()
 
@@ -36,23 +35,24 @@ Rectangle {
         title: fieldLabel
         standardButtons: Dialog.Ok | Dialog.Cancel
         width: 250
-        height: 250
+        height: shortDialogHeight
         modal: true
+
         onAccepted: {
             var acceptedDate = new Date(dateTextInputId.text)
             selectedDate = acceptedDate
             dateChanged(selectedDate)
         }
+
         onRejected: dateTextInputId.set(selectedDate)
 
         TextInput {
             id: dateTextInputId
-
+            height: listViewDelegateHeight
             inputMethodHints: Qt.ImhDate
-
+            focus: true
             color: darkTextColor
 
-            height: listViewDelegateHeight
             anchors {
                 left: parent.left
                 leftMargin: itemIndent
@@ -61,8 +61,8 @@ Rectangle {
                 verticalCenter: parent.verticalCenter
                 verticalCenterOffset: itemMargin * 2
             }
-            onActiveFocusChanged: activeFocus ? selectAll() : deselect()
 
+            //  onActiveFocusChanged: activeFocus ? selectAll() : deselect()
             function set(dateText) {
                 previousDateText = dateText
                 dateTextInputId.text = Functions.formatDateToString(
@@ -105,7 +105,7 @@ Rectangle {
         Layout.fillWidth: true
         enabled: false
         readOnly: true
-      //  font.pointSize: smallFontPointSize
+        //  font.pointSize: smallFontPointSize
         color: darkTextColor
         placeholderText: fieldLabel
         anchors {

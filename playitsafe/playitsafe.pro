@@ -31,7 +31,6 @@ SOURCES += \
     datastore/pdfbuilder.cpp \
     datastore/investmentpricequery.cpp \
     datastore/dataaccessadapter.cpp \
-    datastore/downloadspathcontroller.cpp \
     util/sqlite3.c \
     util/qqmlobjectlistmodel.cpp \
     datastore/datastorefilenames.cpp
@@ -62,7 +61,6 @@ HEADERS += \
     datastore/filechooserresultnotification.hpp  \
     datastore/dataaccessadapter.hpp \
     datastore/investmentpricequery.hpp \
-    datastore/downloadspathcontroller.hpp \
     util/qqmlobjectlistmodel.hpp \
     util/sqlite.hpp \
     util/sqlite3.h \

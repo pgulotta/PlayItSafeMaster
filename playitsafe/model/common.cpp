@@ -13,8 +13,6 @@ const QString Common::WebsiteNoneId = {"c12a8a67-a3d5-45dd-9072-6d6da07b5c76"};
 const QString Common::UndefinedWebsiteMessage = {
     QObject::tr("A website is not defined")};
 
-const QString Common::DownloadsPathSettingsKey = {"DownloadsPath"};
-
 const QString Common::AutoUpdateInvestmentPricesKey = {
     "autoUpdateInvestmentPrices"};
 

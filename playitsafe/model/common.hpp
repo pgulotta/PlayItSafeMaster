@@ -13,7 +13,6 @@ struct Common {
   static const QString WebsiteNoneText;
   static const QString WebsiteNoneId;
   static const QString UndefinedWebsiteMessage;
-  static const QString DownloadsPathSettingsKey;
   static const QString AutoUpdateInvestmentPricesKey;
   static const std::string Empty;
   static const std::string DeleteAllRecordsFrom;

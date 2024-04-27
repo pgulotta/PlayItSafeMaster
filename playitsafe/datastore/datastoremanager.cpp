@@ -2,7 +2,6 @@
 #include "filechooser.hpp"
 #include "pdfbuilder.hpp"
 #include "investmentpricequery.hpp"
-#include "downloadspathcontroller.hpp"
 #include "../model/version.hpp"
 #include "../model/recap.hpp"
 #include "../model/bankaccount.hpp"
@@ -90,7 +89,8 @@ void DataStoreManager::onInvestmentResultsReceived()
 void DataStoreManager::onFileChooserResultReceived(const QString &path)
 {
     qInfo() << Q_FUNC_INFO << " path=" << path;
-    mImportedFile.setImportFilePath(DownloadsPathController::tryResolveFilDownloadePath(path));
+
+    mImportedFile.setImportFilePath(path);
 }
 
 void DataStoreManager::clearAll()
@@ -208,7 +208,8 @@ QString DataStoreManager::exportDataStore()
     try
     {
         mFileEncryptor.encrypt();
-        destinationFilePath =  DownloadsPathController::downloadsPath() + QDir::separator() + Common::createUniqueId() + ".db";
+        destinationFilePath = DataStoreFileNames::DownloadsFolder + QDir::separator()
+                              + Common::createUniqueId() + ".db";
         QFile::copy(mDataStoreFileNames.encryptedFileName(), destinationFilePath);
         qInfo() << "DataStoreManager::exportDataStore destinationFilePath: " << destinationFilePath << " file size = " <<
                 QFileInfo(destinationFilePath).size();
@@ -270,15 +271,16 @@ bool DataStoreManager::importDataStore()
 bool DataStoreManager::importDataStore(const QString &password)
 {
     bool success = false;
-    qInfo("DataStoreManager::importDataStore: Attempting to import data store");
+    qInfo() << "DataStoreManager::importDataStore: Attempting to import data store "
+            << mDataStoreFileNames.encryptedFileName();
     try
     {
         auto currentPassword = mFileEncryptor.encryptedFilePassword();
         clearConnection(true);
         cleanAppDataFolder(true);
         QFile::rename(mDataStoreFileNames.encryptedFileName(), mDataStoreFileNames.tempFileName());
-        DataStoreFileNames toImportFileNames{ "",  mImportedFile.importFilePath()};
-        FileEncryptor importFileEncryptor{toImportFileNames};
+        DataStoreFileNames toImportFileName{"", mImportedFile.importFilePath()};
+        FileEncryptor importFileEncryptor{toImportFileName};
         importFileEncryptor.setEncryptedFilePassword(password);
         success = importFileEncryptor.decrypt();
 

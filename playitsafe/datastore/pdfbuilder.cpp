@@ -1,16 +1,15 @@
 #include "pdfbuilder.hpp"
-#include "datastoremanager.hpp"
-#include "switchboardmanager.hpp"
-#include "downloadspathcontroller.hpp"
-#include "../util/qqmlobjectlistmodel.hpp"
-#include "../model/switchboardcategory.hpp"
-#include "../model/common.hpp"
-#include "../model/recap.hpp"
 #include "../model/bankaccount.hpp"
-#include "../model/website.hpp"
+#include "../model/common.hpp"
+#include "../model/expense.hpp"
 #include "../model/investment.hpp"
 #include "../model/realasset.hpp"
-#include "../model/expense.hpp"
+#include "../model/recap.hpp"
+#include "../model/switchboardcategory.hpp"
+#include "../model/website.hpp"
+#include "../util/qqmlobjectlistmodel.hpp"
+#include "datastoremanager.hpp"
+#include "switchboardmanager.hpp"
 
 #include <QTextDocument>
 #include <QTextCursor>
@@ -36,16 +35,17 @@ PdfBuilder::PdfBuilder( bool displayWebsitePassword,  DataStoreManager& dataStor
 void PdfBuilder::run()
 {
   try {
-    QString fileName =  DownloadsPathController::downloadsPath() + QDir::separator() + Common::createUniqueId() + ".pdf";
-    qInfo() << "PdfBuilder::run: fileName=" << fileName;
-    QPrinter printer( QPrinter::PrinterResolution );
-    printer.setOutputFormat( QPrinter::PdfFormat );
-    printer.setOutputFileName( fileName );
+      QString fileName = DataStoreFileNames::DownloadsFolder + QDir::separator()
+                         + Common::createUniqueId() + ".pdf";
+      qInfo() << "PdfBuilder::run: fileName=" << fileName;
+      QPrinter printer(QPrinter::PrinterResolution);
+      printer.setOutputFormat(QPrinter::PdfFormat);
+      printer.setOutputFileName(fileName);
 
-    QFont defaultFont;
-    defaultFont.setFamily( "Courier" );
-    defaultFont.setStyleHint( QFont::Monospace );
-    defaultFont.setFixedPitch( true );
+      QFont defaultFont;
+      defaultFont.setFamily("Courier");
+      defaultFont.setStyleHint(QFont::Monospace);
+      defaultFont.setFixedPitch(true);
     #ifdef Q_OS_ANDROID
     defaultFont.setPointSize( 12 );
     #else

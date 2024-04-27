@@ -74,7 +74,6 @@ Page {
                 TitleTextDark {
                     id: summaryTotalId
                     anchors.centerIn: parent
-                    //   font.pointSize: largeFontPointSize
                     text: Functions.formatCurrencyString(summaryTotal)
                     color: summaryTotal < 0 ? negativeNumberColor : darkTextColor
                 }

@@ -4,8 +4,8 @@ import QtQuick.Window
 import QtQuick.Controls
 
 Dialog {
-    id: useSamePasswordDialogId
-    objectName: "UseSamePasswordDialog"
+    id: importDatastoreDialogId
+    objectName: "ImportDatasoreDialog"
 
     visible: true
     modal: true
@@ -28,7 +28,6 @@ Dialog {
         anchors.leftMargin: itemMargin
         Text {
             id: useSamePasswordSwitchId
-        //    font.pointSize: smallFontPointSize
             text: qsTr("Open using last password?")
         }
     }

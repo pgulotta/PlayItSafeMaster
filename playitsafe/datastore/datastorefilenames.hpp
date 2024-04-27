@@ -9,7 +9,8 @@ public:
 
   DataStoreFileNames( const QString& unencryptedFileName, const QString& encryptedFileName );
 
-  static QString AppDataFolder;
+  const static QString AppDataFolder;
+  const static QString DownloadsFolder;
 
   const QString& pseudoAppFileName() const
   {

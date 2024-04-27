@@ -13,17 +13,21 @@
 // on windows:  C:/Users/pat/AppData/Roaming/26Apps/Play It Safe/com.twentysixapps.playitsafe.db
 // on linux:    /home/pat-ubuntu/.local/share/26Apps/Play It Safe/com.twentysixapps.playitsafe.db
 
-
-QString DataStoreFileNames::AppDataFolder;
+const QString DataStoreFileNames::AppDataFolder = QStandardPaths::writableLocation(
+    QStandardPaths::AppDataLocation);
+const QString DataStoreFileNames::DownloadsFolder = QStandardPaths::writableLocation(
+    QStandardPaths::DownloadLocation);
 
 DataStoreFileNames::DataStoreFileNames()
 {
-  AppDataFolder = QStandardPaths::writableLocation( QStandardPaths::AppDataLocation ) ;
-  assignDefaultFileNames();
+    qInfo() << "DataStoreFileNames::DownloadsFolder = " << qPrintable(DownloadsFolder);
+    qInfo() << "DataStoreFileNames::AppDataFolder = " << qPrintable(AppDataFolder);
+
+    assignDefaultFileNames();
 }
 
-DataStoreFileNames::DataStoreFileNames( const QString& unencryptedFileName,
-                                        const QString& encryptedFileName )
+DataStoreFileNames::DataStoreFileNames(const QString &unencryptedFileName,
+                                       const QString &encryptedFileName)
 {
   assignDefaultFileNames();
   rename( unencryptedFileName, encryptedFileName );

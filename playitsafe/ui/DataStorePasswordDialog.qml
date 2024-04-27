@@ -14,6 +14,7 @@ Dialog {
     visible: true
     modal: true
     width: Math.min(fieldColumnWidth * 1.75, 400)
+    height: dialogHeight
     contentHeight: textWithTitleHeight
     title: getTitle()
     parent: ApplicationWindow.overlay
