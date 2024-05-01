@@ -66,7 +66,7 @@ ApplicationWindow {
     property int windowHeight: isAndroid ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .8
     property int windowWidth: isAndroid ? Screen.width : Screen.width * .4
     property int toolbarHeight: isSmallScreenDevice ? 36 : 50
-    property int listViewDelegateHeight: isSmallScreenDevice ? 32 : 36
+    property int listViewDelegateHeight: isSmallScreenDevice ? 32 : 50
     property int shortDialogHeight: 150
     property int dialogHeight: 210
     property int drawerWidth: isPortraitMode ? rootId.width * .75 : rootId.width * .4

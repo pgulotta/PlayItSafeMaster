@@ -7,7 +7,7 @@ Dialog {
     property alias dialogMessage: messageId.text
 
     width: isPortraitMode ? windowWidth * .85 : windowWidth * .5
-    height: isSmallScreenDevice ? toolbarHeight * 5 : toolbarHeight * 3.5
+    height: isSmallScreenDevice ? toolbarHeight * 5 : toolbarHeight * 4
     parent: ApplicationWindow.overlay
     x: (parent.width - width) * .5
     y: (parent.height - height) * .5

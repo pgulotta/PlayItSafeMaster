@@ -49,7 +49,7 @@ Drawer {
                 anchors.topMargin: mediumMargin
                 Item {
                     id: fillerId
-                    height: toolbarHeight
+                    height: isAndroid ? toolbarHeight : 0
                     width: parent.width
                     visible: true
                 }
