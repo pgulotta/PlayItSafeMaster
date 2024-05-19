@@ -25,10 +25,18 @@ Page {
     readonly property SwitchboardCategory category: AllCategories.get(
                                                         SwitchboardCategory.Recap)
 
-    readonly property string assetsCategoryColor: getCategoryColor(0)
-    readonly property string assetsColor: Qt.lighter(getCategoryColor(0))
-    readonly property string expensesCateoryColor: getCategoryColor(1)
-    readonly property string expensesColor: Qt.lighter(getCategoryColor(1), 1.2)
+    //   readonly property string assetsCategoryColor: getCategoryColor(0)
+    readonly property string assetsCategoryColor: getCategoryColor(
+                                                      SwitchboardCategory.Asset)
+    readonly property string assetsColor: Qt.lighter(
+                                              getCategoryColor(
+                                                  SwitchboardCategory.Asset))
+    readonly property string expensesCateoryColor: getCategoryColor(
+                                                       SwitchboardCategory.Liability)
+    readonly property string expensesColor: Qt.lighter(
+                                                getCategoryColor(
+                                                    SwitchboardCategory.Liability),
+                                                1.2)
 
     visible: true
 
