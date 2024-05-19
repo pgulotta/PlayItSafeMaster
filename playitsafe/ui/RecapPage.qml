@@ -25,6 +25,11 @@ Page {
     readonly property SwitchboardCategory category: AllCategories.get(
                                                         SwitchboardCategory.Recap)
 
+    readonly property string assetsCategoryColor: getCategoryColor(0)
+    readonly property string assetsColor: Qt.lighter(getCategoryColor(0))
+    readonly property string expensesCateoryColor: getCategoryColor(1)
+    readonly property string expensesColor: Qt.lighter(getCategoryColor(1), 1.2)
+
     visible: true
 
     onVisibleChanged: {
@@ -84,9 +89,11 @@ Page {
                 property: "section"
                 labelPositioning: ViewSection.InlineLabels
                 delegate: Rectangle {
+                    id: listViewSectionDelegateId
                     width: modelListViewId.width
                     implicitHeight: sectionTitleId.height
-                    color: categoryRecapColor
+                    color: (sectionTitleId.text
+                            == "Expenses") ? expensesCateoryColor : assetsCategoryColor
                     radius: rectRadius
                     border.color: darkTextColor
                     border.width: rectBorder
@@ -170,8 +177,7 @@ Page {
                 border.width: rectBorder
                 border.color: darkTextColor
                 radius: rectRadius
-                opacity: 0.8
-                color: categoryHighlightColor
+                color: (section == "Expenses") ? expensesColor : assetsColor
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
