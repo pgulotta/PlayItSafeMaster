@@ -3,34 +3,33 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 Dialog {
-    id: importDatastoreDialogId
+    id: removeRowDialogId
+    property string currentItemTitle
 
-    visible: true
+    objectName: "RemoveRowDialog.qml"
+    visible: false
     modal: true
     width: Math.min(fieldColumnWidth * 1.75, 400)
-    title: qsTr("Import Data Store Password")
+    title: qsTr("Remove Current Item")
     parent: ApplicationWindow.overlay
-    x: (parent.width - width) * .5
-    y: (parent.height - height) * .5
     contentHeight: textWithTitleHeight
     standardButtons: Dialog.No | Dialog.Yes
 
-    onAccepted: close()
-    onRejected: close()
-
     RowLayout {
-        id: rowLayoutId
         anchors.fill: parent
         anchors.right: parent.right
+        anchors.rightMargin: largeMargin
         anchors.left: parent.right
-        anchors.leftMargin: itemMargin
+        anchors.leftMargin: largeMargin
         Label {
-            id: useSamePasswordSwitchId
             Layout.fillWidth: true
             width: parent.width
             wrapMode: Label.Wrap
             horizontalAlignment: Qt.AlignLeft
-            text: qsTr("Open using last password?")
+            text: currentItemTitle
+                  == null ? qsTr("Removing the current item cannot be undone. Remove anyway?") : qsTr(
+                                "Removing the current item ") + currentItemTitle + qsTr(
+                                " cannot be undone. Continue?")
         }
     }
 }

@@ -245,10 +245,27 @@ Page {
             } else if (buttonImage.indexOf("add") >= 0) {
                 setCurrentExpense(allExpenses.size())
             } else if (buttonImage.indexOf("remove") >= 0) {
-                doRemove()
+                removeRowDialogId.currentItemTitle = currentExpense.payee
+                removeRowDialogId.visible = true
             }
             initializeToolbar(modelListViewId.enabled,
                               getformattedToolbarTitle(category.title))
+        }
+    }
+
+    RemoveRowDialog {
+        id: removeRowDialogId
+        onAccepted: {
+            DataStoreManager.removeItem(SwitchboardCategory.Expense,
+                                        currentExpense.uniqueId)
+            setCurrentExpense(0)
+            setIsDirty(false)
+            modelListViewId.positionViewAtBeginning()
+            close()
+        }
+        onRejected: {
+            setIsDirty(false)
+            close()
         }
     }
 
@@ -302,14 +319,6 @@ Page {
     function doCancel() {
         setCurrentExpense(modelListViewId.listViewCurrentIndex)
         setIsDirty(false)
-    }
-
-    function doRemove() {
-        DataStoreManager.removeItem(SwitchboardCategory.Expense,
-                                    currentExpense.uniqueId)
-        setCurrentExpense(0)
-        setIsDirty(false)
-        modelListViewId.positionViewAtBeginning()
     }
 
     function doTrySave() {

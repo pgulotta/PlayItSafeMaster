@@ -64,5 +64,6 @@
         <file>ui/ImportDatastoreDialog.qml</file>
         <file>ui/HtmlText.qml</file>
         <file>ui/SettingsUpdatePricesDialog.qml</file>
+        <file>ui/RemoveRowDialog.qml</file>        
     </qresource>
 </RCC>

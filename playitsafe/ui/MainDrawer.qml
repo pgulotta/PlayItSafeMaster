@@ -219,7 +219,7 @@ Drawer {
     }
 
     DataStorePasswordDialog {
-        id: importPasswordDialogId
+        id: dataStorePasswordDialogId
         visible: false
     }
 
@@ -232,8 +232,8 @@ Drawer {
                         showTitledMessage(importTitle, importFailedMessage)
                     }
         onRejected: {
-            importPasswordDialogId.state = "import"
-            importPasswordDialogId.visible = true
+            dataStorePasswordDialogId.state = "import"
+            dataStorePasswordDialogId.visible = true
         }
     }
 

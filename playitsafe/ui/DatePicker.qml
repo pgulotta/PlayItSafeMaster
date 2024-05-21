@@ -1,7 +1,6 @@
 ﻿import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Window
 import "Functions.js" as Functions
 
 Rectangle {
