@@ -11,10 +11,12 @@ GridView {
     contentHeight: windowHeight
     model: AllCategories
 
-    anchors.verticalCenterOffset: toolbarHeight
-    anchors.horizontalCenterOffset: itemMargin
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.verticalCenter: parent.verticalCenter
+    anchors {
+        verticalCenterOffset: toolbarHeight
+        horizontalCenterOffset: itemMargin
+        horizontalCenter: parent.horizontalCenter
+        verticalCenter: parent.verticalCenter
+    }
 
     opacity: 0
 

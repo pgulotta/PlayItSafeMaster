@@ -182,8 +182,8 @@ Drawer {
             loaderId.item.visible = true
             break
         case qsTr("Clear"):
+            loaderId.source = ""
             loaderId.source = "qrc:/ui/DataStoreClearDialog.qml"
-            loaderId.item.doExport = false
             loaderId.item.visible = true
             break
         case qsTr("Export"):
@@ -241,6 +241,7 @@ Drawer {
         if (isAndroid) {
             showTitledMessage(notSupportedTitle, notSupportedMessage)
         } else {
+            loaderId.source = ""
             loaderId.source = "qrc:/ui/SaveToPdfDialog.qml"
         }
     }
@@ -265,6 +266,7 @@ Drawer {
     }
 
     function getImportFilePath() {
+        loaderId.source = ""
         loaderId.source = "qrc:/ui/DataStorePickerDialog.qml"
         loaderId.item.downloadsPath = DataStoreManager.downloadsPath
         console.log("MainDrawer.getImportFilePath=" + loaderId.item.downloadsPath)
