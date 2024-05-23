@@ -119,5 +119,10 @@ message(GOOGLETEST_DIR = $$GOOGLETEST_DIR)
 message(ANDROID_EXTRA_LIBS = $$ANDROID_EXTRA_LIBS)
 message(****  PlayItSafe  ****)
 
+contains(ANDROID_TARGET_ARCH,arm64-v8a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
+
 
 
