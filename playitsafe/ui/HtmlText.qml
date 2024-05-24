@@ -17,7 +17,6 @@ Rectangle {
         Layout.fillWidth: true
         Layout.fillHeight: true
         wrapMode: Label.Wrap
-        //  font.pointSize: smallFontPointSize
         font.bold: isTitle ? true : false
         color: darkTextColor
         onLinkActivated: {

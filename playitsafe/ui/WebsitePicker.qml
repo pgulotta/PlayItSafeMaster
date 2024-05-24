@@ -16,7 +16,8 @@ Rectangle {
     property string currentWebsiteUniqueId
 
     width: fieldColumnWidth
-    height: textWithTitleHeight
+    //  height: textWithTitleHeight
+    height: isAndroid ? 84 : textWithTitleHeight
     radius: rectRadius
     color: fieldBackColor
     border.color: darkTextColor
@@ -84,13 +85,13 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: isSmallScreenDevice ? smalltemMargin : itemMargin
         anchors.topMargin: isSmallScreenDevice ? mediumMargin : largeMargin
+        anchors.bottomMargin: itemMargin
 
         contentItem: Text {
             id: contentItemTextId
             text: getWebsiteTitle()
-           // font.pointSize: smallFontPointSize
             color: darkTextColor
-            topPadding: isSmallScreenDevice ? mediumMargin : largeMargin
+            topPadding: largeMargin
             padding: itemMargin
         }
         background: Rectangle {
@@ -105,8 +106,8 @@ Rectangle {
 
         delegate: ItemDelegate {
             text: model.title
+            topPadding: 12
             highlighted: ListView.isCurrentItem
-          //  font.pointSize: smallFontPointSize
             onClicked: {
                 websiteChanged(allWebsites.get(model.index).uniqueId)
                 contentItemTextId.text = allWebsites.get(model.index).title

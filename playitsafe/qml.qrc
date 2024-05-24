@@ -29,7 +29,6 @@
         <file>ui/AboutPage.qml</file>
         <file>ui/MainDrawer.qml</file>
         <file>ui/MainPage.qml</file>
-        <file>ui/AddButton.qml</file>
         <file>ui/ModelListView.qml</file>
         <file>ui/AnimationCircularRotation.qml</file>
         <file>ui/AnimationFadeOut.qml</file>
@@ -64,6 +63,6 @@
         <file>ui/ImportDatastoreDialog.qml</file>
         <file>ui/HtmlText.qml</file>
         <file>ui/SettingsUpdatePricesDialog.qml</file>
-        <file>ui/RemoveRowDialog.qml</file>        
+        <file>ui/RemoveRowDialog.qml</file>
     </qresource>
 </RCC>

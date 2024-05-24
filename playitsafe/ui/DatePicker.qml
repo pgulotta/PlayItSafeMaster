@@ -104,7 +104,6 @@ Rectangle {
         Layout.fillWidth: true
         enabled: false
         readOnly: true
-        //  font.pointSize: smallFontPointSize
         color: darkTextColor
         placeholderText: fieldLabel
         anchors {

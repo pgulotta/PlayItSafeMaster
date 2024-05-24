@@ -49,7 +49,6 @@ Rectangle {
 
     TextField {
         id: textId
-       // font.pointSize: isSmallScreenDevice ? verySmallFontPointSize : smallFontPointSize
         color: darkTextColor
         placeholderText: fieldLabel
         anchors {

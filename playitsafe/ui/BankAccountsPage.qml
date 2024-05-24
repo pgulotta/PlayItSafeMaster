@@ -161,8 +161,9 @@ Page {
                     fieldLabel: qsTr("Website")
                     currentWebsiteUniqueId: currentBankAccount.websiteId
                     width: notesId.width
+
                     onWebsiteChanged: {
-                        onFieldChanged(websiteUniqueId,
+                        onFieldChanged(websiteUrlId,
                                        currentBankAccount.websiteId)
                     }
                 }

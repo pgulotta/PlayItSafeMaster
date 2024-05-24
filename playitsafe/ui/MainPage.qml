@@ -70,12 +70,8 @@ ApplicationWindow {
     property int shortDialogHeight: 150
     property int dialogHeight: 210
     property int drawerWidth: isPortraitMode ? rootId.width * .75 : rootId.width * .4
-    property int textWithTitleHeight: isSmallScreenDevice ? toolbarHeight
-                                                            * 1.6 : toolbarHeight * 1.7
-    property int fabFontPointSize: 12
+    property int textWithTitleHeight: toolbarHeight * 1.7
     property int checkboxBoxSize: isSmallScreenDevice ? 18 : 24
-    property int verySmallFontPointSize: 10
-    property int smallFontPointSize: 12
     property int fontPointSize: isSmallScreenDevice ? 18 : 16
     property int largeFontPointSize: fontPointSize + 4
     property int switchboardFontPointSize: isSmallScreenDevice
