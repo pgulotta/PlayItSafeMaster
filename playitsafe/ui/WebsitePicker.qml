@@ -33,6 +33,7 @@ Rectangle {
     }
     ToolButton {
         id: wwwButtonId
+        z: 1
         anchors {
             rightMargin: itemIndent
             right: forwardButtonId.left
@@ -57,6 +58,7 @@ Rectangle {
 
     ToolButton {
         id: forwardButtonId
+        z: 1
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right

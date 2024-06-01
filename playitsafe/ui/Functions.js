@@ -1,3 +1,5 @@
+.pragma library
+
 function getListIndexFromUniqueId(uniqueId, list) {
     var index = 0
     for (var i = 0; i < list.size(); i++) {

@@ -85,6 +85,7 @@ Rectangle {
 
     ToolButton {
         id: editButtonId
+        z: 1
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right

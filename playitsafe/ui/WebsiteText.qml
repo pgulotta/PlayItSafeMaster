@@ -33,6 +33,7 @@ Rectangle {
     }
     ToolButton {
         id: imageButtonId
+        z: 1
         anchors {
             rightMargin: isSmallScreenDevice ? itemMargin : itemIndent
             right: parent.right

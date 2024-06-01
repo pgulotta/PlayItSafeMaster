@@ -36,6 +36,7 @@ Rectangle {
     }
     ToolButton {
         id: copyButtonId
+        z: 1
         anchors {
             rightMargin: copyButtonId.width
             right: eyeButtonId.right
@@ -58,6 +59,7 @@ Rectangle {
     }
     ToolButton {
         id: eyeButtonId
+        z: 1
         anchors {
             right: parent.right
         }
