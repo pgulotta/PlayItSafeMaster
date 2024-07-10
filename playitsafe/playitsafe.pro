@@ -7,12 +7,10 @@ QT += \
     quickcontrols2 \
     printsupport
 
-# CONFIG += c++1z
 CONFIG += c++2a
 
 # https://stackoverflow.com/questions/29308589/does-qt-no-debug-cause-a-definition-of-ndebug
 CONFIG(release, debug|release): DEFINES += NDEBUG
-
 
 DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
@@ -75,13 +73,11 @@ QML_DESIGNER_IMPORT_PATH =
 ICON = Resources/icon.png
 
 android {
-    # ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-
 include(/home/pat/Documents/GitHub/android_openssl/openssl.pri)
-
+ANDROID_PACKAGE_SOURCE_DIR = \
+    $$PWD/android
 DISTFILES += \
    android/AndroidManifest.xml \
-
 }
 
 unix:!macx: LIBS += -ldl
@@ -96,7 +92,7 @@ message(Documentation: $$[QT_INSTALL_DOCS])
 message(Header files: $$[QT_INSTALL_HEADERS])
 message(Libraries: $$[QT_INSTALL_LIBS])
 message(Binary files (executables): $$[QT_INSTALL_BINS])
-message(Plugins: $$[QT_INSTALL_PLUGINS])
+message(Plugins: $$[QT_INSTALL_PLUGINS])contains(ANDROID_TARGET_ARCH,arm64-v8a)
 message(Data files: $$[QT_INSTALL_DATA])
 message(Translation files: $$[QT_INSTALL_TRANSLATIONS])
 message(Settings: $$[QT_INSTALL_CONFIGURATION])
@@ -106,11 +102,6 @@ message(TEST_SOURCE_DIR = $$TEST_SOURCE_DIR)
 message(GOOGLETEST_DIR = $$GOOGLETEST_DIR)
 message(ANDROID_EXTRA_LIBS = $$ANDROID_EXTRA_LIBS)
 message(****  PlayItSafe  ****)
-
-contains(ANDROID_TARGET_ARCH,arm64-v8a) {
-    ANDROID_PACKAGE_SOURCE_DIR = \
-        $$PWD/android
-}
 
 
 
