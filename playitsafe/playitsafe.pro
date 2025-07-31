@@ -103,5 +103,15 @@ message(GOOGLETEST_DIR = $$GOOGLETEST_DIR)
 message(ANDROID_EXTRA_LIBS = $$ANDROID_EXTRA_LIBS)
 message(****  PlayItSafe  ****)
 
+DISTFILES += \
+    android/build.gradle \
+    android/gradle.properties \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew \
+    android/gradlew.bat \
+    android/res/values/libs.xml \
+    android/res/xml/qtprovider_paths.xml
+
 
 
