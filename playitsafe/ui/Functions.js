@@ -30,5 +30,5 @@ function formatUrlink(url) {
 }
 
 function formatCurrencyString(amount) {
-    return qsTr("%1").arg(amount.toLocaleString(Qt.locale(), 'f', 3))
+    return amount.toLocaleCurrencyString(Qt.locale("en_US"))
 }
