@@ -25,7 +25,6 @@ SOURCES += \
     datastore/tableinsert.cpp \
     datastore/tableselect.cpp \
     datastore/tableupdate.cpp \
-    datastore/filechooser.cpp \
     datastore/pdfbuilder.cpp \
     datastore/investmentpricequery.cpp \
     datastore/dataaccessadapter.cpp \
@@ -54,8 +53,6 @@ HEADERS += \
     datastore/tableselect.hpp \
     datastore/tableupdate.hpp \
     datastore/fileencryptor.hpp \
-    datastore/filechooser.hpp \
-    datastore/filechooserresult.hpp \
     datastore/filechooserresultnotification.hpp  \
     datastore/dataaccessadapter.hpp \
     datastore/investmentpricequery.hpp \

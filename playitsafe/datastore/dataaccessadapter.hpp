@@ -115,7 +115,7 @@ public:
 
 
     template <typename T>
-    int count() const
+    int size() const
     {
         int result = 0;
         try

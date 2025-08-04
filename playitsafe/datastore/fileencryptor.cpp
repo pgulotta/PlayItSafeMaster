@@ -78,7 +78,7 @@ QByteArray FileEncryptor::encryptToByteArray( QByteArray bytes )
   QByteArray ba = bytes;
   QByteArray compressed = qCompress( ba, 9 );
 
-  if ( compressed.count() < ba.count() ) {
+  if ( compressed.size() < ba.size() ) {
     ba = compressed;
   }
 
@@ -90,7 +90,7 @@ QByteArray FileEncryptor::encryptToByteArray( QByteArray bytes )
 
   int pos( 0 );
   char lastChar( 0 );
-  int cnt = ba.count();
+  int cnt = ba.size();
 
   while ( pos < cnt ) {
     ba[pos] = ba.at( pos ) ^ m_keyParts.at( pos % 8 ) ^ lastChar;
@@ -121,7 +121,7 @@ QByteArray FileEncryptor::decryptToByteArray( QByteArray bytes )
 
   QByteArray ba = bytes;
 
-  if ( bytes.count() < 3 ) {
+  if ( bytes.size() < 3 ) {
     qInfo( "FileEncryptor::decryptToByteArray: Decryption failed because there is no file to decrypt" );
     return QByteArray();
   }
@@ -133,7 +133,7 @@ QByteArray FileEncryptor::decryptToByteArray( QByteArray bytes )
 
   ba = ba.mid( 2 );
   int pos( 0 );
-  int cnt( ba.count() );
+  int cnt( ba.size() );
   char lastChar = 0;
 
   while ( pos < cnt ) {

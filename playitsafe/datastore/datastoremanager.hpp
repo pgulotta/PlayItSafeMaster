@@ -6,7 +6,6 @@
 #include "dataaccessadapter.hpp"
 #include "investmentpricequery.hpp"
 #include "filechooserresultnotification.hpp"
-#include "filechooserresult.hpp"
 #include "fileencryptor.hpp"
 #include "datastorefilenames.hpp"
 #include "../model/common.hpp"
@@ -111,8 +110,6 @@ private:
     SwitchboardManager mSwitchboardManager;
     InvestmentPriceQuery mInvestmentPriceQuery;
     FileEncryptor mFileEncryptor;
-    FileChooserResult mFileChooserResult;
-    FileChooserResultNotification mFileChooserResultNotification;
     InvestmentPriceNotification mInvestmentPriceNotification;
     ImportFileNotification mImportedFile;
     PdfCreatedNotification mSavedPdfFile;

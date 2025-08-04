@@ -1,5 +1,4 @@
 #include "datastoremanager.hpp"
-#include "filechooser.hpp"
 #include "pdfbuilder.hpp"
 #include "investmentpricequery.hpp"
 #include "../model/version.hpp"
@@ -27,8 +26,7 @@ auto toStatus(bool value)
 DataStoreManager::DataStoreManager(QObject *parent) :
     QObject{parent},
     mSwitchboardManager{this},
-    mFileEncryptor{mDataStoreFileNames},
-    mFileChooserResult{mFileChooserResultNotification}
+    mFileEncryptor{mDataStoreFileNames}
 {
     //  qDebug() << "DataStoreManager::DataStoreManager called";
 
@@ -36,8 +34,6 @@ DataStoreManager::DataStoreManager(QObject *parent) :
             &DataStoreManager::onInvestmentResultsReceived);
     connect(&mInvestmentPriceQuery, &InvestmentPriceQuery::networkErrorOccurred, this,
             &DataStoreManager::onInvestmentNetworkErrorOccurred);
-    connect(&mFileChooserResultNotification, &FileChooserResultNotification::fileChooserResultReceived, this,
-            &DataStoreManager::onFileChooserResultReceived);
 }
 
 DataStoreManager::~DataStoreManager()
@@ -513,7 +509,7 @@ QQmlObjectListModel<Recap> *DataStoreManager::recap(bool reload)
         }
     }
 
-    qInfo() <<  "DataStoreManager::getRecapListModel() QQmlObjectListModel count: " << mRecapListModel.count();
+    qInfo() <<  "DataStoreManager::getRecapListModel() QQmlObjectListModel count: " << mRecapListModel.size();
     return &mRecapListModel;
 }
 
@@ -694,11 +690,11 @@ void DataStoreManager::removeItem(int moniker, const QString &uniqueId)
 template <typename T>
 QQmlObjectListModel<T>  &DataStoreManager::getListModel(QQmlObjectListModel<T> &listModel,  bool reload)
 {
-    if (reload || listModel.count() == 0)
+    if (reload || listModel.size() == 0)
     {
         listModel.clear();
         mDataAccessAdapter.select(listModel);
-        qInfo() <<  typeid(T).name() << " list model record count = " << listModel.count();
+        qInfo() <<  typeid(T).name() << " list model record count = " << listModel.size();
     }
 
     return listModel;

@@ -35,7 +35,7 @@ void InvestmentPriceQuery::query(const QQmlObjectListModel<Investment> &investme
                     mPriceQueryQueue.append(QSharedPointer<PriceQuery> {new PriceQuery { investment->uniqueId(), investment->issuer()}});
             }
 
-            mInvestmentQueriesCount = mPriceQueryQueue.count();
+            mInvestmentQueriesCount = mPriceQueryQueue.size();
             onNetworkQueryTimer();
         }
     }
@@ -51,7 +51,7 @@ void InvestmentPriceQuery::onNetworkQueryTimer()
     {
         mNetworkQueryTimer.stop();
 
-        if (mPriceQueryQueue.count() > 0)
+        if (mPriceQueryQueue.size() > 0)
         {
             runQuery(mPriceQueryQueue.dequeue());
             mNetworkQueryTimer.start(gQueryTimerIntervalMs);
@@ -163,7 +163,7 @@ void InvestmentPriceQuery::onNetworkReply(QNetworkReply *networkReply)
             else
             {
                 qInfo() << "InvestmentPriceQuery::onNetworkReply: Investment price query complete; total prices updated=" <<
-                        mPriceResultList.count();
+                        mPriceResultList.size();
                 emit queryResultsRecieved();
             }
         }
