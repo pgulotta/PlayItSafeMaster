@@ -4,8 +4,7 @@ import QtQuick.Controls
 
 ToolBar {
     id: mainToolBarId
-    height: toolbarHeight
-
+    height: 80
     onEnabledChanged: enabled ? opacityEnabledId.start(
                                     ) : opacityDisabledId.start()
 
