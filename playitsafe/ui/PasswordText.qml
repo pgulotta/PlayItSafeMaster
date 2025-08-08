@@ -50,7 +50,7 @@ Rectangle {
                 return
             var currentEchoMode = textId.echoMode
             textId.echoMode = TextInput.Normal
-            textId.selectAll()
+            textId.deselect()
             textId.copy()
             textId.echoMode = currentEchoMode
             textId.forceActiveFocus()
@@ -90,7 +90,7 @@ Rectangle {
             verticalCenter: parent.verticalCenter
             verticalCenterOffset: itemMargin * 2
         }
-        onActiveFocusChanged: activeFocus ? selectAll() : deselect()
+        onActiveFocusChanged: deselect()
 
         onAccepted: editableTextChanged(text)
 

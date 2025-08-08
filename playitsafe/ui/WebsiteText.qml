@@ -61,7 +61,7 @@ Rectangle {
             verticalCenterOffset: itemMargin * 2
         }
 
-        onActiveFocusChanged: activeFocus ? selectAll() : deselect()
+        onActiveFocusChanged: deselect()
         onTextChanged: {
             if (previousDateText !== text) {
                 editableTextChanged(text)

@@ -52,10 +52,7 @@ ApplicationWindow {
     readonly property string actionMenuColor: darkTextColor
     readonly property string fieldBackColor: appToolbarColor
     readonly property string unableSaveTitle: qsTr("Unable to Save")
-    readonly property string unableRemoveTitle: qsTr("Unable to Remove")
-    readonly property string unableOpenTitle: qsTr("Unable to Open")
-    readonly property string enterPasswrdMessage: qsTr("Please provide a valid password.")
-    readonly property string requiredMessage: qsTr("Please provide required fields which are indicated with a red border.")
+    readonly property string requiredMessage: qsTr("Please provide required fields that are indicated with a red border.")
     readonly property string appName: SwitchboardManager.appName
     readonly property string appNameVersion: SwitchboardManager.appNameVersion
     readonly property date defaultDate: new Date()
@@ -64,7 +61,7 @@ ApplicationWindow {
     property bool isPortraitMode: Screen.height > Screen.width
     property int switchboardColumnCount: isPortraitMode ? 2 : 3
     property int windowHeight: isAndroid ? Screen.desktopAvailableHeight : Screen.desktopAvailableHeight * .8
-    property int windowWidth: isAndroid ? Screen.width : Screen.width * .4
+    property int windowWidth: isAndroid ? Screen.desktopAvailableWidth : Screen.desktopAvailableWidth * .4
     property int toolbarHeight: isSmallScreenDevice ? 36 : 50
     property int listViewDelegateHeight: isSmallScreenDevice ? 32 : 50
     property int shortDialogHeight: 150
@@ -75,7 +72,7 @@ ApplicationWindow {
     property int fontPointSize: isSmallScreenDevice ? 18 : 16
     property int largeFontPointSize: fontPointSize + 4
     property int switchboardFontPointSize: isSmallScreenDevice
-    property int columnRowSpacing: isSmallScreenDevice ? (isPortraitMode ? 4 : 8) : 16
+    property int columnRowSpacing: 4
     property int categoryWidth: (windowWidth / switchboardColumnCount) * 0.8
     property int categoryHeight: categoryWidth * 1.3
     property int drawerImageHeight: categoryHeight * 0.5
@@ -89,6 +86,25 @@ ApplicationWindow {
 
     onWidthChanged: isPortraitMode = Screen.height > Screen.width
 
+    // onWidthChanged: {
+    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
+    //                 + " Screen.height:" + Screen.height)
+    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
+    //                 + " Screen.height:" + Screen.height)
+    //     console.log("^^^^^^ onHeightChanged  Screen.desktopAvailableHeight:"
+    //                 + Screen.desktopAvailableHeight + " Screen.desktopAvailableWidth:"
+    //                 + Screen.desktopAvailableWidth)
+    //     //isPortraitMode = Screen.height > Screen.width
+    // }
+    // onHeightChanged: {
+    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
+    //                 + " Screen.height:" + Screen.height)
+    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
+    //                 + " Screen.height:" + Screen.height)
+    //     console.log("^^^^^^ onHeightChanged  Screen.desktopAvailableHeight:"
+    //                 + Screen.desktopAvailableHeight + " Screen.desktopAvailableWidth:"
+    //                 + Screen.desktopAvailableWidth)
+    // }
     header: AppToolbar {
         id: appToolbarId
     }
