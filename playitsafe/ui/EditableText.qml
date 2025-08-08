@@ -37,8 +37,6 @@ Rectangle {
     TextField {
         id: textId
         Layout.fillWidth: true
-        color: darkTextColor
-        placeholderText: fieldLabel
         anchors {
             left: parent.left
             leftMargin: itemMargin

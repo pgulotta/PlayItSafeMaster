@@ -50,8 +50,7 @@ Rectangle {
 
     TextField {
         id: textId
-        color: darkTextColor
-        placeholderText: fieldLabel
+
         anchors {
             left: parent.left
             leftMargin: itemMargin

@@ -79,7 +79,6 @@ Rectangle {
         id: textId
 
         echoMode: TextInput.Password
-        color: darkTextColor
 
         height: listViewDelegateHeight
         anchors {

@@ -106,7 +106,6 @@ Rectangle {
         enabled: false
         readOnly: true
         color: darkTextColor
-        placeholderText: fieldLabel
         anchors {
             left: parent.left
             leftMargin: itemMargin
