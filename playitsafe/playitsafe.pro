@@ -112,3 +112,4 @@ DISTFILES += \
 
 
 
+android: include(/home/pat/Documents/GitHub/android_openssl/openssl.pri)
