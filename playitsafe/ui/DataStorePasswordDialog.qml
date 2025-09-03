@@ -40,18 +40,15 @@ Dialog {
 
             width: parent.width
             RowLayout {
-                id: rowLayoutId
-                anchors.fill: parent
                 anchors.right: parent.right
                 anchors.rightMargin: largeMargin
-                anchors.left: parent.right
+                anchors.left: parent.left
                 anchors.leftMargin: largeMargin
 
                 PasswordText {
                     id: passwordId
                     Layout.fillWidth: true
                     forceActiveFocus: true
-                    copyButtonVisible: true
                     onEditableTextChanged: accept()
                 }
             }
