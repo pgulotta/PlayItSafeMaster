@@ -186,10 +186,13 @@ Drawer {
             loaderId.item.visible = true
             break
         case qsTr("Export"):
-            doExport()
+            if (isAndroid)
+                showTitledMessage(notSupportedTitle, notSupportedMessage)
+            else
+                doExport()
             break
         case qsTr("Import"):
-            getImportFilePath()
+            setImportFilePath()
             break
         case qsTr("Save as PDF"):
             doSaveAsPDF()
@@ -246,10 +249,10 @@ Drawer {
     }
 
     function doPdfFileCreated(pdfFilePath) {
-        if (pdfFilePath === "")
-            return
-        var message = (pdfFilePath === ImportedFile.unresolvedFilePathId) ? qsTr("Failed to save Data Store to a Pdf") : qsTr("Data Store saved to Pdf as \n") + pdfFilePath
-        showTitledMessage(qsTr("Save to Pdf"), message)
+        if (pdfFilePath !== "") {
+            var message = (pdfFilePath === ImportedFile.unresolvedFilePathId) ? qsTr("Failed to save Data Store to a Pdf") : qsTr("Data Store saved to Pdf as \n") + pdfFilePath
+            showTitledMessage(qsTr("Save to Pdf"), message)
+        }
     }
 
     function doImportFilePathChanged(importFilePath) {
@@ -264,26 +267,23 @@ Drawer {
         }
     }
 
-    function getImportFilePath() {
+    function setImportFilePath() {
         loaderId.source = ""
         loaderId.source = "qrc:/ui/DataStorePickerDialog.qml"
         loaderId.item.downloadsPath = DataStoreManager.downloadsPath
-        console.log("MainDrawer.getImportFilePath=" + loaderId.item.downloadsPath)
         loaderId.item.visible = true
+        console.log("MainDrawer.setImportFilePath= " + loaderId.item.downloadsPath)
     }
 
     function doExport() {
-        if (isAndroid) {
-            showTitledMessage(notSupportedTitle, notSupportedMessage)
+        var filePath = DataStoreManager.exportDataStore()
+
+        if (filePath === "") {
+            showTitledMessage(qsTr("Export Unsuccessful"),
+                              qsTr("Failed to export Data Store."))
         } else {
-            var filePath = DataStoreManager.exportDataStore()
-            if (filePath === "") {
-                showTitledMessage(qsTr("Export Unsuccessful"),
-                                  qsTr("Failed to export Data Store."))
-            } else {
-                showTitledMessage(qsTr("Export Successful"),
-                                  qsTr("Exported to: \n" + filePath))
-            }
+            showTitledMessage(qsTr("Export Successful"),
+                              qsTr("Exported to: \n" + filePath))
         }
         appDrawerId.close()
     }
