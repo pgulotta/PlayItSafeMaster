@@ -300,14 +300,14 @@ Page {
         }
     }
 
-    function getItemIndex(uniqueId) {
+    function getItemIndex(uniqueId): int {
         if (allInvestments === undefined || allInvestments.isEmpty())
             return invalidIndex
-        var index = invalidIndex
-        for (var i = 0; index === invalidIndex
+
+        for (var i = 0, index = invalidIndex; index === invalidIndex
              && i < allInvestments.size(); i++) {
-            var item = allInvestments.get(i)
-            if (item.uniqueId === uniqueId)
+
+            if (allInvestments.get(i).uniqueId === uniqueId)
                 index = i
         }
         return index
@@ -420,14 +420,15 @@ Page {
         modelListViewId.forceActiveFocus()
     }
 
-    function getformattedToolbarTitle(categoryTitle) {
-
+    function getformattedToolbarTitle(categoryTitle): string {
+        var total = 0.00
         if (allInvestments === undefined || allInvestments.isEmpty())
             return categoryTitle
-        var total = 0.00
+
         for (var i = 0; i < allInvestments.size(); i++) {
-            var item = allInvestments.get(i)
-            total += (item.shares * item.lastPrice)
+
+            total += (allInvestments.get(i).shares * allInvestments.get(
+                          i).lastPrice)
         }
 
         return category.title + ": " + Functions.formatCurrencyString(total)
