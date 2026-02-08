@@ -112,7 +112,7 @@ QByteArray FileEncryptor::decryptToByteArray( const QString& text )
   return ba;
 }
 
-QByteArray FileEncryptor::decryptToByteArray( QByteArray bytes )
+QByteArray FileEncryptor::decryptToByteArray( const QByteArray bytes )
 {
   if ( m_keyParts.isEmpty() ) {
     qWarning( "FileEncryptor::decryptToByteArray: Decryption failed because no encryption key set" );

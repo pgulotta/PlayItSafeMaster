@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Layouts
+// import QtQuick.Layouts
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Particles
@@ -174,7 +174,6 @@ Drawer {
             loaderId.item.state = "change"
             loaderId.item.contentHeight = 220
             loaderId.item.visible = true
-            appDrawerId.close()
             break
         case qsTr("App Startup"):
             loaderId.source = ""

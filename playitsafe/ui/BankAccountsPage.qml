@@ -18,9 +18,7 @@ Page {
     property BankAccount currentBankAccount
     property string initialUniqueId: ""
     property int initialIndex: 0
-    property real field1Width: width * .3
-    property real field2Width: width * .4
-    property real amountWidth: width * .15
+    property real amountWidth: width * .2
 
     state: ""
 
@@ -63,6 +61,7 @@ Page {
         contentHeight: parent.height * 1.5
         Layout.alignment: Qt.AlignHCenter
         Column {
+            id: columnId
             width: parent.width
             height: parent.height
             anchors.fill: parent
@@ -70,14 +69,15 @@ Page {
             anchors.leftMargin: isPortraitMode ? itemMargin : itemIndent
             anchors.topMargin: isPortraitMode ? itemIndent : itemMargin
             Flow {
-                width: parent.width
-                height: parent.height
+                id: flowId
+                width: columnId.width
+                height: columnId.height
                 spacing: itemMargin
 
                 ModelListView {
                     id: modelListViewId
                     listViewModel: AllBankAccounts
-                    width: parent.width
+                    width: flowId.width
                     height: windowHeight * 0.2
                     focus: true
                     listViewDelegate: listViewDelegateId
@@ -86,7 +86,7 @@ Page {
                 }
                 Item {
                     height: largeMargin
-                    width: parent.width
+                    width: flowId.width
                     visible: true
                 }
                 EditableText {
@@ -151,7 +151,7 @@ Page {
                     id: notesId
                     fieldLabel: qsTr("Notes")
                     fieldText: currentBankAccount.notes
-                    width: parent.width
+                    width: flowId.width
                     onEditableTextChanged: onFieldChanged(
                                                notesId.fieldText,
                                                currentBankAccount.notes)
@@ -192,7 +192,7 @@ Page {
                 }
             }
             MouseArea {
-                anchors.fill: parent
+                anchors.fill: itemId
                 onClicked: {
                     itemId.ListView.view.currentIndex = index
                     itemId.forceActiveFocus()
@@ -211,21 +211,19 @@ Page {
                     id: rowLayoutId
                     anchors {
                         leftMargin: itemMargin
-                        left: parent.left
+                        left: rowRectId.left
                         rightMargin: itemMargin
-                        right: parent.right
-                        verticalCenter: parent === null ? undefined : parent.verticalCenter
+                        right: rowRectId.right
+                        verticalCenter: rowRectId === null ? undefined : rowRectId.verticalCenter
                     }
                     TitleTextDark {
                         id: field1Id
                         text: model.bankName
                         Layout.fillHeight: true
-                        Layout.preferredWidth: field1Width
                     }
                     TitleTextDark {
                         id: fieldId2
                         text: model.nameOnAccount
-                        Layout.preferredWidth: field2Width
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                     }
@@ -257,20 +255,21 @@ Page {
         }
     }
 
-    function getItemIndex(uniqueId) {
-        if (allBankAccounts === undefined || allBankAccounts.isEmpty())
-            return invalidIndex
+    function getItemIndex(uniqueId): int {
         var index = invalidIndex
+
+        if (allBankAccounts === undefined || allBankAccounts.isEmpty())
+            return index
+
         for (var i = 0; index === invalidIndex
              && i < allBankAccounts.size(); i++) {
-            var item = allBankAccounts.get(i)
-            if (item.uniqueId === uniqueId)
+            if (allBankAccounts.get(i).uniqueId === uniqueId)
                 index = i
         }
         return index
     }
 
-    function formattedCurrentAmount() {
+    function formattedCurrentAmount(): real {
         return currentBankAccount.amount.toFixed(3)
     }
 
@@ -366,13 +365,13 @@ Page {
         openDatePickerId.selectedDate = dateValue
     }
 
-    function getformattedToolbarTitle(categoryTitle) {
+    function getformattedToolbarTitle(categoryTitle): string {
+        var total = 0.00
         if (allBankAccounts === undefined || allBankAccounts.isEmpty())
             return categoryTitle
-        var total = 0.00
+
         for (var i = 0; i < allBankAccounts.size(); i++) {
-            var item = allBankAccounts.get(i)
-            total += item.amount
+            total += allBankAccounts.get(i).amount
         }
 
         return category.title + ": " + Functions.formatCurrencyString(total)

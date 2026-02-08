@@ -31,7 +31,6 @@
         <file>ui/MainPage.qml</file>
         <file>ui/ModelListView.qml</file>
         <file>ui/AnimationCircularRotation.qml</file>
-        <file>ui/AnimationFadeOut.qml</file>
         <file>ui/AnimationFadeIn.qml</file>
         <file>ui/AppToolbar.qml</file>
         <file>ui/PasswordText.qml</file>
@@ -50,6 +49,7 @@
         <file>ui/FloatingActionButtons.qml</file>
         <file>ui/TitleTextLight.qml</file>
         <file>ui/FloatingActionLabel.qml</file>
+        <file>ui/MainSelection.qml</file>        
         <file>ui/WebsitePicker.qml</file>
         <file>ui/FloatingActionMenu.qml</file>
         <file>ui/WebsitesPage.qml</file>

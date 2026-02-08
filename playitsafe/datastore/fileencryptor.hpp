@@ -17,7 +17,7 @@ class FileEncryptor {
   QByteArray encryptToByteArray(const QString& text);
   QByteArray encryptToByteArray(QByteArray bytes);
   QByteArray decryptToByteArray(const QString& text);
-  QByteArray decryptToByteArray(QByteArray bytes);
+  QByteArray decryptToByteArray(const QByteArray bytes);
 
   bool hasKey() const {
     return !m_keyParts.isEmpty();
@@ -41,7 +41,7 @@ class FileEncryptor {
 
   const QString mDefaultPassword = {"password"};
   QString mEncryptedFilePassword {mDefaultPassword};
-  quint64 m_key;
+  quint64 m_key=-1;
   QVector<char> m_keyParts;
 
   const char mVersionPart1 {0x01};
