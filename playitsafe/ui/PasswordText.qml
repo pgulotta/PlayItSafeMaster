@@ -48,11 +48,11 @@ Rectangle {
         onClicked: {
             if (fieldText === "")
                 return
-            var currentEchoMode = textId.echoMode
+
             textId.echoMode = TextInput.Normal
             textId.deselect()
             textId.copy()
-            textId.echoMode = currentEchoMode
+            textId.echoMode = textId.echoMode
             textId.forceActiveFocus()
             textId.deselect()
         }

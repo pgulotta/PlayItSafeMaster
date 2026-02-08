@@ -85,25 +85,6 @@ ApplicationWindow {
 
     onWidthChanged: isPortraitMode = Screen.height > Screen.width
 
-    // onWidthChanged: {
-    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
-    //                 + " Screen.height:" + Screen.height)
-    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
-    //                 + " Screen.height:" + Screen.height)
-    //     console.log("^^^^^^ onHeightChanged  Screen.desktopAvailableHeight:"
-    //                 + Screen.desktopAvailableHeight + " Screen.desktopAvailableWidth:"
-    //                 + Screen.desktopAvailableWidth)
-    //     //isPortraitMode = Screen.height > Screen.width
-    // }
-    // onHeightChanged: {
-    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
-    //                 + " Screen.height:" + Screen.height)
-    //     console.log("^^^^^^ onHeightChanged  Screen.width:" + Screen.width
-    //                 + " Screen.height:" + Screen.height)
-    //     console.log("^^^^^^ onHeightChanged  Screen.desktopAvailableHeight:"
-    //                 + Screen.desktopAvailableHeight + " Screen.desktopAvailableWidth:"
-    //                 + Screen.desktopAvailableWidth)
-    // }
     header: AppToolbar {
         id: appToolbarId
     }
