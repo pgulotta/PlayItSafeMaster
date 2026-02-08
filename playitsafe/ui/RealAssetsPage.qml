@@ -227,20 +227,20 @@ Page {
         }
     }
 
-    function getItemIndex(uniqueId) {
+    function getItemIndex(uniqueId): int {
         if (allRealAssets === undefined || allRealAssets.isEmpty())
             return invalidIndex
-        var index = invalidIndex
-        for (var i = 0; index === invalidIndex
+
+        for (var i = 0, index = invalidIndex; index === invalidIndex
              && i < allRealAssets.size(); i++) {
-            var item = allRealAssets.get(i)
-            if (item.uniqueId === uniqueId)
+
+            if (allRealAssets.get(i).uniqueId === uniqueId)
                 index = i
         }
         return index
     }
 
-    function formattedCurrentValuation() {
+    function formattedCurrentValuation(): number {
         return currentRealAsset.valuation.toFixed(3)
     }
 
@@ -329,13 +329,12 @@ Page {
         lastUpdatedId.selectedDate = dateValue
     }
 
-    function getformattedToolbarTitle(categoryTitle) {
+    function getformattedToolbarTitle(categoryTitle): string {
         if (allRealAssets === undefined || allRealAssets.isEmpty())
             return categoryTitle
-        var total = 0.00
-        for (var i = 0; i < allRealAssets.size(); i++) {
-            var item = allRealAssets.get(i)
-            total += item.valuation
+
+        for (var i = 0, total = 0.00; i < allRealAssets.size(); i++) {
+            total += allRealAssets.get(i).valuation
         }
 
         return category.title + ": " + Functions.formatCurrencyString(total)
