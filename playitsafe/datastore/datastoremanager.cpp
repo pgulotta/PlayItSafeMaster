@@ -10,13 +10,6 @@
 #include "../model/expense.hpp"
 #include "../model/switchboardcategory.hpp"
 
-#include <QSettings>
-#include <QDir>
-#include <QDebug>
-#include <QFile>
-#include <QDate>
-#include <QSharedPointer>
-
 
 auto toStatus(bool value)
 {
