@@ -269,9 +269,8 @@ Page {
     function calcSummaryTotal() {
         summaryTotal = 0
         for (var i = 0; i < recapList.size(); i++) {
-            var item = recapList.get(i)
-            if (item.enabled)
-                summaryTotal += item.amount
+            if (recapList.get(i).enabled)
+                summaryTotal += recapList.get(i).amount
         }
     }
 }

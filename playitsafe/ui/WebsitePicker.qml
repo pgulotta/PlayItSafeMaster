@@ -43,12 +43,13 @@ Rectangle {
         width: buttonImageSize
         height: buttonImageSize
         onClicked: {
+            var theLink
             if (!allWebsites.isEmpty()) {
                 var websiteItem = allWebsites.get(currentWebsiteIndex)
                 if (websiteItem.url === "")
                     console.log("No website defined for selected item")
                 else {
-                    var theLink = Functions.formatUrlink(websiteItem.url)
+                    theLink = Functions.formatUrlink(websiteItem.url)
                     console.log(theLink + " opening in browser")
                     Qt.openUrlExternally(theLink)
                 }
