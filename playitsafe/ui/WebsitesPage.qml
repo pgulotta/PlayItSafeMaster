@@ -39,9 +39,6 @@ Page {
     onVisibleChanged: {
         if (visible) {
             setcurrentWebsite(getItemIndex(initialWebsiteListUniqeId))
-            for (var i = 0; i < allWebsites.size(); i++) {
-                var item = allWebsites.get(i)
-            }
             initializeToolbar(true, category.title)
         }
     }
@@ -208,12 +205,9 @@ Page {
     }
 
     function getItemIndex(uniqueId) {
-        if (allWebsites === undefined || allWebsites.isEmpty())
-            return invalidIndex
         var index = invalidIndex
         for (var i = 0; index === invalidIndex && i < allWebsites.size(); i++) {
-            var item = allWebsites.get(i)
-            if (item.uniqueId === uniqueId)
+            if (allWebsites.get(i).uniqueId === uniqueId)
                 index = i
         }
         return index
