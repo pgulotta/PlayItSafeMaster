@@ -273,14 +273,15 @@ bool FileEncryptor::encrypt()
             QFile source(mDataStoreFileNames.unencryptedFileName());
             QSaveFile destination(mDataStoreFileNames.encryptedFileName());
             setKey(generateKeyFromPassword(mEncryptedFilePassword));
-            source.open(QIODevice::ReadOnly);
-            destination.open(QIODevice::WriteOnly);
-            auto bytes = source.readAll();
-            qInfo() <<  "FileEncryptor::encrypt: Source bytes read size = " << bytes.size();
-            destination.write(encryptToByteArray(bytes));
-            destination.commit();
-            source.close();
-            qInfo() <<  "FileEncryptor::encrypt: Source file size = " << source.size();
+            if (source.open(QIODevice::ReadOnly) && destination.open(QIODevice::WriteOnly))
+            {
+                auto bytes = source.readAll();
+                qInfo() <<  "FileEncryptor::encrypt: Source bytes read size = " << bytes.size();
+                destination.write(encryptToByteArray(bytes));
+                destination.commit();
+                source.close();
+                qInfo() << "FileEncryptor::encrypt: Source file size = " << source.size();
+            }
         }
     }
     catch (const std::exception &e)
