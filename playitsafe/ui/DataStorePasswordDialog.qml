@@ -66,13 +66,13 @@ Dialog {
         timerId.start()
     }
 
-    function getTitle() {
+    function getTitle(): string {
         if (state === "validate")
             return enterPassword
         else if (state === "import")
             return qsTr("Data Store Import")
         else if (state === "new")
-            return qsTr("Create New Data Store Password")
+            return qsTr("Create New Data Store")
         else if (state === "change")
             return qsTr("Update Data Store Password")
         else
