@@ -128,6 +128,8 @@ Dialog {
     }
 
     function onPasswordChanged(password) {
+        var successful
+
         if (password === undefined || password === null) {
             dataStorePasswordDialogId.reject()
             return
@@ -143,7 +145,7 @@ Dialog {
             return
         }
 
-        var successful = DataStoreManager.setDataStorePassword(password)
+        successful = DataStoreManager.setDataStorePassword(password)
 
         if (state === "change") {
             doChangePasswordChanged(successful)
