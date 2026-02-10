@@ -73,7 +73,7 @@ QByteArray FileEncryptor::encryptToByteArray(const QString &text)
     return encryptToByteArray(plaintextArray);
 }
 
-QByteArray FileEncryptor::encryptToByteArray(QByteArray bytes)
+QByteArray FileEncryptor::encryptToByteArray(const QByteArray &bytes)
 {
     if (m_keyParts.isEmpty())
     {
