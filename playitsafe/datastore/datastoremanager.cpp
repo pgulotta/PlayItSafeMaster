@@ -226,9 +226,8 @@ bool DataStoreManager::fileCopy(const QString &sourceFilePath, const  QString &d
 
     QFile source(sourceFilePath);
     QSaveFile destination{destinationFilePath};
-    destination.open(QIODevice::WriteOnly);
 
-    if (source.open(QIODevice::ReadOnly))
+    if (source.open(QIODevice::ReadOnly) && destination.open(QIODevice::WriteOnly))
     {
         auto bytes = source.readAll();
         qInfo() <<  "DataStoreManager::fileCopy: Source bytes read size = " << bytes.size();
