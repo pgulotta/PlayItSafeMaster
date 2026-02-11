@@ -240,7 +240,7 @@ Page {
         return index
     }
 
-    function formattedCurrentValuation(): number {
+    function formattedCurrentValuation() {
         return currentRealAsset.valuation.toFixed(3)
     }
 

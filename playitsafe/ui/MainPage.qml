@@ -150,7 +150,7 @@ ApplicationWindow {
         appToolbarId.enabled = shouldEnable
     }
 
-    function getCategoryColor(category) {
+    function getCategoryColor(category): string {
         var categoryGroup = Number(category)
         if (categoryGroup === SwitchboardCategory.Asset)
             return categoryAssetColor

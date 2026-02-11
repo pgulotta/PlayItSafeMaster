@@ -24,8 +24,6 @@ Page {
     property double summaryTotal
     readonly property SwitchboardCategory category: AllCategories.get(
                                                         SwitchboardCategory.Recap)
-
-    //   readonly property string assetsCategoryColor: getCategoryColor(0)
     readonly property string assetsCategoryColor: getCategoryColor(
                                                       SwitchboardCategory.Asset)
     readonly property string assetsColor: Qt.lighter(

@@ -39,6 +39,7 @@
         <file>ui/RealAssetsPage.qml</file>
         <file>ui/DatePicker.qml</file>
         <file>ui/RecapPage.qml</file>
+        <file>ui/RecapPageTabs.qml</file>
         <file>ui/EditableText.qml</file>
         <file>ui/SelectableImage.qml</file>
         <file>ui/ExpensesPage.qml</file>
@@ -49,7 +50,7 @@
         <file>ui/FloatingActionButtons.qml</file>
         <file>ui/TitleTextLight.qml</file>
         <file>ui/FloatingActionLabel.qml</file>
-        <file>ui/MainSelection.qml</file>        
+        <file>ui/MainSelection.qml</file>
         <file>ui/WebsitePicker.qml</file>
         <file>ui/FloatingActionMenu.qml</file>
         <file>ui/WebsitesPage.qml</file>
