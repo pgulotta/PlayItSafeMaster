@@ -30,13 +30,8 @@ Page {
         anchors.fill: parent
         currentIndex: tabBarId.currentIndex
 
-        Rectangle {
-            color: rootId.categoryRecapColor
-            Label {
-                text: "Summary View"
-                anchors.centerIn: parent
-            }
-        }
+        RecapPageSummary {}
+
         RecapPage {}
 
         Rectangle {
