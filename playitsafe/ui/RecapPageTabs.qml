@@ -1,12 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import SwitchboardCategory
 
 Page {
+    id: recapPageTabsId
+    objectName: "RecapPageTabs"
 
     visible: true
-    width: parent.height
-    height: parent.height
 
     // Header with TabBar
     header: TabBar {
@@ -30,7 +31,7 @@ Page {
         currentIndex: tabBarId.currentIndex
 
         Rectangle {
-            color: "red"
+            color: rootId.categoryRecapColor
             Label {
                 text: "Summary View"
                 anchors.centerIn: parent
