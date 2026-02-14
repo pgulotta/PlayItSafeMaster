@@ -51,9 +51,9 @@ Page {
         height: parent.height
         color: rootId.categoryRecapColor
         Column {
-            spacing: rootId.toolbarHeight
-            leftPadding: rootId.toolbarHeight
-            topPadding: rootId.toolbarHeight
+            spacing: rootId.largeMargin
+            leftPadding: rootId.largeMargin
+            topPadding: rootId.largeMargin
             Text {
                 text: "Summary Total:  " + Functions.formatCurrencyString(
                           summaryTotals)
