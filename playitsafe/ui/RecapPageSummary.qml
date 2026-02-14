@@ -9,7 +9,7 @@ import Expense
 import "Functions.js" as Functions
 
 Page {
-    id: recapPageSummaryId
+    //   id: recapPageSummaryId
     objectName: "RecapPageSummary"
 
     property double summaryTotal
@@ -24,7 +24,6 @@ Page {
     width: parent.width
 
     Component.onCompleted: {
-        console.log(" Component.onCompleted:   +++++++++++++++++++++++++++")
         for (var i = 0; i < RecapList.size(); i++) {
             summaryTotal += RecapList.get(i).amount
         }
@@ -46,46 +45,37 @@ Page {
                 + summaryRealAssets - summaryExpenses
     }
 
+    id: textPage
     Rectangle {
+        width: parent.width
+        height: parent.height
         color: rootId.categoryRecapColor
-        anchors.fill: parent
         Column {
-            anchors.centerIn: parent
-            width: parent.width
-
-            HtmlText {
-                text: "Summary total:   " + Functions.formatCurrencyString(
-                          summaryTotal)
-                isTitle: true
+            spacing: 40
+            leftPadding: 50
+            topPadding: 50
+            Text {
+                text: "Summary Total:  " + Functions.formatCurrencyString(
+                          summaryTotals)
+                font.bold: true
             }
 
-            HtmlText {
-                text: "Bank Accounts total:  " + Functions.formatCurrencyString(
+            Text {
+                text: "    Bank Accounts Total:  " + Functions.formatCurrencyString(
                           summaryBankAccounts)
-                isTitle: true
             }
-
-            HtmlText {
-                text: "Investments total:  " + Functions.formatCurrencyString(
+            Text {
+                text: "    Investments Total:  " + Functions.formatCurrencyString(
                           summaryInvestments)
-                isTitle: true
             }
-
-            HtmlText {
-                text: "Real Assets total:  " + Functions.formatCurrencyString(
+            Text {
+                text: "    Real Assets Total:  " + Functions.formatCurrencyString(
                           summaryRealAssets)
-                isTitle: true
+                color: "blue"
             }
-
-            HtmlText {
-                text: "Expenses total:  " + Functions.formatCurrencyString(
-                          summaryExpenses)
-                isTitle: true
-            }
-
-            HtmlText {
-                text: "Total:  " + Functions.formatCurrencyString(summaryTotals)
-                isTitle: true
+            Text {
+                text: "    Expenses Total:  (" + Functions.formatCurrencyString(
+                          summaryExpenses) + ")"
             }
         }
     }

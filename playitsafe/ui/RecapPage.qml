@@ -79,7 +79,7 @@ Page {
                 radius: rectRadius
                 width: modelListViewId.width
                 height: textWithTitleHeight * .95
-                color: categoryRecapColor
+                color: rootId.categoryRecapColor
                 border.color: darkTextColor
                 border.width: rectBorder
                 TitleTextDark {
