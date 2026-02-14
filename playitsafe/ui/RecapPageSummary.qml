@@ -51,31 +51,40 @@ Page {
         height: parent.height
         color: rootId.categoryRecapColor
         Column {
-            spacing: 40
-            leftPadding: 50
-            topPadding: 50
+            spacing: rootId.toolbarHeight
+            leftPadding: rootId.toolbarHeight
+            topPadding: rootId.toolbarHeight
             Text {
                 text: "Summary Total:  " + Functions.formatCurrencyString(
                           summaryTotals)
-                font.bold: true
+
+                color: "black"
+                font.pointSize: rootId.largeFontPointSize
             }
 
             Text {
                 text: "    Bank Accounts Total:  " + Functions.formatCurrencyString(
                           summaryBankAccounts)
+                color: "green"
+                font.pointSize: rootId.fontPointSize
             }
             Text {
                 text: "    Investments Total:  " + Functions.formatCurrencyString(
                           summaryInvestments)
+                color: "green"
+                font.pointSize: rootId.fontPointSize
             }
             Text {
                 text: "    Real Assets Total:  " + Functions.formatCurrencyString(
                           summaryRealAssets)
-                color: "blue"
+                color: "green"
+                font.pointSize: fontPointSize
             }
             Text {
                 text: "    Expenses Total:  (" + Functions.formatCurrencyString(
                           summaryExpenses) + ")"
+                color: "red"
+                font.pointSize: rootId.fontPointSize
             }
         }
     }
