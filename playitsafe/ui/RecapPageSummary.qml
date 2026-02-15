@@ -5,7 +5,6 @@ import SwitchboardCategory
 import "Functions.js" as Functions
 
 Page {
-    //   id: recapPageSummaryId
     objectName: "RecapPageSummary"
 
     visible: true
@@ -22,7 +21,7 @@ Page {
             topPadding: rootId.largeMargin
             Text {
                 text: "Summary Total:  " + Functions.formatCurrencyString(
-                          summaryTotals)
+                          recapPageTabsId.summaryTotals)
 
                 color: "black"
                 font.pointSize: rootId.largeFontPointSize
@@ -30,25 +29,25 @@ Page {
 
             Text {
                 text: "    Bank Accounts Total:  " + Functions.formatCurrencyString(
-                          summaryBankAccounts)
+                          recapPageTabsId.summaryBankAccounts)
                 color: "green"
                 font.pointSize: rootId.fontPointSize
             }
             Text {
                 text: "    Investments Total:  " + Functions.formatCurrencyString(
-                          summaryInvestments)
+                          recapPageTabsId.summaryInvestments)
                 color: "green"
                 font.pointSize: rootId.fontPointSize
             }
             Text {
                 text: "    Real Assets Total:  " + Functions.formatCurrencyString(
-                          summaryRealAssets)
+                          recapPageTabsId.summaryRealAssets)
                 color: "green"
                 font.pointSize: fontPointSize
             }
             Text {
                 text: "    Expenses Total:  (" + Functions.formatCurrencyString(
-                          summaryExpenses) + ")"
+                          recapPageTabsId.summaryExpenses) + ")"
                 color: "red"
                 font.pointSize: rootId.fontPointSize
             }

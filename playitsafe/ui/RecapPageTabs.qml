@@ -7,8 +7,6 @@ import Investment
 import RealAsset
 import Expense
 
-
-
 Page {
     id: recapPageTabsId
     objectName: "RecapPageTabs"
@@ -20,7 +18,6 @@ Page {
     property double summaryRealAssets
     property double summaryExpenses
     property double summaryTotals
-
 
     Component.onCompleted: {
         for (var i = 0; i < RecapList.size(); i++) {
