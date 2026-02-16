@@ -5,7 +5,8 @@ QT += \
     qml \
     quick \
     quickcontrols2 \
-    printsupport
+    printsupport \
+    graphs
 
 CONFIG += c++2a
 

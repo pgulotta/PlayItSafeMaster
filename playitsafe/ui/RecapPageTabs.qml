@@ -53,7 +53,7 @@ Page {
             text: qsTr("Details")
         }
         TabButton {
-            text: qsTr("Chart")
+            text: qsTr("Charts")
         }
     }
 
@@ -67,12 +67,5 @@ Page {
         RecapPage {}
 
         RecapPageCharts {}
-        Rectangle {
-            color: "blue"
-            Label {
-                text: "Chart View"
-                anchors.centerIn: parent
-            }
-        }
     }
 }
