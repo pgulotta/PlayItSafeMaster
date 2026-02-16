@@ -41,6 +41,7 @@
         <file>ui/RecapPage.qml</file>
         <file>ui/RecapPageTabs.qml</file>
         <file>ui/RecapPageSummary.qml</file>
+        <file>ui/RecapPageCharts.qml</file>
         <file>ui/EditableText.qml</file>
         <file>ui/SelectableImage.qml</file>
         <file>ui/ExpensesPage.qml</file>

@@ -66,6 +66,7 @@ Page {
 
         RecapPage {}
 
+        RecapPageCharts {}
         Rectangle {
             color: "blue"
             Label {
