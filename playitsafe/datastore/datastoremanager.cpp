@@ -686,7 +686,7 @@ QQmlObjectListModel<T>  &DataStoreManager::getListModel(QQmlObjectListModel<T> &
     {
         listModel.clear();
         mDataAccessAdapter.select(listModel);
-        qInfo() <<  typeid(T).name() << " list model record count = " << listModel.size();
+     //   qInfo() <<  typeid(T).name() << " list model record count = " << listModel.size();
     }
 
     return listModel;

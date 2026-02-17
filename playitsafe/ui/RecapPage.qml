@@ -16,12 +16,13 @@ Page {
     property real field2Width: width * 0.4
     property real amountWidth: width * 0.15
     property real checkboxWidth: width * 0.1
+    property double total: 0.0
 
     property real sectionTextHeight: toolbarHeight * .8
     readonly property int animationDeltaX: 3
     property alias recapList: modelListViewId.listViewModel
     property alias recapListIndex: modelListViewId.listViewCurrentIndex
-    property double summaryTotal
+
     readonly property SwitchboardCategory category: AllCategories.get(
                                                         SwitchboardCategory.Recap)
     readonly property string assetsCategoryColor: getCategoryColor(
@@ -85,8 +86,8 @@ Page {
                 TitleTextDark {
                     id: summaryTotalId
                     anchors.centerIn: parent
-                    text: Functions.formatCurrencyString(summaryTotal)
-                    color: summaryTotal < 0 ? negativeNumberColor : darkTextColor
+                    text: Functions.formatCurrencyString(total)
+                    color: total < 0 ? negativeNumberColor : darkTextColor
                 }
             }
 
@@ -265,10 +266,10 @@ Page {
     }
 
     function calcSummaryTotal() {
-        summaryTotal = 0
+        total = 0
         for (var i = 0; i < recapList.size(); i++) {
             if (recapList.get(i).enabled)
-                summaryTotal += recapList.get(i).amount
+                total += recapList.get(i).amount
         }
     }
 }

@@ -12,18 +12,14 @@ Page {
     objectName: "RecapPageTabs"
     visible: true
 
-    property double summaryTotal
     property double summaryBankAccounts
     property double summaryInvestments
     property double summaryRealAssets
     property double summaryExpenses
-    property double summaryTotals
+    property double summaryTotal
 
     Component.onCompleted: {
-        for (var i = 0; i < RecapList.size(); i++) {
-            summaryTotal += RecapList.get(i).amount
-        }
-        for (i = 0; i < AllBankAccounts.size(); i++) {
+        for (var i = 0; i < AllBankAccounts.size(); i++) {
             summaryBankAccounts += AllBankAccounts.get(i).amount
         }
         for (i = 0; i < AllInvestments.size(); i++) {
@@ -37,7 +33,7 @@ Page {
             summaryExpenses += AllExpenses.get(i).amount
         }
 
-        summaryTotals = summaryBankAccounts + summaryInvestments
+        summaryTotal = summaryBankAccounts + summaryInvestments
                 + summaryRealAssets - summaryExpenses
     }
 

@@ -21,7 +21,7 @@ Page {
             topPadding: rootId.largeMargin
             Text {
                 text: "Summary Total:  " + Functions.formatCurrencyString(
-                          recapPageTabsId.summaryTotals)
+                          recapPageTabsId.summaryTotal)
 
                 color: "black"
                 font.pointSize: rootId.largeFontPointSize

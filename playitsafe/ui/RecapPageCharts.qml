@@ -29,33 +29,32 @@ Item {
             GraphsView {
                 anchors.fill: parent
                 anchors.margins: 16
-                axisX: BarCategoryAxis {
-                    categories: [2024, 2025, 2026]
-                    gridVisible: false
-                    subGridVisible: false
-                }
-                axisY: ValueAxis {
-                    min: 20
-                    max: 100
-                    tickInterval: 10
-                    subTickCount: 9
-                }
+
                 theme: GraphsTheme {
                     colorScheme: GraphsTheme.ColorScheme.Dark
-                    theme: GraphsTheme.Theme.QtGreen
                 }
-                //! [bargraph]
-                //! [barseries]
-                BarSeries {
-                    //! [barseries]
-                    //! [barset]
-                    BarSet {
-                        values: [82, 50, 75]
-                        borderWidth: 2
-                        color: "#373F26"
-                        borderColor: "#DBEB00"
+
+                PieSeries {
+                    PieSlice {
+                        //   labelPosition: LabelPosition.InsideHorizontal
+                        value: recapPageTabsId.summaryBankAccounts
+                        label: "Bank Accounts"
                     }
-                    //! [barset]
+                    PieSlice {
+                        ///     labelPosition: LabelPosition.InsideHorizontal
+                        value: recapPageTabsId.summaryInvestments
+                        label: "Investments"
+                    }
+                    PieSlice {
+                        //    labelPosition: LabelPosition.InsideHorizontal
+                        value: recapPageTabsId.summaryRealAssets
+                        label: "Real Assets"
+                    }
+                    PieSlice {
+                        // labelPosition: LabelPosition.InsideHorizontal
+                        value: recapPageTabsId.summaryExpenses
+                        label: "Expenses"
+                    }
                 }
             }
         }
