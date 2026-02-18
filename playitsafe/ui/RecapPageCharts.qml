@@ -21,7 +21,7 @@ Item {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            // border.width: 1
+            border.width: 1
             radius: graphsRow.margin
             //! [bargraph]
             ChartView {
@@ -35,24 +35,21 @@ Item {
                         id: bankAccountsId
                         value: recapPageTabsId.summaryBankAccounts
                         label: "Bank Accounts"
-                        color: "green"
+                        color: rootId.categoryBankAccountsColor
                         exploded: true
-                        //  onClicked: bankAccountsId.color = "yellow"
                     }
                     PieSlice {
-                        //  labelPosition: LabelPosition.InsideHorizontal
                         id: investmentsSliceId
                         value: recapPageTabsId.summaryInvestments
                         label: "Investments"
-                        color: "palegreen"
+                        color: rootId.categoryInvestmentsColor
                         exploded: true
-                        //  onHovered: investmentsSliceId.color = "gold"
                     }
                     PieSlice {
                         id: realAssetsSliceId
                         value: recapPageTabsId.summaryRealAssets
                         label: "Real Assets"
-                        color: "seagreen"
+                        color: rootId.categoryAssetColor
                         exploded: true
                     }
                     PieSlice {

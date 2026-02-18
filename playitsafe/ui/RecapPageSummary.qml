@@ -22,7 +22,6 @@ Page {
             Text {
                 text: "Summary Total:  " + Functions.formatCurrencyString(
                           recapPageTabsId.summaryTotal)
-
                 color: "black"
                 font.pointSize: rootId.largeFontPointSize
             }
@@ -30,19 +29,19 @@ Page {
             Text {
                 text: "    Bank Accounts Total:  " + Functions.formatCurrencyString(
                           recapPageTabsId.summaryBankAccounts)
-                color: "green"
+                color: rootId.categoryBankAccountsColor
                 font.pointSize: rootId.fontPointSize
             }
             Text {
                 text: "    Investments Total:  " + Functions.formatCurrencyString(
                           recapPageTabsId.summaryInvestments)
-                color: "green"
+                color: rootId.categoryInvestmentsColor
                 font.pointSize: rootId.fontPointSize
             }
             Text {
                 text: "    Real Assets Total:  " + Functions.formatCurrencyString(
                           recapPageTabsId.summaryRealAssets)
-                color: "green"
+                color:  rootId.categoryAssetColor
                 font.pointSize: fontPointSize
             }
             Text {
