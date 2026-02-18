@@ -6,7 +6,7 @@ QT += \
     quick \
     quickcontrols2 \
     printsupport \
-    graphs
+    charts
 
 CONFIG += c++2a
 

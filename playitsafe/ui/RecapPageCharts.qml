@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 import QtQuick
 import QtQuick.Layouts
-import QtGraphs
+import QtCharts
 
 Item {
     id: mainView
@@ -21,39 +21,46 @@ Item {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            color: "#262626"
-            border.color: "#4d4d4d"
-            border.width: 1
+            // border.width: 1
             radius: graphsRow.margin
             //! [bargraph]
-            GraphsView {
+            ChartView {
                 anchors.fill: parent
-                anchors.margins: 16
-
-                theme: GraphsTheme {
-                    colorScheme: GraphsTheme.ColorScheme.Dark
-                }
+                backgroundColor: rootId.categoryRecapColor
+                legend.visible: true
+                antialiasing: true
 
                 PieSeries {
                     PieSlice {
-                        //   labelPosition: LabelPosition.InsideHorizontal
+                        id: bankAccountsId
                         value: recapPageTabsId.summaryBankAccounts
                         label: "Bank Accounts"
+                        color: "green"
+                        exploded: true
+                        //  onClicked: bankAccountsId.color = "yellow"
                     }
                     PieSlice {
-                        ///     labelPosition: LabelPosition.InsideHorizontal
+                        //  labelPosition: LabelPosition.InsideHorizontal
+                        id: investmentsSliceId
                         value: recapPageTabsId.summaryInvestments
                         label: "Investments"
+                        color: "palegreen"
+                        exploded: true
+                        //  onHovered: investmentsSliceId.color = "gold"
                     }
                     PieSlice {
-                        //    labelPosition: LabelPosition.InsideHorizontal
+                        id: realAssetsSliceId
                         value: recapPageTabsId.summaryRealAssets
                         label: "Real Assets"
+                        color: "seagreen"
+                        exploded: true
                     }
                     PieSlice {
-                        // labelPosition: LabelPosition.InsideHorizontal
+                        //     labelPosition: LabelPosition.InsideHorizontal
                         value: recapPageTabsId.summaryExpenses
                         label: "Expenses"
+                        exploded: true
+                        color: "red"
                     }
                 }
             }
