@@ -29,7 +29,7 @@ Page {
                                                       SwitchboardCategory.Asset)
     readonly property string assetsColor: Qt.lighter(
                                               getCategoryColor(
-                                                  SwitchboardCategory.Asset))
+                                                  SwitchboardCategory.Asset), 2)
     readonly property string expensesCateoryColor: getCategoryColor(
                                                        SwitchboardCategory.Liability)
     readonly property string expensesColor: Qt.lighter(
