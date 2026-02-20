@@ -86,15 +86,12 @@ GridView {
             Column {
                 id: columnDelegateId
                 width: parent.width
-                anchors.fill: parent
-                anchors.topMargin: columnRowSpacing
-                anchors.bottomMargin: columnRowSpacing
+
                 SelectableImage {
                     id: selectableImageId
                     source: model.imageSource
                     height: categoryWidth * .96
                     width: height
-                    anchors.horizontalCenter: columnDelegateId.horizontalCenter
                 }
                 Label {
                     text: model.title

@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls
 
 GridView {
-    id: switchboardPageId
-    objectName: "SwitchboardPage"
+    id: mainSelectionId
+    objectName: "MainSelection"
 
     cellWidth: categoryWidth + itemMargin
     cellHeight: categoryHeight + itemMargin
@@ -24,7 +24,7 @@ GridView {
     transitions: [
         Transition {
             NumberAnimation {
-                target: switchboardPageId
+                target: mainSelectionId
                 from: 0
                 to: 1
                 properties: "opacity"
