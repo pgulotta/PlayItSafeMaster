@@ -15,8 +15,7 @@ Page {
     property real field2Width: width * .4
     property real amountWidth: width * .15
 
-    readonly property SwitchboardCategory category: AllCategories.get(
-                                                        SwitchboardCategory.Investment)
+    readonly property SwitchboardCategory category: AllCategories.get(SwitchboardCategory.Investment)
     property alias allInvestments: modelListViewId.listViewModel
     property alias allInvestmentsIndex: modelListViewId.listViewCurrentIndex
     property string initialUniqueId: ""
@@ -28,28 +27,26 @@ Page {
     state: ""
 
     Component.onCompleted: {
-        setCurrentInvestment(initialIndex)
+        setCurrentInvestment(initialIndex);
         if (visible && category != null) {
-            initializeToolbar(true, getformattedToolbarTitle(category.title))
+            initializeToolbar(true, getformattedToolbarTitle(category.title));
         }
-        hideKeyboard()
+        hideKeyboard();
     }
 
-    onInitialUniqueIdChanged: initialIndex = Functions.getListIndexFromUniqueId(
-                                  initialUniqueId, AllInvestments)
+    onInitialUniqueIdChanged: initialIndex = Functions.getListIndexFromUniqueId(initialUniqueId, AllInvestments)
 
     onCategoryChanged: {
         if (category != null) {
-            fieldBackColor = getCategoryColor(category.group)
-            initializeToolbar(true, getformattedToolbarTitle(category.title))
+            fieldBackColor = getCategoryColor(category.group);
+            initializeToolbar(true, getformattedToolbarTitle(category.title));
         }
     }
 
     onVisibleChanged: {
         if (visible) {
-            websiteUrlId.setWebsiteTitle(currentInvestment.websiteId)
-            initializeToolbar(modelListViewId.enabled,
-                              getformattedToolbarTitle(category.title))
+            websiteUrlId.setWebsiteTitle(currentInvestment.websiteId);
+            initializeToolbar(modelListViewId.enabled, getformattedToolbarTitle(category.title));
         }
     }
 
@@ -88,8 +85,7 @@ Page {
                     width: parent.width
                     listViewModel: AllInvestments
                     listViewDelegate: listViewDelegateId
-                    onCurrentIndexChanged: setCurrentInvestment(
-                                               allInvestmentsIndex)
+                    onCurrentIndexChanged: setCurrentInvestment(allInvestmentsIndex)
                 }
                 Item {
                     height: largeMargin
@@ -102,27 +98,22 @@ Page {
                     fieldLabel: qsTr("Issuer Symbol")
                     fontCapitaliztion: Font.AllUppercase
                     fieldText: currentInvestment.issuer
-                    onEditableTextChanged: onFieldChanged(
-                                               issuerId.fieldText.toLocaleUpperCase(
-                                                   ), currentInvestment.issuer)
+                    onEditableTextChanged: onFieldChanged(issuerId.fieldText.toLocaleUpperCase(), currentInvestment.issuer)
                 }
                 EditableText {
                     id: accountNumberId
                     isTextRequired: true
                     fieldLabel: qsTr("Account Number")
                     fieldText: currentInvestment.accountNumber
-                    onEditableTextChanged: onFieldChanged(
-                                               accountNumberId.fieldText,
-                                               currentInvestment.accountNumber)
+                    onEditableTextChanged: onFieldChanged(accountNumberId.fieldText, currentInvestment.accountNumber)
                 }
                 DatePicker {
                     id: issuerDatePickerId
                     fieldLabel: qsTr("Last Updated")
                     selectedDate: currentInvestment.issueDate
                     onDateChanged: {
-                        setIssuerDate(selectedDate)
-                        onFieldChanged(selectedDate,
-                                       currentInvestment.issueDate)
+                        setIssuerDate(selectedDate);
+                        onFieldChanged(selectedDate, currentInvestment.issueDate);
                     }
                 }
                 DatePicker {
@@ -130,9 +121,8 @@ Page {
                     fieldLabel: qsTr("Date Purchased")
                     selectedDate: currentInvestment.purchaseDate
                     onDateChanged: {
-                        setPurchasedDate(selectedDate)
-                        onFieldChanged(selectedDate,
-                                       currentInvestment.purchaseDate)
+                        setPurchasedDate(selectedDate);
+                        onFieldChanged(selectedDate, currentInvestment.purchaseDate);
                     }
                 }
                 EditableText {
@@ -141,15 +131,9 @@ Page {
                     width: smallFieldColumnWidth
                     inputHints: Qt.ImhFormattedNumbersOnly
                     fieldLabel: qsTr("Shares")
-                    fieldText: Functions.formattedNumeric(
-                                   currentInvestment.shares,
-                                   currentInvestment.sharesDecimals)
+                    fieldText: Functions.formattedNumeric(currentInvestment.shares, currentInvestment.sharesDecimals)
                     inputValidator: DoubleValidator {}
-                    onEditableTextChanged: onFieldChanged(
-                                               sharesId.fieldText,
-                                               Functions.formattedNumeric(
-                                                   currentInvestment.shares,
-                                                   currentInvestment.sharesDecimals))
+                    onEditableTextChanged: onFieldChanged(sharesId.fieldText, Functions.formattedNumeric(currentInvestment.shares, currentInvestment.sharesDecimals))
                 }
                 EditableText {
                     id: lastPriceId
@@ -157,18 +141,11 @@ Page {
                     width: smallFieldColumnWidth
                     inputHints: Qt.ImhFormattedNumbersOnly
                     fieldLabel: qsTr("Last Price")
-                    fieldText: Functions.formattedNumeric(
-                                   currentInvestment.lastPrice,
-                                   currentInvestment.lastPriceDecimals)
+                    fieldText: Functions.formattedNumeric(currentInvestment.lastPrice, currentInvestment.lastPriceDecimals)
                     inputValidator: DoubleValidator {}
                     onEditableTextChanged: {
-                        onFieldChanged(lastPriceId.fieldText,
-                                       Functions.formattedNumeric(
-                                           currentInvestment.lastPrice,
-                                           currentInvestment.lastPriceDecimals))
-                        initializeToolbar(modelListViewId.enabled,
-                                          getformattedToolbarTitle(
-                                              category.title))
+                        onFieldChanged(lastPriceId.fieldText, Functions.formattedNumeric(currentInvestment.lastPrice, currentInvestment.lastPriceDecimals));
+                        initializeToolbar(modelListViewId.enabled, getformattedToolbarTitle(category.title));
                     }
                 }
                 EditableText {
@@ -176,27 +153,21 @@ Page {
                     isTextRequired: true
                     fieldLabel: qsTr("Name on Account")
                     fieldText: currentInvestment.nameOnAccount
-                    onEditableTextChanged: onFieldChanged(
-                                               nameOnAccountId.fieldText,
-                                               currentInvestment.nameOnAccount)
+                    onEditableTextChanged: onFieldChanged(nameOnAccountId.fieldText, currentInvestment.nameOnAccount)
                 }
                 EditableText {
                     id: routingNumberId
                     fieldLabel: qsTr("Routing Number")
                     fieldText: currentInvestment.routingNumber
                     inputHints: Qt.ImhDigitsOnly
-                    onEditableTextChanged: onFieldChanged(
-                                               routingNumberId.fieldText,
-                                               currentInvestment.routingNumber)
+                    onEditableTextChanged: onFieldChanged(routingNumberId.fieldText, currentInvestment.routingNumber)
                 }
                 EditableText {
                     id: notesId
                     fieldLabel: qsTr("Notes")
                     fieldText: currentInvestment.notes
                     width: parent.width
-                    onEditableTextChanged: onFieldChanged(
-                                               notesId.fieldText,
-                                               currentInvestment.notes)
+                    onEditableTextChanged: onFieldChanged(notesId.fieldText, currentInvestment.notes)
                 }
                 WebsitePicker {
                     id: websiteUrlId
@@ -204,8 +175,7 @@ Page {
                     currentWebsiteUniqueId: currentInvestment.websiteId
                     width: notesId.width
                     onWebsiteChanged: {
-                        onFieldChanged(websiteUniqueId,
-                                       currentInvestment.websiteId)
+                        onFieldChanged(websiteUniqueId, currentInvestment.websiteId);
                     }
                 }
             }
@@ -236,9 +206,9 @@ Page {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    itemId.ListView.view.currentIndex = index
-                    itemId.forceActiveFocus()
-                    setCurrentInvestment(index)
+                    itemId.ListView.view.currentIndex = index;
+                    itemId.forceActiveFocus();
+                    setCurrentInvestment(index);
                 }
             }
             Rectangle {
@@ -272,8 +242,7 @@ Page {
                     }
                     TitleTextDark {
                         id: fieldId3
-                        text: Functions.formatCurrencyString(
-                                  model.shares * model.lastPrice)
+                        text: Functions.formatCurrencyString(model.shares * model.lastPrice)
                         clip: true
                         width: amountWidth
                         Layout.alignment: Qt.AlignRight
@@ -287,150 +256,133 @@ Page {
         id: floatingActionMenuId
         onButtonItemSelected: {
             if (buttonImage.indexOf("cancel") >= 0) {
-                doCancel()
+                doCancel();
             } else if (buttonImage.indexOf("save") >= 0) {
-                doTrySave()
+                doTrySave();
             } else if (buttonImage.indexOf("add") >= 0) {
-                setCurrentInvestment(allInvestments.size())
+                setCurrentInvestment(allInvestments.size());
             } else if (buttonImage.indexOf("remove") >= 0) {
-                doRemove()
+                doRemove();
             }
-            initializeToolbar(modelListViewId.enabled,
-                              getformattedToolbarTitle(category.title))
+            initializeToolbar(modelListViewId.enabled, getformattedToolbarTitle(category.title));
         }
     }
 
     function getItemIndex(uniqueId): int {
         if (allInvestments === undefined || allInvestments.isEmpty())
-            return invalidIndex
+            return invalidIndex;
 
-        for (var i = 0, index = invalidIndex; index === invalidIndex
-             && i < allInvestments.size(); i++) {
-
+        for (var i = 0, index = invalidIndex; index === invalidIndex && i < allInvestments.size(); i++) {
             if (allInvestments.get(i).uniqueId === uniqueId)
-                index = i
+                index = i;
         }
-        return index
+        return index;
     }
 
     function assignCurrentInvestment() {
         if (currentInvestment == null) {
-            setCurrentInvestment(0)
+            setCurrentInvestment(0);
         } else {
-            issuerId.fieldText = currentInvestment.issuer
-            accountNumberId.fieldText = currentInvestment.accountNumber
-            nameOnAccountId.fieldText = currentInvestment.nameOnAccount
-            routingNumberId.fieldText = currentInvestment.routingNumber
-            setIssuerDate(currentInvestment.issueDate)
-            setPurchasedDate(currentInvestment.purchaseDate)
-            sharesId.fieldText = Functions.formattedNumeric(
-                        currentInvestment.shares,
-                        currentInvestment.sharesDecimals)
-            lastPriceId.fieldText = Functions.formattedNumeric(
-                        currentInvestment.lastPrice,
-                        currentInvestment.lastPriceDecimals)
-            notesId.fieldText = currentInvestment.notes
-            websiteUrlId.setWebsiteTitle(currentInvestment.websiteId)
+            issuerId.fieldText = currentInvestment.issuer;
+            accountNumberId.fieldText = currentInvestment.accountNumber;
+            nameOnAccountId.fieldText = currentInvestment.nameOnAccount;
+            routingNumberId.fieldText = currentInvestment.routingNumber;
+            // setIssuerDate(currentInvestment.issueDate)
+            setPurchasedDate(currentInvestment.purchaseDate);
+            sharesId.fieldText = Functions.formattedNumeric(currentInvestment.shares, currentInvestment.sharesDecimals);
+            lastPriceId.fieldText = Functions.formattedNumeric(currentInvestment.lastPrice, currentInvestment.lastPriceDecimals);
+            notesId.fieldText = currentInvestment.notes;
+            websiteUrlId.setWebsiteTitle(currentInvestment.websiteId);
         }
     }
 
     function onFieldChanged(fieldValue, currentValue) {
         if (isToolbarEnabled()) {
             if (fieldValue < currentValue || fieldValue > currentValue) {
-                setIsDirty(true)
+                setIsDirty(true);
             }
         }
     }
 
     function setIsDirty(isDirty) {
         if (!modelListViewId.enabled === isDirty)
-            return
-        floatingActionMenuId.setActionButtonsState(isDirty)
-        enableAppToolbar(!isDirty)
-        modelListViewId.enabled = !isDirty
+            return;
+        floatingActionMenuId.setActionButtonsState(isDirty);
+        enableAppToolbar(!isDirty);
+        modelListViewId.enabled = !isDirty;
     }
 
     function doCancel() {
-        setCurrentInvestment(modelListViewId.listViewCurrentIndex)
-        setIsDirty(false)
+        setCurrentInvestment(modelListViewId.listViewCurrentIndex);
+        setIsDirty(false);
     }
 
     function doRemove() {
-        DataStoreManager.removeItem(SwitchboardCategory.Investment,
-                                    currentInvestment.uniqueId)
-        setCurrentInvestment(0)
-        setIsDirty(false)
-        modelListViewId.positionViewAtBeginning()
+        DataStoreManager.removeItem(SwitchboardCategory.Investment, currentInvestment.uniqueId);
+        setCurrentInvestment(0);
+        setIsDirty(false);
+        modelListViewId.positionViewAtBeginning();
     }
 
     function doTrySave() {
-        if (issuerId.state === validDataState
-                && accountNumberId.state === validDataState
-                && nameOnAccountId.state === validDataState) {
-            currentInvestment.issuer = issuerId.fieldText.toLocaleUpperCase()
-            currentInvestment.accountNumber = accountNumberId.fieldText
-            currentInvestment.shares = sharesId.fieldText
-            currentInvestment.lastPrice = lastPriceId.fieldText
-            currentInvestment.nameOnAccount = nameOnAccountId.fieldText
-            currentInvestment.routingNumber = routingNumberId.fieldText
-            currentInvestment.issueDate = issuerDatePickerId.selectedDate
-            currentInvestment.purchaseDate = purchasedDatePickerId.selectedDate
-            currentInvestment.notes = notesId.fieldText
-            currentInvestment.websiteId = websiteUrlId.currentWebsiteUniqueId
-            DataStoreManager.saveItem(
-                        SwitchboardCategory.Investment,
-                        investmentsPageId.state === addingNewState,
-                        currentInvestment)
-            allInvestmentsIndex = getItemIndex(currentInvestment.uniqueId)
-            setCurrentInvestment(allInvestmentsIndex)
-            setIsDirty(false)
-            investmentsPageId.state = ""
+        if (issuerId.state === validDataState && accountNumberId.state === validDataState && nameOnAccountId.state === validDataState) {
+            currentInvestment.issuer = issuerId.fieldText.toLocaleUpperCase();
+            currentInvestment.accountNumber = accountNumberId.fieldText;
+            currentInvestment.shares = sharesId.fieldText;
+            currentInvestment.lastPrice = lastPriceId.fieldText;
+            currentInvestment.nameOnAccount = nameOnAccountId.fieldText;
+            currentInvestment.routingNumber = routingNumberId.fieldText;
+            currentInvestment.issueDate = issuerDatePickerId.selectedDate;
+            currentInvestment.purchaseDate = purchasedDatePickerId.selectedDate;
+            currentInvestment.notes = notesId.fieldText;
+            currentInvestment.websiteId = websiteUrlId.currentWebsiteUniqueId;
+            DataStoreManager.saveItem(SwitchboardCategory.Investment, investmentsPageId.state === addingNewState, currentInvestment);
+            allInvestmentsIndex = getItemIndex(currentInvestment.uniqueId);
+            setCurrentInvestment(allInvestmentsIndex);
+            setIsDirty(false);
+            investmentsPageId.state = "";
         } else {
-            showTitledMessage(unableSaveTitle, requiredMessage)
+            showTitledMessage(unableSaveTitle, requiredMessage);
         }
     }
 
     function setIssuerDate(dateValue) {
         if (isNaN(dateValue))
-            dateValue = new Date()
-        issuerDatePickerId.selectedDate = dateValue
+            dateValue = new Date();
+        issuerDatePickerId.selectedDate = dateValue;
     }
 
     function setPurchasedDate(dateValue) {
         if (isNaN(dateValue))
-            dateValue = new Date()
-        purchasedDatePickerId.selectedDate = dateValue
+            dateValue = new Date();
+        purchasedDatePickerId.selectedDate = dateValue;
     }
 
     function setCurrentInvestment(listViewIndex) {
-        if (allInvestments === undefined || allInvestments.size(
-                    ) <= listViewIndex) {
-            investmentsPageId.state = addingNewState
-            currentInvestment = DataStoreManager.newItem(
-                        SwitchboardCategory.Investment)
+        if (allInvestments === undefined || allInvestments.size() <= listViewIndex) {
+            investmentsPageId.state = addingNewState;
+            currentInvestment = DataStoreManager.newItem(SwitchboardCategory.Investment);
         } else {
-            investmentsPageId.state = ""
-            modelListViewId.listViewCurrentIndex = listViewIndex
-            currentInvestment = allInvestments.get(listViewIndex)
-            modelListViewId.positionViewAtIndex(listViewIndex, ListView.Visible)
+            investmentsPageId.state = "";
+            modelListViewId.listViewCurrentIndex = listViewIndex;
+            currentInvestment = allInvestments.get(listViewIndex);
+            modelListViewId.positionViewAtIndex(listViewIndex, ListView.Visible);
         }
 
-        assignCurrentInvestment()
-        setIsDirty(false)
-        modelListViewId.forceActiveFocus()
+        assignCurrentInvestment();
+        setIsDirty(false);
+        modelListViewId.forceActiveFocus();
     }
 
     function getformattedToolbarTitle(categoryTitle): string {
-        var total = 0.00
+        var total = 0.00;
         if (allInvestments === undefined || allInvestments.isEmpty())
-            return categoryTitle
+            return categoryTitle;
 
         for (var i = 0; i < allInvestments.size(); i++) {
-
-            total += (allInvestments.get(i).shares * allInvestments.get(
-                          i).lastPrice)
+            total += (allInvestments.get(i).shares * allInvestments.get(i).lastPrice);
         }
 
-        return category.title + ": " + Functions.formatCurrencyString(total)
+        return category.title + ": " + Functions.formatCurrencyString(total);
     }
 }
