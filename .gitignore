@@ -55,3 +55,5 @@ compile_commands.json
 build/Desktop_Qt_6_10_2-Debug/playitsafe/playitsafe
 build/Desktop_Qt_6_10_2-Debug/.qmake.stash
 *.stash
+build/Desktop_Qt_6_11_0-Debug/playitsafe/playitsafe
+/build
