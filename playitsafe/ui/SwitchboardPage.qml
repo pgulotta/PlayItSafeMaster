@@ -73,14 +73,12 @@ GridView {
                 width: parent.width
                 hoverEnabled: true
                 onClicked: {
-                    stackViewId.push(model.pageSource)
+                    stackViewId.push(model.pageSource);
                 }
                 onHoveredChanged: {
                     if (containsMouse)
-                        hoverAnimationId.running = true
-                    gridViewDelegateId.color
-                            = containsMouse ? categoryHighlightColor : getCategoryColor(
-                                                  model.group)
+                        hoverAnimationId.running = true;
+                    gridViewDelegateId.color = containsMouse ? categoryHighlightColor : getCategoryColor(model.group);
                 }
             }
             Column {

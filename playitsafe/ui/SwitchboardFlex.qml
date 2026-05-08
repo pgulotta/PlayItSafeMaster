@@ -4,64 +4,45 @@ import QtQuick.Layouts
 import QtQuick.Effects
 import SwitchboardCategory
 
-ApplicationWindow {
-    id: window
+Page {
+    id: switchboardFlexId
+    objectName: "SwitchboardFlex"
+
     visible: true
-    width: 480
-    height: 640
-    title: "QML Flexbox Layout"
-    color: "green"
+    width: rootId.width
+    height: rootId.height
+
+    readonly property int animationDeltaX: 3
+    property real rectWidth: width * .3
+    property real rectHeight: rectWidth * 1.1
+
     FlexboxLayout {
         id: flexLayout
         anchors.fill: parent
-
         wrap: FlexboxLayout.Wrap
         direction: FlexboxLayout.Row
         alignItems: FlexboxLayout.AlignCenter
         justifyContent: FlexboxLayout.JustifySpaceAround
         alignContent: FlexboxLayout.AlignStretch
 
-        Rectangle {
-            color: 'teal'
-            Text {
-                text: AllCategories.get(SwitchboardCategory.BankAccount).title
+        SwitchboardRectangle {
+            category: AllCategories.get(SwitchboardCategory.BankAccount)
+        }
 
-                //  text: qsTr("teal")
-            }
-            implicitWidth: 100
-            implicitHeight: 100
+        SwitchboardRectangle {
+            category: AllCategories.get(SwitchboardCategory.Investment)
         }
-        Rectangle {
-            color: 'plum'
-            implicitWidth: 100
-            implicitHeight: 100
-            Text {
-                text: qsTr("plum")
-            }
+        SwitchboardRectangle {
+            category: AllCategories.get(SwitchboardCategory.RealAsset)
         }
-        Rectangle {
-            color: 'olive'
-            implicitWidth: 100
-            implicitHeight: 100
-            Text {
-                text: qsTr("olive")
-            }
+        SwitchboardRectangle {
+            category: AllCategories.get(SwitchboardCategory.Expense)
         }
-        Rectangle {
-            color: 'beige'
-            implicitWidth: 100
-            implicitHeight: 100
-            Text {
-                text: qsTr("beige")
-            }
+        SwitchboardRectangle {
+            category: AllCategories.get(SwitchboardCategory.Website)
         }
-        Rectangle {
-            color: 'darkseagreen'
-            implicitWidth: 100
-            implicitHeight: 100
-            Text {
-                text: qsTr("darkseagreen")
-            }
+        SwitchboardRectangle {
+            category: AllCategories.get(SwitchboardCategory.Recap)
         }
     }
 }
